@@ -48,11 +48,26 @@ This module does NOT:
   - hardcode product-specific values
 """
 
+import os
 import re
 import logging
 from datetime import datetime
 from dataclasses import dataclass
 from typing import Optional
+
+import cv2
+import numpy as np
+
+try:
+    import pytesseract
+    _PYTESSERACT_AVAILABLE = True
+    _TESSERACT_CMD = os.getenv("TESSERACT_CMD", "").strip()
+    if not _TESSERACT_CMD and os.path.exists(r"C:\Program Files\Tesseract-OCR\tesseract.exe"):
+        _TESSERACT_CMD = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+    if _TESSERACT_CMD:
+        pytesseract.pytesseract.tesseract_cmd = _TESSERACT_CMD
+except ImportError:
+    _PYTESSERACT_AVAILABLE = False
 
 logger = logging.getLogger(__name__)
 
@@ -1030,13 +1045,31 @@ class PriceInt(int):
 
 
 def _make_price_val(num_str: str):
-    val = float(num_str.replace(",", ""))
+    val = float(str(num_str).replace(",", ""))
     if val.is_integer():
         return PriceInt(int(val))
     return PriceNumber(val)
 
 
-def _extract_mrp(text: str) -> Optional[int | float | str]:
+_PRICE_CUR_CHARS = r"[₹\u20b9\u20a8]|\brs\.?|\binr\b|[FfzZxXtT=~&%£\?\\\/<]"
+_PRICE_PAT = re.compile(
+    r"(?:(?P<cur>" + _PRICE_CUR_CHARS + r")\s*[:\-=\s]*|(?P<cur_kw>mrp\s*)[:\-=\s]*)?"
+    r"(?P<amt>\d+(?:[.,]\d{1,2})?)"
+    r"(?P<sfx>/\-|\/)?(?=\s|[^\w]|$)",
+    re.IGNORECASE,
+)
+
+_COMMON_INDIAN_DENOMINATIONS = {
+    5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 99,
+    100, 120, 149, 150, 199, 200, 249, 250, 299, 300, 349, 350, 399, 400, 449, 450, 499, 500
+}
+
+
+def _extract_mrp(
+    text: str,
+    candidates_out: Optional[list] = None,
+    source_name: str = "ocr_text",
+) -> Optional[int | float | str]:
     """
     Extract MRP (Maximum Retail Price) as a numeric price.
 
@@ -1080,26 +1113,27 @@ def _extract_mrp(text: str) -> Optional[int | float | str]:
         re.IGNORECASE,
     )
 
-    genuine_currency_pat = re.compile(r"(?:[₹\u20b9\u20a8]|\brs\.?|\binr\b)", re.IGNORECASE)
-    unit_price_pat = re.compile(
-        r"(?:\(?\s*(?:[₹\u20b9\u20a8]|\brs\.?|\binr)?\s*\d+(?:[.,]\d+)?\s*(?:per\s+(?:g|gm|gms|kg|kgs|ml|l|litre|liter|100\s*g|100\s*ml|unit|piece)|/(?:g|gm|gms|kg|kgs|ml|l|litre|liter|100g|100ml|unit|piece))\)?"
-        r"|\b(?:unit\s*sale\s*price|usp)\s*[:\-]?\s*(?:rs\.?|[₹\u20b9])?\s*\d+(?:[.,]\d+)?(?:\s*(?:per|/)\s*\w+)?)",
+    promo_prefix = re.compile(
+        r"\b(?:save|discount|off|offer|coupon|cashback|flat)\s*[:\-]?\s*(?:[₹\u20b9\u20a8]|\brs\.?|\binr|[FfzZtT=~&%])?\s*\d+(?:[.,]\d+)?",
         re.IGNORECASE,
     )
-    quantity_pat = re.compile(r"\b\d+(?:[.,]\d+)?\s*(?:g|gm|gms|kg|kgs|ml|l|ltr|litre|liter|mg|kcal|%)\b", re.IGNORECASE)
+    promo_suffix = re.compile(
+        r"(?:[₹\u20b9\u20a8]|\brs\.?|\binr|[FfzZtT=~&%])?\s*\d+(?:[.,]\d+)?\s*(?:off|cashback|discount)\b",
+        re.IGNORECASE,
+    )
+    unit_price_pat = re.compile(
+        r"(?:\(?\s*(?:[₹\u20b9\u20a8]|\brs\.?|\binr|[FfzZtT=~&%])?\s*\d+(?:[.,]\d+)?\s*(?:per\s+(?:g|gm|gms|kg|kgs|ml|l|litre|liter|100\s*g|100\s*ml|unit|piece)|/(?:g|gm|gms|kg|kgs|ml|l|litre|liter|100\s*g|100\s*ml|unit|piece))\)?"
+        r"|\b(?:unit\s*(?:sale\s*)?price|usp)\s*[:\-]?\s*(?:rs\.?|[₹\u20b9])?\s*\d+(?:[.,]\d+)?(?:\s*(?:per|/)\s*\w+)?)",
+        re.IGNORECASE,
+    )
+    quantity_pat = re.compile(r"\b\d+(?:[.,]\d+)?\s*(?:g|gm|gms|kg|kgs|ml|l|ltr|litre|liter|mg|kcal|%|pcs|pieces|units)\b", re.IGNORECASE)
     date_pat = re.compile(r"\b\d{1,2}\s*[\/\.\-]\s*\d{1,2}\s*[\/\.\-]\s*\d{2,4}\b|\b(?:19|20)\d{2}\b")
     lic_pat = re.compile(r"\blic(?:\.|ense)?(?:\s*(?:no|num|number)\.?)?[\s:\-]*\d+", re.IGNORECASE)
+    barcode_pat = re.compile(r"\b(?:barcode|gtin|ean|upc)[\s:\-]*\d+\b|\b\d{12,14}\b", re.IGNORECASE)
     phone_pin_pat = re.compile(r"\b(?:\d{6}|\d{10,11})\b")
-    date_batch_line = re.compile(r"\b(?:exp|mfg|mfd|batch|use\s*by|best\s*before|balch|eniy|lot)\b", re.IGNORECASE)
+    date_batch_line = re.compile(r"\b(?:exp|mfg|mfd|batch|use\s*by|best\s*before|balch|eniy|lot|b\.?\s*no)\b", re.IGNORECASE)
     nutrition_line_pat = re.compile(
         r"\b(?:nutrition|nutritional|energy|protein|carbohydrate|total\s*fat|trans\s*fat|saturated\s*fat|total\s*sugars?|added\s*sugars?|sodium)\b",
-        re.IGNORECASE,
-    )
-
-    price_pat = re.compile(
-        r"(?:(?P<cur>[₹\u20b9\u20a8]|\brs\.?|\binr\b|[FfzZtT=~])\s*[:\-=\s]*|(?P<cur_kw>mrp\s*)[:\-=\s]*)?"
-        r"(?P<amt>\d+(?:[.,]\d{1,2})?)"
-        r"(?P<sfx>/\-|\/)?(?=\s|[^\w]|$)",
         re.IGNORECASE,
     )
 
@@ -1114,19 +1148,22 @@ def _extract_mrp(text: str) -> Optional[int | float | str]:
     for i, line in enumerate(lines):
         if nutrition_line_pat.search(line) and i not in mrp_line_indices:
             continue
-        if date_batch_line.search(line):
+        if date_batch_line.search(line) and i not in mrp_line_indices:
             continue
 
         cleaned = re.sub(r"\([^\)]*tax[^\)]*\)", " ", line, flags=re.IGNORECASE)
         cleaned = re.sub(r"\b(?:incl\.?\s*(?:of\s*)?)?all\s*taxes:?", " ", cleaned, flags=re.IGNORECASE)
         cleaned = re.sub(r"stall\s*taxes:?", " ", cleaned, flags=re.IGNORECASE)
+        cleaned = promo_prefix.sub(" ", cleaned)
+        cleaned = promo_suffix.sub(" ", cleaned)
         cleaned = unit_price_pat.sub(" ", cleaned)
         cleaned = quantity_pat.sub(" ", cleaned)
         cleaned = date_pat.sub(" ", cleaned)
         cleaned = lic_pat.sub(" ", cleaned)
+        cleaned = barcode_pat.sub(" ", cleaned)
         cleaned = phone_pin_pat.sub(" ", cleaned)
 
-        for m in price_pat.finditer(cleaned):
+        for m in _PRICE_PAT.finditer(cleaned):
             cur = (m.group("cur") or "").strip()
             amt = m.group("amt")
             sfx = (m.group("sfx") or "").strip()
@@ -1141,8 +1178,9 @@ def _extract_mrp(text: str) -> Optional[int | float | str]:
                 continue
 
             is_rupee = bool("₹" in cur or "\u20b9" in cur or "\u20a8" in cur)
-            is_rs_dot = bool(re.search(r"\brs\.\b|\binr\b", cur, re.IGNORECASE))
+            is_rs = bool(re.search(r"\brs\.?\b|\binr\b", cur, re.IGNORECASE))
             has_sfx = bool(sfx and "/-" in sfx)
+            is_ocr_cur = bool(cur and cur in "FfzZxXtT=~&%£?\\/<")
 
             near_mrp = False
             for mrp_idx in mrp_line_indices:
@@ -1151,33 +1189,33 @@ def _extract_mrp(text: str) -> Optional[int | float | str]:
                     break
 
             is_standalone_badge = bool(
-                re.match(r"^\s*(?:[₹\u20b9\u20a8]|\brs\.?|\binr\b|[FfzZtT=~])\s*\d+(?:[.,]\d{1,2})?(?:\s*/\-)?\s*$", line.strip(), re.IGNORECASE)
-                or re.match(r"^\s*\d+(?:[.,]\d{1,2})?\s*/\-\s*$", line.strip())
+                re.match(r"^\s*(?:[₹\u20b9\u20a8]|\brs\.?|\binr\b|[FfzZxXtT=~&%£\?\\\/<])\s*\d+(?:[.,]\d{1,2})?(?:\s*/\-)?\s*$", cleaned.strip(), re.IGNORECASE)
+                or re.match(r"^\s*\d+(?:[.,]\d{1,2})?\s*/\-\s*$", cleaned.strip())
             )
 
-            # If not near MRP keyword, require strong currency indicators:
+            # If not near MRP keyword, require genuine currency symbol, Indian price suffix, or standalone badge
             if not near_mrp:
-                if not (is_rupee or has_sfx or is_standalone_badge or (is_rs_dot and val in [5, 10, 15, 20, 25, 30, 40, 50, 60, 75, 99, 100, 149, 150, 199, 249, 299, 349, 399, 449, 499, 599, 999])):
+                if not (is_rupee or has_sfx or is_standalone_badge or is_rs or is_ocr_cur):
                     continue
 
-            # If there is NO currency symbol and NO '/-' suffix:
+            # If there is NO currency symbol and NO '/-' suffix, require MRP proximity
             if not cur and not has_sfx:
                 if not near_mrp:
                     continue
-                if not is_standalone_badge and val not in [5, 10, 15, 20, 25, 30, 40, 50, 60, 75, 99, 100, 149, 150, 199, 249, 299, 349, 399, 449, 499, 599, 999]:
-                    continue
 
-            if val < 5.0 and not is_rupee and not has_sfx:
+            if val < 5.0 and not is_rupee and not is_rs and not has_sfx:
                 continue
 
             score = 0.0
 
             if is_rupee:
                 score += 50.0
-            elif is_rs_dot:
+            elif is_rs:
                 score += 45.0
             elif cur and near_mrp:
                 score += 40.0
+            elif is_ocr_cur and is_standalone_badge:
+                score += 35.0
             elif has_sfx:
                 score += 35.0
             elif cur:
@@ -1192,22 +1230,229 @@ def _extract_mrp(text: str) -> Optional[int | float | str]:
             if i in mrp_line_indices:
                 score += 15.0
 
-            if val in [5, 10, 15, 20, 25, 30, 40, 50, 60, 75, 99, 100, 149, 150, 199, 249, 299, 349, 399, 449, 499, 599, 999]:
-                score += 25.0
-            elif val.is_integer():
-                score += 5.0
+            if val.is_integer() or (val * 100).is_integer():
+                score += 10.0
 
             if is_standalone_badge:
                 score += 15.0
 
+            if val in _COMMON_INDIAN_DENOMINATIONS:
+                score += 10.0
+
+            val_obj = _make_price_val(amt)
             if score >= 35.0:
-                candidates.append((score, _make_price_val(amt), amt, i, line))
+                candidates.append((score, val_obj, amt, i, line.strip()))
+                if candidates_out is not None:
+                    candidates_out.append({
+                        "val": val_obj,
+                        "candidate_text": line.strip(),
+                        "source_image": source_name,
+                        "bounding_box": None,
+                        "ocr_confidence": 90.0 if near_mrp else 75.0,
+                        "candidate_score": score,
+                        "reason": f"Accepted: score {score:.1f} (cur='{cur}', near_mrp={near_mrp}, standalone={is_standalone_badge})",
+                    })
+            else:
+                if candidates_out is not None:
+                    candidates_out.append({
+                        "val": None,
+                        "candidate_text": line.strip(),
+                        "source_image": source_name,
+                        "bounding_box": None,
+                        "ocr_confidence": 40.0,
+                        "candidate_score": score,
+                        "reason": f"Rejected: score {score:.1f} below threshold 35.0",
+                    })
 
     if candidates:
         candidates.sort(key=lambda x: x[0], reverse=True)
         return candidates[0][1]
 
     return None
+
+
+def detect_mrp_price_badge(img_bgr: Optional[np.ndarray], source_name: str = "uploaded_image") -> list[dict]:
+    """
+    Targeted Price Badge Detection for FMCG packaged goods.
+    Inspects upper corners where front packaging price badges appear.
+    """
+    if img_bgr is None or not _PYTESSERACT_AVAILABLE:
+        return []
+
+    h, w = img_bgr.shape[:2]
+    total_area = h * w
+    candidates = []
+
+    # Target upper corners where front pack price badges are located
+    rois = [
+        ("top_left", int(w * 0.04), int(h * 0.02), int(w * 0.45), int(h * 0.38)),
+        ("top_right", int(w * 0.55), int(h * 0.02), int(w * 0.96), int(h * 0.38)),
+    ]
+
+    gray = cv2.cvtColor(img_bgr, cv2.COLOR_BGR2GRAY)
+
+    for zone_name, z_x1, z_y1, z_x2, z_y2 in rois:
+        roi_bgr = img_bgr[z_y1:z_y2, z_x1:z_x2]
+        roi_gray = gray[z_y1:z_y2, z_x1:z_x2]
+        if roi_bgr.shape[0] < 30 or roi_bgr.shape[1] < 30:
+            continue
+
+        blurred = cv2.GaussianBlur(roi_gray, (5, 5), 0)
+        edges = cv2.Canny(blurred, 40, 140)
+        kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (5, 5))
+        closed = cv2.morphologyEx(edges, cv2.MORPH_CLOSE, kernel)
+        contours, _ = cv2.findContours(closed, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+
+        badge_boxes = []
+        for c in contours:
+            x, y, bw, bh = cv2.boundingRect(c)
+            area = bw * bh
+            ar = float(bw) / max(bh, 1)
+            # Badges are circular, oval, or squarish with area 0.3% to 9% of total image
+            if 0.003 * total_area <= area <= 0.09 * total_area and 0.5 <= ar <= 2.2:
+                px, py = int(bw * 0.15), int(bh * 0.15)
+                bx1 = max(0, x - px)
+                by1 = max(0, y - py)
+                bx2 = min(roi_bgr.shape[1], x + bw + px)
+                by2 = min(roi_bgr.shape[0], y + bh + py)
+                badge_boxes.append((bx1, by1, bx2, by2, x + z_x1, y + z_y1, bw, bh))
+
+        # Deduplicate overlapping contour boxes
+        unique_boxes = []
+        for b in badge_boxes:
+            bx1, by1, bx2, by2, abs_x, abs_y, bw, bh = b
+            overlap = False
+            for (ux1, uy1, ux2, uy2, u_abs_x, u_abs_y, ubw, ubh) in unique_boxes:
+                if abs(abs_x - u_abs_x) < 25 and abs(abs_y - u_abs_y) < 25:
+                    overlap = True
+                    break
+            if not overlap:
+                unique_boxes.append(b)
+
+        # Inspect up to 3 candidate boxes per zone
+        for bx1, by1, bx2, by2, abs_x, abs_y, bw, bh in unique_boxes[:3]:
+            crop = roi_bgr[by1:by2, bx1:bx2]
+            if crop.shape[0] < 20 or crop.shape[1] < 20:
+                continue
+
+            # Upscale for small fonts
+            crop_up = cv2.resize(crop, None, fx=2.5, fy=2.5, interpolation=cv2.INTER_CUBIC)
+            c_gray = cv2.cvtColor(crop_up, cv2.COLOR_BGR2GRAY)
+            _, otsu_inv = cv2.threshold(c_gray, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)
+
+            ocr_passes = [
+                (otsu_inv, "--oem 3 --psm 8", "otsu_inv"),
+                (c_gray, "--oem 3 --psm 8", "gray"),
+            ]
+
+            for v_img, cfg, pass_name in ocr_passes:
+                try:
+                    data = pytesseract.image_to_data(
+                        v_img,
+                        config=cfg,
+                        output_type=pytesseract.Output.DICT,
+                    )
+                    words = [t.strip() for t in data["text"] if t.strip()]
+                    if not words:
+                        continue
+
+                    raw_text = " ".join(words)
+                    confs = [int(c) for c in data["conf"] if int(c) >= 0]
+                    avg_conf = float(np.mean(confs)) if confs else 0.0
+
+                    cleaned = re.sub(r"[\)\]\}\"\'`]+$", "", raw_text).strip()
+
+                    # Negative checks: discounts, promotional offers, unit prices
+                    if re.search(r"\b(?:per\s*(?:g|gm|kg|100\s*g)|off|discount|save|coupon|cashback|flat)\b", cleaned, re.IGNORECASE):
+                        candidates.append({
+                            "val": None,
+                            "candidate_text": raw_text,
+                            "source_image": source_name,
+                            "bounding_box": {"x": abs_x, "y": abs_y, "width": bw, "height": bh},
+                            "ocr_confidence": avg_conf,
+                            "candidate_score": 0.0,
+                            "reason": f"Rejected: matched promo/unit price pattern in '{cleaned}'",
+                        })
+                        continue
+
+                    val = None
+                    score = 0.0
+                    reasons = []
+
+                    m = _PRICE_PAT.search(cleaned)
+                    if m:
+                        amt = m.group("amt")
+                        cur = (m.group("cur") or "").strip()
+                        sfx = (m.group("sfx") or "").strip()
+                        try:
+                            num = float(amt.replace(",", ""))
+                            # Reject single digits < 10 unless genuine rupee/Rs symbol is present
+                            if num < 10.0 and not (cur and cur in "₹\u20b9\u20a8Rs.rs."):
+                                candidates.append({
+                                    "val": None,
+                                    "candidate_text": raw_text,
+                                    "source_image": source_name,
+                                    "bounding_box": {"x": abs_x, "y": abs_y, "width": bw, "height": bh},
+                                    "ocr_confidence": avg_conf,
+                                    "candidate_score": 0.0,
+                                    "reason": f"Rejected: single digit '{num}' without currency symbol",
+                                })
+                                continue
+
+                            if 5.0 <= num <= 99_999:
+                                val = int(num) if num.is_integer() else num
+                                score = 75.0
+                                reasons.append(f"+75 corner badge price match '{cur}{amt}'")
+                                if cur and cur in "₹\u20b9\u20a8":
+                                    score += 25.0
+                                    reasons.append("+25 genuine rupee symbol")
+                                elif cur and re.match(r"rs\.?", cur, re.IGNORECASE):
+                                    score += 20.0
+                                    reasons.append("+20 Rs. notation")
+                                elif cur and cur in "FfzZxXtT=~&%£?\\/<":
+                                    score += 15.0
+                                    reasons.append(f"+15 OCR currency variant '{cur}'")
+                                if avg_conf > 50:
+                                    score += 10.0
+                                    reasons.append(f"+10 high OCR confidence {avg_conf:.1f}%")
+                                if val in _COMMON_INDIAN_DENOMINATIONS:
+                                    score += 10.0
+                                    reasons.append(f"+10 standard Indian denomination ₹{val}")
+                        except Exception:
+                            pass
+
+                    # Standalone 2-4 digit integer match inside badge (e.g. '20')
+                    if val is None and re.match(r"^\d{2,4}$", cleaned):
+                        try:
+                            num = float(cleaned)
+                            if 10.0 <= num <= 9999:
+                                val = int(num) if num.is_integer() else num
+                                score = 65.0
+                                reasons.append(f"+65 isolated badge price number '{val}' in {zone_name}")
+                                if avg_conf > 50:
+                                    score += 10.0
+                                    reasons.append(f"+10 OCR confidence {avg_conf:.1f}%")
+                                if val in _COMMON_INDIAN_DENOMINATIONS:
+                                    score += 10.0
+                                    reasons.append(f"+10 standard Indian denomination ₹{val}")
+                        except Exception:
+                            pass
+
+                    if val is not None:
+                        candidates.append({
+                            "val": val,
+                            "candidate_text": raw_text,
+                            "source_image": source_name,
+                            "bounding_box": {"x": abs_x, "y": abs_y, "width": bw, "height": bh},
+                            "ocr_confidence": avg_conf,
+                            "candidate_score": score,
+                            "reason": f"Accepted: {', '.join(reasons)}",
+                        })
+                except Exception:
+                    pass
+
+    candidates.sort(key=lambda x: x["candidate_score"], reverse=True)
+    return candidates
 
 
 _DATE_VAL = (
@@ -1479,37 +1724,78 @@ def _reconcile_dates(
 # Public entry point
 # ─────────────────────────────────────────────────────────────────────────────
 
-def extract_fields(ocr_text: str) -> ExtractionResult:
+def extract_fields(
+    ocr_text: str,
+    image: Optional[np.ndarray] = None,
+    source_name: str = "uploaded_image",
+) -> ExtractionResult:
     """
-    Extract structured label fields from raw Tesseract OCR text.
+    Extract structured label fields from raw Tesseract OCR text and optional image.
 
     Args:
         ocr_text: The raw string returned by pytesseract.image_to_string.
+        image: Optional OpenCV BGR image array for targeted badge detection.
+        source_name: Name/identifier of the source image for structured logging.
 
     Returns:
         ExtractionResult where each field is the extracted string value
         or None if the field could not be found / passed confidence checks.
     """
     if not ocr_text or not ocr_text.strip():
-        logger.info("extract_fields: empty OCR text — returning all-null result")
-        return ExtractionResult()
+        if image is None:
+            logger.info("extract_fields: empty OCR text and no image — returning all-null result")
+            return ExtractionResult()
+        text = ""
+    else:
+        text = _normalize(ocr_text)
+        logger.debug("Normalised OCR (%d chars):\n%s", len(text), text[:600])
 
-    text = _normalize(ocr_text)
-    logger.debug("Normalised OCR (%d chars):\n%s", len(text), text[:600])
+    mfg_raw = _extract_manufacturing_date(text) if text else None
+    exp_raw = _extract_best_before(text) if text else None
+    mfg_clean, exp_clean = _reconcile_dates(mfg_raw, exp_raw, text) if text else (None, None)
 
-    mfg_raw = _extract_manufacturing_date(text)
-    exp_raw = _extract_best_before(text)
-    mfg_clean, exp_clean = _reconcile_dates(mfg_raw, exp_raw, text)
+    # Multi-candidate MRP collection across text and targeted image badge OCR
+    all_mrp_candidates = []
+    text_mrp = _extract_mrp(text, candidates_out=all_mrp_candidates, source_name=source_name) if text else None
+
+    if image is not None:
+        badge_cands = detect_mrp_price_badge(image, source_name=source_name)
+        all_mrp_candidates.extend(badge_cands)
+
+    if all_mrp_candidates:
+        logger.info("=== MRP OCR CANDIDATES (%s) ===", source_name)
+        for c in all_mrp_candidates:
+            logger.info(
+                "candidate text: %r | source image: %s | bounding box: %s | OCR confidence: %.1f%% | candidate score: %.1f | reason: %s",
+                c.get("candidate_text", ""),
+                c.get("source_image", source_name),
+                c.get("bounding_box"),
+                c.get("ocr_confidence", 0.0),
+                c.get("candidate_score", 0.0),
+                c.get("reason", ""),
+            )
+
+    accepted_cands = [
+        c for c in all_mrp_candidates
+        if c.get("val") is not None and c.get("candidate_score", 0.0) >= 35.0
+    ]
+    final_mrp = None
+    if accepted_cands:
+        accepted_cands.sort(key=lambda x: x["candidate_score"], reverse=True)
+        winner = accepted_cands[0]
+        final_mrp = _make_price_val(str(winner["val"]))
+    elif text_mrp is not None:
+        final_mrp = text_mrp
 
     result = ExtractionResult(
-        product_name=                  _extract_product_name(text),
-        manufacturer_or_packer=        _extract_manufacturer_or_packer(text),
-        net_quantity=                  _extract_net_quantity(text),
-        mrp=                           _extract_mrp(text),
+        product_name=                  _extract_product_name(text) if text else None,
+        manufacturer_or_packer=        _extract_manufacturer_or_packer(text) if text else None,
+        net_quantity=                  _extract_net_quantity(text) if text else None,
+        mrp=                           final_mrp,
         manufacturing_or_packing_date= mfg_clean,
         best_before_or_use_by=         exp_clean,
-        consumer_care=                 _extract_consumer_care(text),
-        country_of_origin=             _extract_country_of_origin(text),
+        consumer_care=                 _extract_consumer_care(text) if text else None,
+        country_of_origin=             _extract_country_of_origin(text) if text else None,
     )
 
     found = sum(1 for v in result.to_dict().values() if v is not None)

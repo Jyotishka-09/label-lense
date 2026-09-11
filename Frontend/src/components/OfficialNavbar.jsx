@@ -7,10 +7,12 @@ const OfficialNavbar = () => {
   const { user, logout } = useAuth();
 
   // Fall back to legacy sessionStorage keys for backward compat
-  const officerId = user?.id || sessionStorage.getItem('officer_id') || 'LM-042';
+  const officerId = user?.id || sessionStorage.getItem('officer_id') || '';
   const officerName = user?.name
     ? `${user.name} (Inspector)`
-    : sessionStorage.getItem('officer_name') || 'Ananya Rao';
+    : sessionStorage.getItem('officer_name') || 'Authorized Inspector';
+
+  const officerDivision = user?.division || sessionStorage.getItem('officer_division') || 'Legal Metrology Enforcement Directorate';
 
   const handleLogout = () => {
     logout(); // clears AuthContext + sessionStorage
@@ -27,7 +29,7 @@ const OfficialNavbar = () => {
             <span>RESTRICTED ACCESS &bull; LEGAL METROLOGY ENFORCEMENT PORTAL</span>
           </div>
           <div className="text-slate-400">
-            Zone-4 Enforcement Division
+            {officerDivision}
           </div>
         </div>
       </div>
@@ -70,7 +72,7 @@ const OfficialNavbar = () => {
               </div>
               <div className="flex flex-col text-left">
                 <span className="font-semibold text-white leading-tight">{officerName}</span>
-                <span className="text-[10px] text-slate-400 font-mono">ID: {officerId}</span>
+                {officerId && <span className="text-[10px] text-slate-400 font-mono">ID: {officerId}</span>}
               </div>
             </div>
 

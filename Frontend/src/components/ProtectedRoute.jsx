@@ -31,7 +31,7 @@ const ProtectedRoute = ({ role, children }) => {
     return (
       <Navigate
         to={LOGIN_ROUTES[role] ?? '/'}
-        state={{ from: location }}
+        state={{ from: location, role }}
         replace
       />
     );
@@ -42,6 +42,7 @@ const ProtectedRoute = ({ role, children }) => {
     return (
       <Navigate
         to={LOGIN_ROUTES[role] ?? '/'}
+        state={{ from: location, role }}
         replace
       />
     );

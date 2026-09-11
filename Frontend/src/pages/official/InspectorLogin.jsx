@@ -2,9 +2,12 @@ import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { Shield, Lock, User, AlertCircle, ArrowLeft, KeyRound } from 'lucide-react';
 import Button from '../../components/Button';
+import { useAuth } from '../../context/AuthContext';
+import { validateCredentials, ROLES, REGISTERED_INSPECTORS } from '../../context/auth';
 
 const InspectorLogin = () => {
   const navigate = useNavigate();
+  const { login } = useAuth();
   const [employeeId, setEmployeeId] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -14,7 +17,7 @@ const InspectorLogin = () => {
     e.preventDefault();
     setError('');
 
-    const trimmedId = employeeId.trim().toUpperCase();
+    const trimmedId = employeeId.trim();
     const trimmedPass = password.trim();
 
     if (!trimmedId || !trimmedPass) {
@@ -24,24 +27,22 @@ const InspectorLogin = () => {
 
     setIsLoading(true);
 
-    // Local / dummy authentication per prototype scope
     setTimeout(() => {
-      if (trimmedId === 'LM-042' && trimmedPass === 'inspector123') {
-        sessionStorage.setItem('officer_authenticated', 'true');
-        sessionStorage.setItem('officer_id', 'LM-042');
-        sessionStorage.setItem('officer_name', 'S. Sharma (Inspector)');
-        sessionStorage.setItem('officer_division', 'Delhi Zone-4 Field Enforcement Unit');
+      const officer = validateCredentials(trimmedId, trimmedPass, ROLES.INSPECTOR);
+      if (officer) {
+        login(officer);
         navigate('/official/inspector');
       } else {
         setError('Invalid Employee ID or Password. Please verify your credentials.');
         setIsLoading(false);
       }
-    }, 350);
+    }, 250);
   };
 
-  const handleFillDemo = () => {
-    setEmployeeId('LM-042');
-    setPassword('inspector123');
+  const handleFillDemo = (officerId = 'LM-042') => {
+    const target = REGISTERED_INSPECTORS.find(ins => ins.id === officerId) || REGISTERED_INSPECTORS[0];
+    setEmployeeId(target.id);
+    setPassword('Inspector@123');
     setError('');
   };
 
@@ -126,17 +127,19 @@ const InspectorLogin = () => {
             </div>
           </div>
 
-          {/* Quick Prototype Auto-Fill (Without exposing password in plain text) */}
-          <div className="pt-1 flex items-center justify-between text-[11px] text-slate-500">
-            <span>Prototype testing:</span>
-            <button
-              type="button"
-              onClick={handleFillDemo}
-              className="text-[#0f2942] hover:underline font-semibold flex items-center gap-1"
-            >
-              <KeyRound className="w-3 h-3 text-slate-400" />
-              <span>Fill Prototype Credentials</span>
-            </button>
+          {/* Quick Prototype Auto-Fill with genuine registered officers */}
+          <div className="pt-1 flex flex-col gap-1 text-[11px] text-slate-500">
+            <div className="flex items-center justify-between">
+              <span>Prototype testing:</span>
+              <button
+                type="button"
+                onClick={() => handleFillDemo('LM-042')}
+                className="text-[#0f2942] hover:underline font-semibold flex items-center gap-1 cursor-pointer"
+              >
+                <KeyRound className="w-3 h-3 text-slate-400" />
+                <span>Fill Demo Credentials</span>
+              </button>
+            </div>
           </div>
 
           {/* Primary Action Button */}
@@ -156,6 +159,13 @@ const InspectorLogin = () => {
             Authorized personnel only.
           </div>
         </form>
+      </div>
+
+      {/* Prototype credential hint */}
+      <div className="mt-5 w-full max-w-sm p-3 bg-amber-50 border border-amber-200 rounded text-[11px] text-amber-900">
+        <div className="font-bold mb-1">Prototype Credentials (for demonstration only):</div>
+        <div>Employee ID: <span className="font-mono">LM-042</span></div>
+        <div>Password: <span className="font-mono">inspector123</span></div>
       </div>
     </div>
   );

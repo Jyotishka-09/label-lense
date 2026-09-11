@@ -132,6 +132,16 @@ function App() {
         <Route index element={<AuthorityDashboard />} />
       </Route>
 
+      {/* ── Route Aliases & Short Links ── */}
+      <Route path="/login" element={<Navigate to="/citizen/login" replace />} />
+      <Route path="/official" element={<Navigate to="/official/login" replace />} />
+      <Route path="/inspector" element={<Navigate to="/official/inspector" replace />} />
+      <Route path="/authority" element={<Navigate to="/official/authority" replace />} />
+      <Route path="/inspector/login" element={<Navigate to="/official/login" replace />} />
+      <Route path="/authority/login" element={<Navigate to="/official/login" replace />} />
+      <Route path="/official/inspector/login" element={<Navigate to="/official/login" replace />} />
+      <Route path="/official/authority/login" element={<Navigate to="/official/login" replace />} />
+
       {/* Catch-all fallback */}
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>

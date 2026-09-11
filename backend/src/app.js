@@ -10,6 +10,7 @@ const healthRouter = require("./routes/health");
 const inspectionsRouter = require("./routes/inspections");
 const scanRouter = require("./routes/scan");
 const complaintsRouter = require("./routes/complaints");
+const authorityRouter = require("./routes/authority");
 
 const app = express();
 
@@ -26,6 +27,7 @@ app.use("/api/scan", scanRouter);
 app.use("/api", scanRouter);
 app.use("/api/inspections", inspectionsRouter);
 app.use("/api/complaints", complaintsRouter);
+app.use("/api/authority", authorityRouter);
 
 module.exports = app;
 

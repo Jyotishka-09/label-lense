@@ -99,7 +99,7 @@ const InspectorInspection = () => {
 
         // Pre-fill officer decision & remarks if already inspected
         if (record.inspectionReport || record.status === 'INSPECTION_COMPLETED') {
-          setOfficerDecision(record.inspectionReport?.officerDecision || record.officerDecision || 'NON_COMPLIANT');
+          setOfficerDecision(record.inspectionReport?.officerDecision || record.officerDecision || '');
           setOfficerRemarks(record.inspectionReport?.officerRemarks || record.inspectionReport?.officerNotes || record.officerRemarks || '');
           setFreshAiResult(record.inspectionReport?.freshAiAnalysis || record.freshAiAnalysis || record.inspectionResult || null);
         } else if (record.status === 'INSPECTION_IN_PROGRESS') {
@@ -244,8 +244,8 @@ const InspectorInspection = () => {
     setIsSubmitting(true);
     try {
       const now = new Date().toISOString();
-      const officerName = user?.name || sessionStorage.getItem('officer_name') || 'Arun Ray';
-      const officerId = user?.id || sessionStorage.getItem('officer_id') || 'LM-042';
+      const officerName = user?.name || sessionStorage.getItem('officer_name') || 'Authorized Inspector';
+      const officerId = user?.id || sessionStorage.getItem('officer_id') || '';
 
       // Minimal decision payload — only fields necessary to update the decision
       const decisionPayload = {
@@ -397,11 +397,11 @@ const InspectorInspection = () => {
                     Officer Remarks & Statutory Grounds
                   </span>
                   <span className="text-[11px] font-mono text-slate-600 font-semibold">
-                    Officer: {complaint.inspectorName || complaint.inspectionReport?.officerName || user?.name || 'Inspector'} ({complaint.inspectorId || complaint.inspectionReport?.officerId || 'LM-042'})
+                    Officer: {complaint.inspectorName || complaint.inspectionReport?.officerName || user?.name || sessionStorage.getItem('officer_name') || 'Authorized Inspector'}{complaint.inspectorId || complaint.inspectionReport?.officerId || user?.id || sessionStorage.getItem('officer_id') ? ` (${complaint.inspectorId || complaint.inspectionReport?.officerId || user?.id || sessionStorage.getItem('officer_id')})` : ''}
                   </span>
                 </div>
                 <p className="text-xs text-slate-800 bg-slate-50 p-3 rounded border border-slate-200 font-medium leading-relaxed">
-                  {complaint.officerRemarks || complaint.inspectionReport?.officerRemarks || complaint.inspectionReport?.officerNotes || 'Physical inspection completed at retail premises. Declarations verified against statutory rules.'}
+                  {complaint.officerRemarks || complaint.inspectionReport?.officerRemarks || complaint.inspectionReport?.officerNotes || 'No remarks recorded.'}
                 </p>
               </div>
             </div>
@@ -437,9 +437,26 @@ const InspectorInspection = () => {
                   <span className="text-slate-500 text-[10px] uppercase font-bold block">Best Before / Use By</span>
                   <span className="font-semibold text-slate-900">{complaint.extractedData?.best_before_or_use_by || '—'}</span>
                 </div>
-                <div className="p-3 bg-slate-50 rounded border border-slate-200">
-                  <span className="text-slate-500 text-[10px] uppercase font-bold block">Issue Category</span>
-                  <span className="font-semibold text-slate-900">{complaint.issueCategory || '—'}</span>
+                <div className="p-3 bg-slate-50 rounded border border-slate-200 sm:col-span-2">
+                  <span className="text-slate-500 text-[10px] uppercase font-bold block mb-1">
+                    Reported Issues (Citizen Allegations)
+                  </span>
+                  {complaint.reportedIssues && complaint.reportedIssues.length > 0 ? (
+                    <div className="space-y-1">
+                      <ul className="list-disc list-inside space-y-0.5 text-xs font-semibold text-slate-900">
+                        {complaint.reportedIssues.map((iss, idx) => (
+                          <li key={idx}>{iss}</li>
+                        ))}
+                      </ul>
+                      {complaint.otherIssueDescription && (
+                        <p className="text-[11px] text-slate-600 italic pl-1 pt-0.5">
+                          Note: "{complaint.otherIssueDescription}"
+                        </p>
+                      )}
+                    </div>
+                  ) : (
+                    <span className="font-semibold text-slate-900">{complaint.issueCategory || '—'}</span>
+                  )}
                 </div>
                 <div className="p-3 bg-slate-50 rounded border border-slate-200">
                   <span className="text-slate-500 text-[10px] uppercase font-bold block">Inspection Premises</span>
@@ -688,10 +705,25 @@ const InspectorInspection = () => {
               </div>
 
               <div>
-                <span className="text-slate-500 text-[10px] uppercase font-semibold block">Issue Category</span>
-                <span className="font-semibold text-slate-900 bg-slate-100 px-2 py-0.5 rounded border border-slate-200 inline-block mt-0.5">
-                  {complaint.issueCategory || 'Other'}
-                </span>
+                <span className="text-slate-500 text-[10px] uppercase font-semibold block">Citizen-Reported Issues</span>
+                <div className="mt-0.5 space-y-1">
+                  {(complaint.reportedIssues && complaint.reportedIssues.length > 0
+                    ? complaint.reportedIssues
+                    : [complaint.issueCategory || 'Other']
+                  ).map((iss, idx) => (
+                    <span
+                      key={idx}
+                      className="block font-semibold text-slate-900 bg-slate-100 px-2 py-0.5 rounded border border-slate-200 text-[11px]"
+                    >
+                      {iss}
+                    </span>
+                  ))}
+                  {complaint.otherIssueDescription && (
+                    <span className="block text-[10px] text-slate-500 italic pl-1">
+                      Note: "{complaint.otherIssueDescription}"
+                    </span>
+                  )}
+                </div>
               </div>
 
               <div>

@@ -15,6 +15,9 @@ const InspectorDashboard = () => {
   const [loadError, setLoadError] = useState('');
   const [statusFilter, setStatusFilter] = useState('ALL'); // 'ALL' | 'PENDING' | 'UNDER_INSPECTION' | 'COMPLETED'
   const [searchQuery, setSearchQuery] = useState('');
+  const [selectedSource, setSelectedSource] = useState(null); // null | 'authority_assigned' | 'consumer_complaint'
+  const currentOfficerId = user?.id || sessionStorage.getItem('officer_id') || '';
+  const [officerQueueFilter, setOfficerQueueFilter] = useState('ALL'); // 'MY_QUEUE' | 'ALL'
 
   const loadData = async () => {
     setLoading(true);
@@ -33,16 +36,38 @@ const InspectorDashboard = () => {
     loadData();
   }, []);
 
-  // 3 Required metrics calculated dynamically from actual complaints
-  const total = complaints.length;
-  const pending = complaints.filter(c => c.status === 'SUBMITTED' || c.status === 'PENDING').length;
-  const underInspection = complaints.filter(c => c.status === 'UNDER_REVIEW' || c.status === 'INSPECTION_IN_PROGRESS').length;
-  const completed = complaints.filter(c => c.status === 'INSPECTION_COMPLETED' || c.status === 'CLOSED').length;
+  const isCompletedStatus = (status) => {
+    const s = (status || '').toUpperCase().trim();
+    return s === 'INSPECTION_COMPLETED' || s === 'INSPECTION COMPLETED' || s === 'COMPLETED' || s === 'CLOSED' || s === 'RESOLVED';
+  };
 
-  const filteredComplaints = complaints.filter((c) => {
+  // Source metrics across all tasks (Operational queue: unresolved / open tasks only)
+  const authorityCount = complaints.filter(
+    c => c.source === 'authority_assigned' && !isCompletedStatus(c.status)
+  ).length;
+  const consumerCount = complaints.filter(
+    c => c.source === 'consumer_complaint' && !isCompletedStatus(c.status)
+  ).length;
+
+  // Scoped task pool based on selectedSource and officerQueueFilter
+  let scopedTasks = selectedSource
+    ? complaints.filter(c => c.source === selectedSource)
+    : complaints;
+
+  if (officerQueueFilter === 'MY_QUEUE' && currentOfficerId) {
+    scopedTasks = scopedTasks.filter(c => c.inspectorId === currentOfficerId || !c.inspectorId);
+  }
+
+  // Status metrics calculated dynamically from scopedTasks
+  const total = scopedTasks.length;
+  const pending = scopedTasks.filter(c => c.status === 'SUBMITTED' || c.status === 'PENDING').length;
+  const underInspection = scopedTasks.filter(c => c.status === 'UNDER_REVIEW' || c.status === 'INSPECTION_IN_PROGRESS').length;
+  const completed = scopedTasks.filter(c => isCompletedStatus(c.status)).length;
+
+  const filteredComplaints = scopedTasks.filter((c) => {
     if (statusFilter === 'PENDING' && !(c.status === 'SUBMITTED' || c.status === 'PENDING')) return false;
     if (statusFilter === 'UNDER_INSPECTION' && !(c.status === 'UNDER_REVIEW' || c.status === 'INSPECTION_IN_PROGRESS')) return false;
-    if (statusFilter === 'COMPLETED' && !(c.status === 'INSPECTION_COMPLETED' || c.status === 'CLOSED')) return false;
+    if (statusFilter === 'COMPLETED' && !isCompletedStatus(c.status)) return false;
 
     const q = searchQuery.toLowerCase().trim();
     if (!q) return true;
@@ -50,7 +75,11 @@ const InspectorDashboard = () => {
       c.id.toLowerCase().includes(q) ||
       (c.productName || '').toLowerCase().includes(q) ||
       (c.issueCategory || '').toLowerCase().includes(q) ||
-      (c.location || '').toLowerCase().includes(q)
+      (c.location || '').toLowerCase().includes(q) ||
+      (c.locality || '').toLowerCase().includes(q) ||
+      (c.district || '').toLowerCase().includes(q) ||
+      (c.inspectorId || '').toLowerCase().includes(q) ||
+      (c.inspectorName || '').toLowerCase().includes(q)
     );
   });
 
@@ -62,8 +91,20 @@ const InspectorDashboard = () => {
           <div className="text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-0.5">
             Legal Metrology Department &bull; Field Enforcement
           </div>
+          {selectedSource && (
+            <button
+              onClick={() => setSelectedSource(null)}
+              className="inline-flex items-center text-xs font-semibold text-slate-600 hover:text-[#0f2942] transition-colors mb-1.5 cursor-pointer"
+            >
+              ← Back to overview
+            </button>
+          )}
           <h1 className="text-2xl font-black text-[#0f2942] tracking-tight">
-            Inspector Dashboard
+            {selectedSource === 'authority_assigned'
+              ? 'Inspector Dashboard — Tasks from Authority'
+              : selectedSource === 'consumer_complaint'
+              ? 'Inspector Dashboard — Complaints from Consumer'
+              : 'Inspector Dashboard'}
           </h1>
           <p className="text-xs text-slate-600 mt-0.5">
             Inspection queue under Legal Metrology (Packaged Commodities) Rules, 2011.
@@ -79,8 +120,13 @@ const InspectorDashboard = () => {
           >
             <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin text-[#0f2942]' : ''}`} />
           </button>
-          <div className="text-xs bg-slate-50 border border-slate-200 px-3 py-1.5 rounded text-slate-800 font-semibold">
-            Inspector: {user?.name || 'Officer'}
+          <div className="text-xs bg-slate-50 border border-slate-200 px-3 py-1.5 rounded text-slate-800 font-semibold flex items-center gap-1.5">
+            <span>Inspector: {user?.name || sessionStorage.getItem('officer_name') || 'Authorized Officer'}</span>
+            {currentOfficerId && (
+              <span className="text-slate-500 font-mono text-[11px] font-normal bg-white px-1.5 py-0.2 rounded border border-slate-200">
+                {currentOfficerId}
+              </span>
+            )}
           </div>
         </div>
       </div>
@@ -92,7 +138,48 @@ const InspectorDashboard = () => {
         </div>
       )}
 
-      {/* Summary Cards */}
+      {/* Source Selection Cards */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div
+          onClick={() => setSelectedSource('authority_assigned')}
+          className={`bg-white rounded-lg border p-4 shadow-xs cursor-pointer transition-all ${
+            selectedSource === 'authority_assigned'
+              ? 'border-[#0f2942] ring-1 ring-[#0f2942]'
+              : 'border-slate-300 hover:border-slate-400'
+          }`}
+        >
+          <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500 block mb-1">
+            Tasks from Authority
+          </span>
+          <div className="text-2xl font-extrabold font-mono text-[#0f2942]">
+            {loading ? '—' : authorityCount}
+          </div>
+          <span className="text-[10px] text-slate-400 block mt-1">
+            Assigned by Authority Portal
+          </span>
+        </div>
+
+        <div
+          onClick={() => setSelectedSource('consumer_complaint')}
+          className={`bg-white rounded-lg border p-4 shadow-xs cursor-pointer transition-all ${
+            selectedSource === 'consumer_complaint'
+              ? 'border-[#0f2942] ring-1 ring-[#0f2942]'
+              : 'border-slate-300 hover:border-slate-400'
+          }`}
+        >
+          <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500 block mb-1">
+            Complaints from Consumer
+          </span>
+          <div className="text-2xl font-extrabold font-mono text-[#0f2942]">
+            {loading ? '—' : consumerCount}
+          </div>
+          <span className="text-[10px] text-slate-400 block mt-1">
+            Reported by citizens
+          </span>
+        </div>
+      </div>
+
+      {/* Summary Status Cards */}
       <div className="grid grid-cols-3 gap-4">
         {[
           { label: 'Pending', value: pending, color: 'text-amber-700', note: 'Awaiting inspection', filter: 'PENDING' },
@@ -172,9 +259,19 @@ const InspectorDashboard = () => {
         ) : filteredComplaints.length === 0 ? (
           <div className="p-12 text-center text-xs text-slate-500 space-y-2">
             <ClipboardList className="w-8 h-8 text-slate-400 mx-auto" />
-            <p className="font-semibold text-slate-700 text-sm">No complaints assigned.</p>
+            <p className="font-semibold text-slate-700 text-sm">
+              {complaints.length === 0
+                ? 'No complaints found.'
+                : statusFilter !== 'ALL'
+                ? 'No inspections found.'
+                : 'No complaints found.'}
+            </p>
             <p className="text-slate-400">
-              {searchQuery ? 'No complaints match your search query.' : 'No dockets found in this status category.'}
+              {searchQuery
+                ? 'No complaints match your search query.'
+                : complaints.length === 0
+                ? 'The departmental queue contains zero active or historical complaint records.'
+                : `No dockets found under status: ${statusFilter.replace('_', ' ')}.`}
             </p>
           </div>
         ) : (
@@ -184,6 +281,7 @@ const InspectorDashboard = () => {
                 <tr>
                   <th className="py-3 px-4">Complaint ID</th>
                   <th className="py-3 px-4">Product</th>
+                  <th className="py-3 px-4">Location</th>
                   <th className="py-3 px-4">Issue</th>
                   <th className="py-3 px-4">Status</th>
                   <th className="py-3 px-4 text-right">Action</th>
@@ -200,9 +298,32 @@ const InspectorDashboard = () => {
                       {c.brand && <div className="text-[11px] text-slate-500">{c.brand}</div>}
                     </td>
                     <td className="py-3.5 px-4 text-slate-700">
-                      <span className="font-medium bg-slate-100 px-2 py-0.5 rounded border border-slate-200 text-slate-800 text-[11px]">
-                        {c.issueCategory || 'Other'}
-                      </span>
+                      <div className="font-semibold text-slate-900 flex items-start gap-1">
+                        <span className="text-slate-400">📍</span>
+                        <span className="truncate max-w-[220px]">
+                          {c.locality && c.district ? `${c.locality}, ${c.district}` : (c.location || '—')}
+                        </span>
+                      </div>
+                      {c.pincode && (
+                        <span className="text-[10px] text-slate-400 font-mono block pl-4">
+                          PIN: {c.pincode}
+                        </span>
+                      )}
+                    </td>
+                    <td className="py-3.5 px-4 text-slate-700">
+                      <div className="flex flex-wrap gap-1 max-w-[240px]">
+                        {(c.reportedIssues && c.reportedIssues.length > 0
+                          ? c.reportedIssues
+                          : [c.issueCategory || 'Other']
+                        ).map((iss, idx) => (
+                          <span
+                            key={idx}
+                            className="font-medium bg-slate-100 px-2 py-0.5 rounded border border-slate-200 text-slate-800 text-[11px]"
+                          >
+                            {iss}
+                          </span>
+                        ))}
+                      </div>
                     </td>
                     <td className="py-3.5 px-4 whitespace-nowrap">
                       <StatusBadge status={c.status} size="small" />

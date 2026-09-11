@@ -9,11 +9,20 @@ const OfficialLogin = () => {
   const location = useLocation();
   const { login } = useAuth();
 
-  // Role selector: 'INSPECTOR' | 'AUTHORITY'
-  const [selectedRole, setSelectedRole] = useState(ROLES.INSPECTOR);
+  const fromPath = location.state?.from?.pathname || '';
+  const requestedRole =
+    location.state?.role ||
+    (fromPath.includes('authority') ? ROLES.AUTHORITY : ROLES.INSPECTOR);
 
-  const [email, setEmail] = useState('inspector@labellens.gov.in');
-  const [password, setPassword] = useState('Inspector@123');
+  // Role selector: 'INSPECTOR' | 'AUTHORITY'
+  const [selectedRole, setSelectedRole] = useState(requestedRole);
+
+  const [email, setEmail] = useState(
+    requestedRole === ROLES.AUTHORITY ? 'authority@labellens.gov.in' : 'inspector@labellens.gov.in'
+  );
+  const [password, setPassword] = useState(
+    requestedRole === ROLES.AUTHORITY ? 'Authority@123' : 'Inspector@123'
+  );
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
@@ -21,6 +30,17 @@ const OfficialLogin = () => {
     setSelectedRole(role);
     setError('');
     if (role === ROLES.INSPECTOR) {
+      setEmail('inspector@labellens.gov.in');
+      setPassword('Inspector@123');
+    } else {
+      setEmail('authority@labellens.gov.in');
+      setPassword('Authority@123');
+    }
+  };
+
+  const handleFillDemo = () => {
+    setError('');
+    if (selectedRole === ROLES.INSPECTOR) {
       setEmail('inspector@labellens.gov.in');
       setPassword('Inspector@123');
     } else {
@@ -40,16 +60,31 @@ const OfficialLogin = () => {
 
     setIsLoading(true);
     setTimeout(() => {
-      const user = validateCredentials(email, password, selectedRole);
+      // First attempt with active selected role
+      let user = validateCredentials(email, password, selectedRole);
+
+      // If not matched, gracefully check the other official role
+      if (!user) {
+        const otherRole = selectedRole === ROLES.INSPECTOR ? ROLES.AUTHORITY : ROLES.INSPECTOR;
+        const otherUser = validateCredentials(email, password, otherRole);
+        if (otherUser) {
+          user = otherUser;
+          setSelectedRole(otherRole);
+        }
+      }
+
       if (user) {
         login(user);
-        const destination = selectedRole === ROLES.INSPECTOR ? '/official/inspector' : '/official/authority';
-        navigate(destination, { replace: true });
+        const defaultDest = user.role === ROLES.INSPECTOR ? '/official/inspector' : '/official/authority';
+        const targetDest = (fromPath && fromPath.startsWith(user.role === ROLES.INSPECTOR ? '/official/inspector' : '/official/authority'))
+          ? fromPath
+          : defaultDest;
+        navigate(targetDest, { replace: true });
       } else {
-        setError('Invalid credentials for selected role. Please check email and password.');
+        setError('Invalid official credentials. Please verify your email/ID and password.');
         setIsLoading(false);
       }
-    }, 300);
+    }, 250);
   };
 
   return (
@@ -170,13 +205,19 @@ const OfficialLogin = () => {
             </div>
           </div>
 
-          {/* Prototype credentials indicator */}
-          <div className="text-[11px] text-slate-500 bg-slate-50 p-2 rounded border border-slate-200">
-            <span className="font-semibold text-slate-700">Prototype user: </span>
-            <span className="font-mono text-slate-600">{email}</span>
+          {/* Prototype demo fill */}
+          <div className="flex items-center justify-between text-[11px] text-slate-500">
+            <span>Prototype testing:</span>
+            <button
+              type="button"
+              onClick={handleFillDemo}
+              className="text-[#0f2942] hover:underline font-semibold flex items-center gap-1 cursor-pointer"
+            >
+              <KeyRound className="w-3 h-3 text-slate-400" />
+              <span>Fill Demo Credentials</span>
+            </button>
           </div>
 
-          {/* Submit */}
           <button
             type="submit"
             disabled={isLoading}
@@ -184,7 +225,22 @@ const OfficialLogin = () => {
           >
             {isLoading ? 'Signing In...' : `Sign In as ${selectedRole === ROLES.INSPECTOR ? 'Inspector' : 'Authority'}`}
           </button>
+
+          {/* Footer citizen link */}
+          <div className="pt-2 text-center text-xs text-slate-500 border-t border-slate-100">
+            Citizen consumer?{' '}
+            <Link to="/citizen/login" className="text-[#0f2942] hover:underline font-semibold">
+              Go to Citizen Portal &rarr;
+            </Link>
+          </div>
         </form>
+      </div>
+
+      {/* Prototype credential hint box */}
+      <div className="mt-5 w-full max-w-sm p-3 bg-amber-50 border border-amber-200 rounded text-[11px] text-amber-900">
+        <div className="font-bold mb-1">Prototype Credentials (for demonstration only):</div>
+        <div>Inspector: <span className="font-mono">inspector@labellens.gov.in</span> / <span className="font-mono">Inspector@123</span></div>
+        <div>Authority: <span className="font-mono">authority@labellens.gov.in</span> / <span className="font-mono">Authority@123</span></div>
       </div>
     </div>
   );

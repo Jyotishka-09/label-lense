@@ -128,9 +128,31 @@ const ComplaintDetail = () => {
             <span className="font-semibold text-slate-800">{complaint.extractedData?.manufacturing_or_packing_date || complaint.extractedData?.best_before_or_use_by || '—'}</span>
           </div>
 
-          <div className="p-3 bg-slate-50 rounded border border-slate-200 sm:col-span-3">
+          <div className="p-3 bg-slate-50 rounded border border-slate-200 sm:col-span-2">
             <span className="text-slate-500 text-[10px] uppercase font-bold block">Reported Store Location</span>
-            <span className="font-semibold text-slate-900">{complaint.location || '—'}</span>
+            <span className="font-semibold text-slate-900 flex items-center gap-1 mt-0.5">
+              <span>📍</span>
+              <span>{complaint.location || '—'}</span>
+            </span>
+            {complaint.latitude != null && (
+              <span className="text-[10px] text-slate-400 font-mono block mt-1 pl-4">
+                Coordinates: {Number(complaint.latitude).toFixed(4)}° N, {Number(complaint.longitude).toFixed(4)}° E
+              </span>
+            )}
+          </div>
+
+          <div className="p-3 bg-slate-50 rounded border border-slate-200">
+            <span className="text-slate-500 text-[10px] uppercase font-bold block">Assigned Inspector</span>
+            {complaint.inspectorId ? (
+              <div className="mt-0.5">
+                <span className="font-bold text-[#0f2942]">{complaint.inspectorName || 'Officer'}</span>
+                <span className="text-[10px] font-mono text-slate-500 block">{complaint.inspectorId}</span>
+              </div>
+            ) : (
+              <span className="text-amber-800 font-medium text-xs mt-0.5 block">
+                Assignment Pending
+              </span>
+            )}
           </div>
         </div>
       </section>

@@ -91,17 +91,63 @@ const ComplaintSuccess = () => {
             </div>
 
             <div className="p-3 bg-slate-50 rounded border border-slate-200">
-              <span className="text-slate-500 block text-[11px]">Issue Category:</span>
-              <span className="font-semibold text-slate-900">{complaint.issueCategory || 'Other'}</span>
+              <span className="text-slate-500 block text-[11px]">Reported Issues:</span>
+              <div className="flex flex-wrap gap-1 mt-1">
+                {(complaint.reportedIssues && complaint.reportedIssues.length > 0
+                  ? complaint.reportedIssues
+                  : [complaint.issueCategory || 'Other']
+                ).map((iss, idx) => (
+                  <span
+                    key={idx}
+                    className="inline-block bg-white border border-slate-300 px-1.5 py-0.5 rounded text-[11px] font-semibold text-slate-800"
+                  >
+                    {iss}
+                  </span>
+                ))}
+              </div>
+              {complaint.otherIssueDescription && (
+                <span className="text-slate-500 text-[10px] block mt-1 italic">
+                  Note: "{complaint.otherIssueDescription}"
+                </span>
+              )}
             </div>
 
             <div className="p-3 bg-slate-50 rounded border border-slate-200">
-              <span className="text-slate-500 block text-[11px]">Point of Purchase:</span>
-              <span className="font-semibold text-slate-900">{complaint.location || '—'}</span>
+              <span className="text-slate-500 block text-[11px]">Complaint Location:</span>
+              <div className="font-semibold text-slate-900 flex items-start gap-1 mt-0.5">
+                <span>📍</span>
+                <span>{complaint.location || '—'}</span>
+              </div>
+              {complaint.latitude != null && (
+                <span className="text-[10px] text-slate-400 font-mono block mt-1 pl-4">
+                  {Number(complaint.latitude).toFixed(4)}° N, {Number(complaint.longitude).toFixed(4)}° E
+                </span>
+              )}
             </div>
 
             <div className="p-3 bg-slate-50 rounded border border-slate-200">
-              <span className="text-slate-500 block text-[11px]">Date & Time Lodged:</span>
+              <span className="text-slate-500 block text-[11px]">Assigned Inspector:</span>
+              {complaint.inspectorId ? (
+                <div>
+                  <span className="font-bold text-[#0f2942]">{complaint.inspectorName || 'Enforcement Inspector'}</span>
+                  <span className="text-[11px] font-mono text-slate-600 block">Badge: {complaint.inspectorId}</span>
+                  <span className="inline-flex items-center gap-1 text-[10px] font-bold text-emerald-700 mt-1">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                    Automatically assigned
+                  </span>
+                </div>
+              ) : (
+                <div>
+                  <span className="font-bold text-amber-800">Inspector Assignment Pending</span>
+                  <span className="text-[10px] text-slate-500 block mt-0.5">
+                    Forwarded to Authority Portal for allocation
+                  </span>
+                </div>
+              )}
+            </div>
+
+            <div className="p-3 bg-slate-50 rounded border border-slate-200 sm:col-span-2">
+              <span className="text-slate-500 block text-[11px]">Date &amp; Time Lodged:</span>
               <span className="font-semibold text-slate-900">
                 {new Date(complaint.createdAt || complaint.submittedAt).toLocaleString('en-IN')}
               </span>

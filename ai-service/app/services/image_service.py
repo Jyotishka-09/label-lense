@@ -62,8 +62,12 @@ def process_label_image(
     # Step 2 — Tesseract OCR (primary: CLAHE gray, fallback: binary)
     ocr_result = run_ocr(result)
 
-    # Step 3 — Regex field extraction from OCR text
-    extraction = extract_fields(ocr_result.text if ocr_result.success else "")
+    # Step 3 — Regex field extraction from OCR text and targeted image badge OCR
+    extraction = extract_fields(
+        ocr_result.text if ocr_result.success else "",
+        image=result.color_image,
+        source_name="image_0",
+    )
 
     debug_id: Optional[str] = None
     if debug_mode:
@@ -140,14 +144,18 @@ def process_multiple_label_images(
             ocr_debug_results.append(ocr_entry)
 
             # 3. Individual field extraction with image role awareness (Rules 1 & 2)
-            if ocr_res.success and ocr_res.text:
-                ind_ext = extract_fields(ocr_res.text)
+            if (ocr_res.success and ocr_res.text) or prep_result.color_image is not None:
+                ind_ext = extract_fields(
+                    ocr_res.text if ocr_res.success else "",
+                    image=prep_result.color_image,
+                    source_name=filename,
+                )
                 extraction_items.append({
                     "index": idx,
                     "role": role,
                     "filename": filename,
                     "extraction": ind_ext,
-                    "ocr_text": ocr_res.text,
+                    "ocr_text": ocr_res.text if ocr_res.success else "",
                 })
 
         except Exception as img_err:

@@ -28,6 +28,12 @@ export const AuthProvider = ({ children }) => {
       sessionStorage.setItem('officer_name', userData.name + ' (Inspector)');
       sessionStorage.setItem('officer_role', userData.officerRole || 'Legal Metrology Inspector');
       sessionStorage.setItem('officer_division', userData.division || '');
+    } else if (userData.role === 'AUTHORITY') {
+      sessionStorage.setItem('officer_authenticated', 'true');
+      sessionStorage.setItem('officer_id', userData.id || 'AUTH-001');
+      sessionStorage.setItem('officer_name', userData.name ? `${userData.name} (Authority)` : 'Authority Officer');
+      sessionStorage.setItem('officer_role', userData.officerRole || 'Supervisory Authority');
+      sessionStorage.setItem('officer_division', userData.division || 'State Enforcement Directorate');
     }
 
     setUser(userData);

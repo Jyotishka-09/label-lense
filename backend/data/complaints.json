@@ -1,0 +1,901 @@
+[
+  {
+    "id": "LL-2026-0012",
+    "complaint_id": "LL-2026-0012",
+    "source": "consumer_complaint",
+    "citizenId": "CIT-001",
+    "citizenName": "Priya Sharma",
+    "createdAt": "2026-09-11T15:36:46.129Z",
+    "status": "SUBMITTED",
+    "productName": "BRAN A SNA wet BEE Wap Finest Pan Masala mad COD",
+    "brand": "Not detected",
+    "category": "Packaged Commodity",
+    "sourceType": "Retail Store",
+    "location": "Fancy Bazaar, Kamrup Metropolitan, Assam (781001)",
+    "location_address": "Fancy Bazaar, Kamrup Metropolitan, Assam (781001)",
+    "latitude": 26.184,
+    "longitude": 91.745,
+    "state": "Assam",
+    "district": "Kamrup Metropolitan",
+    "locality": "Fancy Bazaar",
+    "pincode": "781001",
+    "inspectorId": "LM-042",
+    "inspectorName": "Pranab Boruah",
+    "assignmentStatus": "ASSIGNED",
+    "assignmentReason": "Assigned to nearest authorized officer in Guwahati Metropolitan Zone (Station Distance: 0 km).",
+    "assignedAt": "2026-09-11T15:36:46.129Z",
+    "reportedIssues": [
+      "MRP / Price Discrepancy"
+    ],
+    "otherIssueDescription": "",
+    "issueCategory": "MRP / Price Discrepancy",
+    "citizenDescription": "zczx",
+    "citizenContact": "citizen@labellens.com",
+    "extractedData": {
+      "product_name": "BRAN A SNA wet BEE Wap Finest Pan Masala mad COD",
+      "manufacturer_or_packer": "Not detected",
+      "net_quantity": "4 g",
+      "mrp": "₹12",
+      "manufacturing_or_packing_date": "Not detected",
+      "best_before_or_use_by": "Not detected"
+    },
+    "aiFindings": {
+      "overall_status": "REQUIRES_REVIEW",
+      "findings": [
+        {
+          "field": "product_name",
+          "status": "PASS",
+          "message": "Product name detected: BRAN A SNA wet BEE Wap Finest Pan Masala mad COD"
+        },
+        {
+          "field": "manufacturer_or_packer",
+          "status": "REVIEW",
+          "message": "Manufacturer or packer could not be confidently detected."
+        },
+        {
+          "field": "net_quantity",
+          "status": "PASS",
+          "message": "Net quantity detected: 4 g"
+        },
+        {
+          "field": "mrp",
+          "status": "PASS",
+          "message": "Maximum Retail Price (MRP) detected: 12"
+        },
+        {
+          "field": "manufacturing_or_packing_date",
+          "status": "REVIEW",
+          "message": "Manufacturing or packing date could not be confidently detected."
+        },
+        {
+          "field": "best_before_or_use_by",
+          "status": "REVIEW",
+          "message": "Best before or use by date could not be confidently detected."
+        },
+        {
+          "field": "consumer_care",
+          "status": "PASS",
+          "message": "Consumer care details detected: somsilversuparipvtitd@gmail.com"
+        },
+        {
+          "field": "country_of_origin",
+          "status": "REVIEW",
+          "message": "Country of origin could not be confidently detected."
+        }
+      ]
+    },
+    "citizenImages": [
+      {
+        "name": "WhatsApp Image 2026-09-10 at 10.10.17 PM.jpeg",
+        "category": "Front Display Label",
+        "previewUrl": "blob:http://localhost:5173/65580cfd-4692-4f61-9788-21c201bfe7f1",
+        "size": 258871
+      }
+    ],
+    "inspectorImages": [],
+    "freshAiAnalysis": null,
+    "inspectionResult": null,
+    "officerDecision": null,
+    "officerRemarks": "",
+    "inspectionDate": null,
+    "inspectedAt": null,
+    "inspectionReport": null
+  },
+  {
+    "id": "LL-2026-0011",
+    "complaint_id": "LL-2026-0011",
+    "source": "consumer_complaint",
+    "citizenId": "CIT-001",
+    "citizenName": "Priya Sharma",
+    "createdAt": "2026-09-11T06:19:00.617Z",
+    "status": "SUBMITTED",
+    "productName": "BRAN A SNA wet BEE Wap Finest Pan Masala mad COD",
+    "brand": "Not detected",
+    "category": "Packaged Commodity",
+    "sourceType": "Retail Store",
+    "location": "Silkuri, Cachar, Assam (788118)",
+    "location_address": "Silkuri, Cachar, Assam (788118)",
+    "latitude": 24.757974930038735,
+    "longitude": 92.78752084594716,
+    "state": "Assam",
+    "district": "Cachar",
+    "locality": "Silkuri",
+    "pincode": "788118",
+    "inspectorId": "LM-063",
+    "inspectorName": "Dipankar Das",
+    "assignmentStatus": "ASSIGNED",
+    "assignmentReason": "Assigned to nearest authorized officer in Barak Valley Zone (Station Distance: 8.39 km).",
+    "assignedAt": "2026-09-11T06:19:00.617Z",
+    "reportedIssues": [
+      "Best Before / Use By Date Issue",
+      "Missing Manufacturer / Packer Details",
+      "MRP / Price Discrepancy",
+      "Net Quantity Underweight / Missing",
+      "Manufacturing / Packing Date Issue",
+      "Missing Mandatory Declarations",
+      "Consumer Care Details Missing"
+    ],
+    "otherIssueDescription": "",
+    "issueCategory": "Best Before / Use By Date Issue",
+    "citizenDescription": "mm",
+    "citizenContact": "citizen@labellens.com",
+    "extractedData": {
+      "product_name": "BRAN A SNA wet BEE Wap Finest Pan Masala mad COD",
+      "manufacturer_or_packer": "Not detected",
+      "net_quantity": "4 g",
+      "mrp": "₹12",
+      "manufacturing_or_packing_date": "Not detected",
+      "best_before_or_use_by": "Not detected"
+    },
+    "aiFindings": {
+      "overall_status": "REQUIRES_REVIEW",
+      "findings": [
+        {
+          "field": "product_name",
+          "status": "PASS",
+          "message": "Product name detected: BRAN A SNA wet BEE Wap Finest Pan Masala mad COD"
+        },
+        {
+          "field": "manufacturer_or_packer",
+          "status": "REVIEW",
+          "message": "Manufacturer or packer could not be confidently detected."
+        },
+        {
+          "field": "net_quantity",
+          "status": "PASS",
+          "message": "Net quantity detected: 4 g"
+        },
+        {
+          "field": "mrp",
+          "status": "PASS",
+          "message": "Maximum Retail Price (MRP) detected: 12"
+        },
+        {
+          "field": "manufacturing_or_packing_date",
+          "status": "REVIEW",
+          "message": "Manufacturing or packing date could not be confidently detected."
+        },
+        {
+          "field": "best_before_or_use_by",
+          "status": "REVIEW",
+          "message": "Best before or use by date could not be confidently detected."
+        },
+        {
+          "field": "consumer_care",
+          "status": "PASS",
+          "message": "Consumer care details detected: somsilversuparipvtitd@gmail.com"
+        },
+        {
+          "field": "country_of_origin",
+          "status": "REVIEW",
+          "message": "Country of origin could not be confidently detected."
+        }
+      ]
+    },
+    "citizenImages": [
+      {
+        "name": "WhatsApp Image 2026-09-10 at 10.10.17 PM.jpeg",
+        "category": "Front Display Label",
+        "previewUrl": "blob:http://localhost:5173/69760d3b-e023-4de6-aae6-8daff94d26d7",
+        "size": 258871
+      }
+    ],
+    "inspectorImages": [],
+    "freshAiAnalysis": null,
+    "inspectionResult": null,
+    "officerDecision": null,
+    "officerRemarks": "",
+    "inspectionDate": null,
+    "inspectedAt": null,
+    "inspectionReport": null
+  },
+  {
+    "id": "LL-2026-0010",
+    "complaint_id": "LL-2026-0010",
+    "source": "consumer_complaint",
+    "citizenId": "CIT-001",
+    "citizenName": "Priya Sharma",
+    "createdAt": "2026-09-11T06:12:24.971Z",
+    "status": "SUBMITTED",
+    "productName": "Mustard Oil 1L",
+    "brand": "",
+    "category": "General Packaged Commodity",
+    "sourceType": "Retail Store",
+    "location": "Chandmari / Silpukhuri, Guwahati (781003)",
+    "location_address": "Chandmari / Silpukhuri, Guwahati (781003)",
+    "latitude": 26.192,
+    "longitude": 91.776,
+    "state": "Assam",
+    "district": "Kamrup Metropolitan",
+    "locality": "Chandmari",
+    "pincode": "781003",
+    "inspectorId": "LM-042",
+    "inspectorName": "Pranab Boruah",
+    "assignmentStatus": "ASSIGNED",
+    "assignmentReason": "Assigned to nearest authorized officer in Guwahati Metropolitan Zone (Station Distance: 3.22 km).",
+    "assignedAt": "2026-09-11T06:12:24.971Z",
+    "reportedIssues": [
+      "Manufacturing / Packing Date Issue"
+    ],
+    "otherIssueDescription": "",
+    "issueCategory": "Manufacturing / Packing Date Issue",
+    "citizenDescription": "Packing date missing on pouch.",
+    "citizenContact": "Anonymous",
+    "extractedData": {},
+    "aiFindings": {
+      "overallStatus": "REVIEW",
+      "declarations": []
+    },
+    "citizenImages": [],
+    "inspectorImages": [],
+    "freshAiAnalysis": null,
+    "inspectionResult": null,
+    "officerDecision": null,
+    "officerRemarks": "",
+    "inspectionDate": null,
+    "inspectedAt": null,
+    "inspectionReport": null
+  },
+  {
+    "id": "LL-2026-0009",
+    "complaint_id": "LL-2026-0009",
+    "source": "consumer_complaint",
+    "citizenId": "CIT-001",
+    "citizenName": "Priya Sharma",
+    "createdAt": "2026-09-11T06:12:24.954Z",
+    "status": "SUBMITTED",
+    "productName": "Organic Honey 500g",
+    "brand": "Nature Pure",
+    "category": "Packaged Commodity",
+    "sourceType": "Retail Store",
+    "location": "Fancy Bazaar / Panbazaar, Guwahati (781001)",
+    "location_address": "Fancy Bazaar / Panbazaar, Guwahati (781001)",
+    "latitude": 26.184,
+    "longitude": 91.745,
+    "state": "Assam",
+    "district": "Kamrup Metropolitan",
+    "locality": "Fancy Bazaar",
+    "pincode": "781001",
+    "inspectorId": "LM-042",
+    "inspectorName": "Pranab Boruah",
+    "assignmentStatus": "ASSIGNED",
+    "assignmentReason": "Assigned to nearest authorized officer in Guwahati Metropolitan Zone (Station Distance: 0 km).",
+    "assignedAt": "2026-09-11T06:12:24.954Z",
+    "reportedIssues": [
+      "MRP / Price Discrepancy",
+      "Net Quantity Underweight / Missing",
+      "Label / Declaration Missing or Unreadable",
+      "Other"
+    ],
+    "otherIssueDescription": "Price tag pasted over mandatory nutritional table.",
+    "issueCategory": "MRP / Price Discrepancy",
+    "citizenDescription": "Observed price alteration sticker and package felt under 500 grams.",
+    "citizenContact": "citizen@labellens.com",
+    "extractedData": {},
+    "aiFindings": {
+      "overallStatus": "REVIEW",
+      "declarations": []
+    },
+    "citizenImages": [],
+    "inspectorImages": [],
+    "freshAiAnalysis": null,
+    "inspectionResult": null,
+    "officerDecision": null,
+    "officerRemarks": "",
+    "inspectionDate": null,
+    "inspectedAt": null,
+    "inspectionReport": null
+  },
+  {
+    "id": "LL-2026-0008",
+    "complaint_id": "LL-2026-0008",
+    "source": "consumer_complaint",
+    "citizenId": "CIT-001",
+    "citizenName": "Priya Sharma",
+    "createdAt": "2026-09-11T06:11:42.471Z",
+    "status": "SUBMITTED",
+    "productName": "Organic Honey 500g",
+    "brand": "Nature Pure",
+    "category": "Packaged Commodity",
+    "sourceType": "Retail Store",
+    "location": "Fancy Bazaar / Panbazaar, Guwahati (781001)",
+    "location_address": "Fancy Bazaar / Panbazaar, Guwahati (781001)",
+    "latitude": 26.184,
+    "longitude": 91.745,
+    "state": "Assam",
+    "district": "Kamrup Metropolitan",
+    "locality": "Fancy Bazaar",
+    "pincode": "781001",
+    "inspectorId": "LM-042",
+    "inspectorName": "Pranab Boruah",
+    "assignmentStatus": "ASSIGNED",
+    "assignmentReason": "Assigned to nearest authorized officer in Guwahati Metropolitan Zone (Station Distance: 0 km).",
+    "assignedAt": "2026-09-11T06:11:42.471Z",
+    "reportedIssues": [
+      "MRP / Price Discrepancy",
+      "Net Quantity Underweight / Missing",
+      "Label / Declaration Missing or Unreadable",
+      "Other"
+    ],
+    "otherIssueDescription": "Price tag pasted over mandatory nutritional table.",
+    "issueCategory": "MRP / Price Discrepancy",
+    "citizenDescription": "Observed price alteration sticker and package felt under 500 grams.",
+    "citizenContact": "citizen@labellens.gov.in",
+    "extractedData": {},
+    "aiFindings": {
+      "overallStatus": "REVIEW",
+      "declarations": []
+    },
+    "citizenImages": [],
+    "inspectorImages": [],
+    "freshAiAnalysis": null,
+    "inspectionResult": null,
+    "officerDecision": null,
+    "officerRemarks": "",
+    "inspectionDate": null,
+    "inspectedAt": null,
+    "inspectionReport": null
+  },
+  {
+    "id": "LL-2026-0007",
+    "complaint_id": "LL-2026-0007",
+    "source": "consumer_complaint",
+    "citizenId": "CIT-001",
+    "citizenName": "Priya Sharma",
+    "createdAt": "2026-09-11T04:54:20.248Z",
+    "status": "INSPECTION_IN_PROGRESS",
+    "productName": "PARLE original Gluco Biscuits",
+    "brand": "Not detected",
+    "category": "Packaged Commodity",
+    "sourceType": "Retail Store",
+    "location": "Silkuri, Cachar, Assam (788118)",
+    "location_address": "Silkuri, Cachar, Assam (788118)",
+    "latitude": 24.75784129100572,
+    "longitude": 92.7874672128854,
+    "state": "Assam",
+    "district": "Cachar",
+    "locality": "Silkuri",
+    "pincode": "788118",
+    "inspectorId": "LM-063",
+    "inspectorName": "Dipankar Das",
+    "assignmentStatus": "ASSIGNED",
+    "assignmentReason": "Assigned to nearest authorized officer in Barak Valley Zone (Station Distance: 8.4 km).",
+    "assignedAt": "2026-09-11T04:54:20.248Z",
+    "issueCategory": "MRP / Price Discrepancy",
+    "citizenDescription": "mrp",
+    "citizenContact": "citizen@labellens.com",
+    "extractedData": {
+      "product_name": "PARLE original Gluco Biscuits",
+      "manufacturer_or_packer": "Not detected",
+      "net_quantity": "110 g",
+      "mrp": "₹7",
+      "manufacturing_or_packing_date": "Not detected",
+      "best_before_or_use_by": "Not detected"
+    },
+    "aiFindings": {
+      "overall_status": "REQUIRES_REVIEW",
+      "findings": [
+        {
+          "field": "product_name",
+          "status": "PASS",
+          "message": "Product name detected: PARLE original Gluco Biscuits"
+        },
+        {
+          "field": "manufacturer_or_packer",
+          "status": "REVIEW",
+          "message": "Manufacturer or packer could not be confidently detected."
+        },
+        {
+          "field": "net_quantity",
+          "status": "PASS",
+          "message": "Net quantity detected: 110 g"
+        },
+        {
+          "field": "mrp",
+          "status": "PASS",
+          "message": "Maximum Retail Price (MRP) detected: 7"
+        },
+        {
+          "field": "manufacturing_or_packing_date",
+          "status": "REVIEW",
+          "message": "Manufacturing or packing date could not be confidently detected."
+        },
+        {
+          "field": "best_before_or_use_by",
+          "status": "REVIEW",
+          "message": "Best before or use by date could not be confidently detected."
+        },
+        {
+          "field": "consumer_care",
+          "status": "REVIEW",
+          "message": "Consumer care details could not be confidently detected."
+        },
+        {
+          "field": "country_of_origin",
+          "status": "REVIEW",
+          "message": "Country of origin could not be confidently detected."
+        }
+      ]
+    },
+    "citizenImages": [
+      {
+        "name": "ChatGPT Image Sep 6, 2026, 11_33_18 AM (2).png",
+        "category": "Front Display Label",
+        "previewUrl": "blob:http://localhost:5173/5a2907b3-38a4-4c1b-9dc3-4069e7784c17",
+        "size": 2323277
+      }
+    ],
+    "inspectorImages": [],
+    "freshAiAnalysis": null,
+    "inspectionResult": null,
+    "officerDecision": null,
+    "officerRemarks": "",
+    "inspectionDate": null,
+    "inspectedAt": null,
+    "inspectionReport": null,
+    "reportedIssues": [
+      "MRP / Price Discrepancy"
+    ],
+    "otherIssueDescription": ""
+  },
+  {
+    "id": "LL-2026-0006",
+    "complaint_id": "LL-2026-0006",
+    "source": "consumer_complaint",
+    "citizenId": "CIT-001",
+    "citizenName": "Priya Sharma",
+    "createdAt": "2026-09-11T04:49:42.043Z",
+    "status": "SUBMITTED",
+    "productName": "BRAN A SNA wet BEE Wap Finest Pan Masala mad COD",
+    "brand": "Not detected",
+    "category": "Packaged Commodity",
+    "sourceType": "Retail Store",
+    "location": "Masimpur, Cachar, Assam (788118)",
+    "location_address": "Masimpur, Cachar, Assam (788118)",
+    "latitude": 24.757887378199403,
+    "longitude": 92.78746783257382,
+    "state": "Assam",
+    "district": "Cachar",
+    "locality": "Masimpur",
+    "pincode": "788118",
+    "inspectorId": "LM-063",
+    "inspectorName": "Dipankar Das",
+    "assignmentStatus": "ASSIGNED",
+    "assignmentReason": "Assigned to nearest authorized officer in Barak Valley Zone (Station Distance: 8.4 km).",
+    "assignedAt": "2026-09-11T04:49:42.043Z",
+    "issueCategory": "MRP / Price Discrepancy",
+    "citizenDescription": "Mrp",
+    "citizenContact": "citizen@labellens.com",
+    "extractedData": {
+      "product_name": "BRAN A SNA wet BEE Wap Finest Pan Masala mad COD",
+      "manufacturer_or_packer": "Not detected",
+      "net_quantity": "4 g",
+      "mrp": "₹12",
+      "manufacturing_or_packing_date": "Not detected",
+      "best_before_or_use_by": "Not detected"
+    },
+    "aiFindings": {
+      "overall_status": "REQUIRES_REVIEW",
+      "findings": [
+        {
+          "field": "product_name",
+          "status": "PASS",
+          "message": "Product name detected: BRAN A SNA wet BEE Wap Finest Pan Masala mad COD"
+        },
+        {
+          "field": "manufacturer_or_packer",
+          "status": "REVIEW",
+          "message": "Manufacturer or packer could not be confidently detected."
+        },
+        {
+          "field": "net_quantity",
+          "status": "PASS",
+          "message": "Net quantity detected: 4 g"
+        },
+        {
+          "field": "mrp",
+          "status": "PASS",
+          "message": "Maximum Retail Price (MRP) detected: 12"
+        },
+        {
+          "field": "manufacturing_or_packing_date",
+          "status": "REVIEW",
+          "message": "Manufacturing or packing date could not be confidently detected."
+        },
+        {
+          "field": "best_before_or_use_by",
+          "status": "REVIEW",
+          "message": "Best before or use by date could not be confidently detected."
+        },
+        {
+          "field": "consumer_care",
+          "status": "PASS",
+          "message": "Consumer care details detected: somsilversuparipvtitd@gmail.com"
+        },
+        {
+          "field": "country_of_origin",
+          "status": "REVIEW",
+          "message": "Country of origin could not be confidently detected."
+        }
+      ]
+    },
+    "citizenImages": [
+      {
+        "name": "WhatsApp Image 2026-09-10 at 10.10.17 PM.jpeg",
+        "category": "Front Display Label",
+        "previewUrl": "blob:http://localhost:5173/27ec28e1-150d-4170-867c-b703d7301236",
+        "size": 258871
+      }
+    ],
+    "inspectorImages": [],
+    "freshAiAnalysis": null,
+    "inspectionResult": null,
+    "officerDecision": null,
+    "officerRemarks": "",
+    "inspectionDate": null,
+    "inspectedAt": null,
+    "inspectionReport": null,
+    "reportedIssues": [
+      "MRP / Price Discrepancy"
+    ],
+    "otherIssueDescription": ""
+  },
+  {
+    "id": "LL-2026-0005",
+    "complaint_id": "LL-2026-0005",
+    "source": "consumer_complaint",
+    "citizenId": "CIT-001",
+    "citizenName": "Priya Sharma",
+    "createdAt": "2026-09-10T19:28:03.593Z",
+    "status": "SUBMITTED",
+    "productName": "Packaged Commodity",
+    "brand": "SDAA vetvol",
+    "category": "Packaged Commodity",
+    "sourceType": "Retail Store",
+    "location": "Silchar Central, Cachar, Assam (788001)",
+    "location_address": "Silchar Central, Cachar, Assam (788001)",
+    "latitude": 24.833,
+    "longitude": 92.779,
+    "state": "Assam",
+    "district": "Cachar",
+    "locality": "Silchar Central",
+    "pincode": "788001",
+    "inspectorId": "LM-063",
+    "inspectorName": "Dipankar Das",
+    "assignmentStatus": "ASSIGNED",
+    "assignmentReason": "Assigned to nearest authorized officer in Barak Valley Zone (Station Distance: 0 km).",
+    "assignedAt": "2026-09-10T19:28:03.593Z",
+    "issueCategory": "MRP / Price Discrepancy",
+    "citizenDescription": "jh",
+    "citizenContact": "citizen@labellens.com",
+    "extractedData": {
+      "product_name": "Packaged Commodity",
+      "manufacturer_or_packer": "SDAA vetvol",
+      "net_quantity": "Not detected",
+      "mrp": "₹30",
+      "manufacturing_or_packing_date": "Not detected",
+      "best_before_or_use_by": "Not detected"
+    },
+    "aiFindings": {
+      "overall_status": "REQUIRES_REVIEW",
+      "findings": [
+        {
+          "field": "product_name",
+          "status": "REVIEW",
+          "message": "Product name could not be confidently detected."
+        },
+        {
+          "field": "manufacturer_or_packer",
+          "status": "PASS",
+          "message": "Manufacturer or packer detected: SDAA vetvol"
+        },
+        {
+          "field": "net_quantity",
+          "status": "REVIEW",
+          "message": "Net quantity could not be confidently detected."
+        },
+        {
+          "field": "mrp",
+          "status": "PASS",
+          "message": "Maximum Retail Price (MRP) detected: 30"
+        },
+        {
+          "field": "manufacturing_or_packing_date",
+          "status": "REVIEW",
+          "message": "Manufacturing or packing date could not be confidently detected."
+        },
+        {
+          "field": "best_before_or_use_by",
+          "status": "REVIEW",
+          "message": "Best before or use by date could not be confidently detected."
+        },
+        {
+          "field": "consumer_care",
+          "status": "REVIEW",
+          "message": "Consumer care details could not be confidently detected."
+        },
+        {
+          "field": "country_of_origin",
+          "status": "PASS",
+          "message": "Country of origin detected: INDIA"
+        }
+      ]
+    },
+    "citizenImages": [
+      {
+        "name": "WhatsApp Image 2026-09-10 at 10.45.48 PM.jpeg",
+        "category": "Front Display Label",
+        "previewUrl": "blob:http://localhost:5173/ae636bfa-669f-4dad-b224-60955cf9e63e",
+        "size": 77794
+      }
+    ],
+    "inspectorImages": [],
+    "freshAiAnalysis": null,
+    "inspectionResult": null,
+    "officerDecision": null,
+    "officerRemarks": "",
+    "inspectionDate": null,
+    "inspectedAt": null,
+    "inspectionReport": null,
+    "reportedIssues": [
+      "MRP / Price Discrepancy"
+    ],
+    "otherIssueDescription": ""
+  },
+  {
+    "id": "LL-2026-0004",
+    "complaint_id": "LL-2026-0004",
+    "source": "consumer_complaint",
+    "citizenId": "anonymous",
+    "citizenName": "Anonymous Citizen",
+    "createdAt": "2026-09-10T19:24:27.064Z",
+    "status": "SUBMITTED",
+    "productName": "Imported Chocolate 100g",
+    "brand": "Lindt",
+    "category": "General Packaged Commodity",
+    "sourceType": "Retail Store",
+    "location": "Connaught Place, New Delhi, Delhi (110001)",
+    "location_address": "Connaught Place, New Delhi, Delhi (110001)",
+    "latitude": 28.631,
+    "longitude": 77.219,
+    "state": "Delhi",
+    "district": "New Delhi",
+    "locality": "Connaught Place",
+    "pincode": "110001",
+    "inspectorId": null,
+    "inspectorName": null,
+    "assignmentStatus": "Inspector Assignment Pending",
+    "assignmentReason": "Location is outside Assam State Legal Metrology jurisdiction (Delhi). Awaiting supervisory allocation.",
+    "assignedAt": null,
+    "issueCategory": "Country of Origin Missing",
+    "citizenDescription": "",
+    "citizenContact": "Anonymous",
+    "extractedData": {},
+    "aiFindings": {
+      "overallStatus": "REVIEW",
+      "declarations": []
+    },
+    "citizenImages": [],
+    "inspectorImages": [],
+    "freshAiAnalysis": null,
+    "inspectionResult": null,
+    "officerDecision": null,
+    "officerRemarks": "",
+    "inspectionDate": null,
+    "inspectedAt": null,
+    "inspectionReport": null,
+    "reportedIssues": [
+      "Country of Origin Missing"
+    ],
+    "otherIssueDescription": ""
+  },
+  {
+    "id": "LL-2026-0003",
+    "complaint_id": "LL-2026-0003",
+    "source": "consumer_complaint",
+    "citizenId": "anonymous",
+    "citizenName": "Anonymous Citizen",
+    "createdAt": "2026-09-10T19:24:27.059Z",
+    "status": "SUBMITTED",
+    "productName": "Fortune Mustard Oil 1L",
+    "brand": "Adani Wilmar",
+    "category": "General Packaged Commodity",
+    "sourceType": "Retail Store",
+    "location": "Tezpur Bazaar, Sonitpur, Assam (784001)",
+    "location_address": "Tezpur Bazaar, Sonitpur, Assam (784001)",
+    "latitude": 26.633,
+    "longitude": 92.792,
+    "state": "Assam",
+    "district": "Sonitpur",
+    "locality": "Tezpur Bazaar",
+    "pincode": "784001",
+    "inspectorId": "LM-028",
+    "inspectorName": "Siddharth Sharma",
+    "assignmentStatus": "ASSIGNED",
+    "assignmentReason": "Assigned to nearest authorized officer in Central Assam Zone (Station Distance: 0 km).",
+    "assignedAt": "2026-09-10T19:24:27.059Z",
+    "issueCategory": "Net Quantity Underweight / Missing",
+    "citizenDescription": "Pouch weighed only 880g net",
+    "citizenContact": "Anonymous",
+    "extractedData": {},
+    "aiFindings": {
+      "overallStatus": "REVIEW",
+      "declarations": []
+    },
+    "citizenImages": [],
+    "inspectorImages": [],
+    "freshAiAnalysis": null,
+    "inspectionResult": null,
+    "officerDecision": null,
+    "officerRemarks": "",
+    "inspectionDate": null,
+    "inspectedAt": null,
+    "inspectionReport": null,
+    "reportedIssues": [
+      "Net Quantity Underweight / Missing"
+    ],
+    "otherIssueDescription": ""
+  },
+  {
+    "id": "LL-2026-0002",
+    "complaint_id": "LL-2026-0002",
+    "source": "consumer_complaint",
+    "citizenId": "anonymous",
+    "citizenName": "Anonymous Citizen",
+    "createdAt": "2026-09-10T19:24:27.046Z",
+    "status": "INSPECTION_IN_PROGRESS",
+    "productName": "Haldiram Bhujia 150g",
+    "brand": "Haldiram",
+    "category": "General Packaged Commodity",
+    "sourceType": "Retail Store",
+    "location": "Fancy Bazaar, Guwahati, Kamrup Metropolitan, Assam (781001)",
+    "location_address": "Fancy Bazaar Wholesale Market, Guwahati",
+    "latitude": 26.184,
+    "longitude": 91.745,
+    "state": "Assam",
+    "district": "Kamrup Metropolitan",
+    "locality": "Fancy Bazaar",
+    "pincode": "781001",
+    "inspectorId": "LM-042",
+    "inspectorName": "Pranab Boruah",
+    "assignmentStatus": "ASSIGNED",
+    "assignmentReason": "Assigned to nearest authorized officer in Guwahati Metropolitan Zone (Station Distance: 0 km).",
+    "assignedAt": "2026-09-10T19:24:27.046Z",
+    "issueCategory": "MRP / Price Discrepancy",
+    "citizenDescription": "Sold at ₹45 instead of printed MRP ₹40",
+    "citizenContact": "Anonymous",
+    "extractedData": {},
+    "aiFindings": {
+      "overallStatus": "REVIEW",
+      "declarations": []
+    },
+    "citizenImages": [],
+    "inspectorImages": [],
+    "freshAiAnalysis": null,
+    "inspectionResult": null,
+    "officerDecision": null,
+    "officerRemarks": "Field visit conducted at Fancy Bazaar store.",
+    "inspectionDate": null,
+    "inspectedAt": null,
+    "inspectionReport": null,
+    "reportedIssues": [
+      "MRP / Price Discrepancy"
+    ],
+    "otherIssueDescription": ""
+  },
+  {
+    "id": "LL-2026-0001",
+    "complaint_id": "LL-2026-0001",
+    "source": "consumer_complaint",
+    "citizenId": "CIT-001",
+    "citizenName": "Priya Sharma",
+    "createdAt": "2026-09-10T19:01:33.797Z",
+    "status": "INSPECTION_COMPLETED",
+    "productName": "BRAN A SNA wet BEE Wap Finest Pan Masala mad COD",
+    "brand": "Not detected",
+    "category": "Packaged Commodity",
+    "sourceType": "Retail Store",
+    "location": "jj",
+    "pincode": "",
+    "issueCategory": "MRP / Price Discrepancy",
+    "citizenDescription": "jj",
+    "citizenContact": "citizen@labellens.com",
+    "extractedData": {
+      "product_name": "BRAN A SNA wet BEE Wap Finest Pan Masala mad COD",
+      "manufacturer_or_packer": "Not detected",
+      "net_quantity": "4 g",
+      "mrp": "₹12",
+      "manufacturing_or_packing_date": "Not detected",
+      "best_before_or_use_by": "Not detected"
+    },
+    "aiFindings": {
+      "overall_status": "REQUIRES_REVIEW",
+      "findings": [
+        {
+          "field": "product_name",
+          "status": "PASS",
+          "message": "Product name detected: BRAN A SNA wet BEE Wap Finest Pan Masala mad COD"
+        },
+        {
+          "field": "manufacturer_or_packer",
+          "status": "REVIEW",
+          "message": "Manufacturer or packer could not be confidently detected."
+        },
+        {
+          "field": "net_quantity",
+          "status": "PASS",
+          "message": "Net quantity detected: 4 g"
+        },
+        {
+          "field": "mrp",
+          "status": "PASS",
+          "message": "Maximum Retail Price (MRP) detected: 12"
+        },
+        {
+          "field": "manufacturing_or_packing_date",
+          "status": "REVIEW",
+          "message": "Manufacturing or packing date could not be confidently detected."
+        },
+        {
+          "field": "best_before_or_use_by",
+          "status": "REVIEW",
+          "message": "Best before or use by date could not be confidently detected."
+        },
+        {
+          "field": "consumer_care",
+          "status": "PASS",
+          "message": "Consumer care details detected: somsilversuparipvtitd@gmail.com"
+        },
+        {
+          "field": "country_of_origin",
+          "status": "REVIEW",
+          "message": "Country of origin could not be confidently detected."
+        }
+      ]
+    },
+    "citizenImages": [
+      {
+        "name": "WhatsApp Image 2026-09-10 at 10.10.17 PM.jpeg",
+        "category": "Front Display Label",
+        "previewUrl": "blob:http://localhost:5173/ff1da1a8-3f68-48b1-af5c-c0db611a6884",
+        "size": 258871
+      }
+    ],
+    "inspectorImages": [],
+    "freshAiAnalysis": null,
+    "inspectionResult": null,
+    "officerDecision": "COMPLIANT",
+    "officerRemarks": "SSA",
+    "inspectionDate": "2026-09-10T19:02:17.830Z",
+    "inspectorId": null,
+    "inspectorName": null,
+    "inspectedAt": "2026-09-10T19:02:17.830Z",
+    "inspectionReport": null,
+    "officerId": "LM-042",
+    "officerName": "S. Sharma",
+    "reportedIssues": [
+      "MRP / Price Discrepancy"
+    ],
+    "otherIssueDescription": ""
+  }
+]

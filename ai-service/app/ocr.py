@@ -160,6 +160,12 @@ def _is_valid_ocr_line(line: str) -> bool:
     if len(line) < 3 or len(line) > 120:
         return False
     alnum = sum(1 for c in line if c.isalnum())
+    is_price_candidate = bool(
+        re.search(r"(?:[₹\u20b9\u20a8]|\brs\.?|\binr\b|[FfzZxXtT=~&%£\?\\\/<])\s*\d{1,5}", line, re.IGNORECASE)
+        or re.search(r"\b\d{1,5}\s*/\-", line)
+    )
+    if is_price_candidate and alnum >= 2:
+        return True
     if alnum < 3 or alnum / len(line) < 0.35:
         return False
     if sum(1 for c in line if c in r"|\/<>[]{}^~*_#") / len(line) > 0.30:

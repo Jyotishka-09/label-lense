@@ -170,8 +170,14 @@ const CitizenLogin = () => {
           </div>
 
           {/* Footer notice */}
-          <div className="pt-2 text-center text-xs text-slate-500 border-t border-slate-100">
-            By signing in you agree to the terms of the citizen portal.
+          <div className="pt-2 text-center text-xs text-slate-500 border-t border-slate-100 flex flex-col gap-1.5">
+            <span>By signing in you agree to the terms of the citizen portal.</span>
+            <div>
+              Department official?{' '}
+              <Link to="/official/login" className="text-[#0f2942] hover:underline font-semibold">
+                Official Login &rarr;
+              </Link>
+            </div>
           </div>
         </form>
       </div>

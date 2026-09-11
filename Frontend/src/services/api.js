@@ -5,6 +5,26 @@ const api = axios.create({
   timeout: 60000,
 });
 
+// Attach supervisory scope headers if authenticated as Authority
+api.interceptors.request.use((config) => {
+  try {
+    const raw = sessionStorage.getItem('ll_auth_session');
+    if (raw) {
+      const u = JSON.parse(raw);
+      if (u && u.stateScope) {
+        config.headers['x-authority-state'] = u.stateScope;
+      }
+      if (u && u.districtScope) {
+        config.headers['x-authority-district'] = u.districtScope;
+      }
+    }
+  } catch (e) {
+    // Ignore parse errors
+  }
+  return config;
+});
+
+
 // ── Scan API ─────────────────────────────────────────────────────────────────
 
 /**
@@ -139,12 +159,16 @@ export const createComplaint = async (payload) => {
 };
 
 /**
- * GET /api/complaints — Fetch all complaints (optionally filter by citizenId)
+ * GET /api/complaints — Fetch all complaints (optionally filter by citizenId and/or source)
  */
-export const fetchComplaints = async (citizenId = null) => {
-  const params = citizenId ? { citizenId } : {};
+export const fetchComplaints = async (citizenId = null, source = null, state = null, district = null) => {
+  const params = {};
+  if (citizenId) params.citizenId = citizenId;
+  if (source && source !== 'ALL') params.source = source;
+  if (state && state !== 'ALL') params.state = state;
+  if (district && district !== 'ALL') params.district = district;
   const response = await api.get('/api/complaints', { params });
-  return response.data; // { success, complaints, total }
+  return response.data; // { success, complaints, total, counts }
 };
 
 /**
@@ -163,4 +187,89 @@ export const updateComplaint = async (id, updates) => {
   return response.data; // { success, complaint }
 };
 
+// ── Authority Supervisory API ────────────────────────────────────────────────
+
+/**
+ * GET /api/authority/overview — High-level supervisory telemetry
+ */
+export const fetchAuthorityOverview = async () => {
+  const response = await api.get('/api/authority/overview');
+  return response.data; // { success, telemetry }
+};
+
+/**
+ * GET /api/authority/geo — Geographic incident aggregation & risk heatmap
+ */
+export const fetchAuthorityGeo = async (zoneId = null) => {
+  const params = zoneId ? { zoneId } : {};
+  const response = await api.get('/api/authority/geo', { params });
+  return response.data; // { success, zones, totalZones }
+};
+
+/**
+ * GET /api/authority/inspectors — Inspector directory, workload & enforcement history
+ */
+export const fetchAuthorityInspectors = async (query = '') => {
+  const params = query ? { q: query } : {};
+  const response = await api.get('/api/authority/inspectors', { params });
+  return response.data; // { success, inspectors, total }
+};
+
+/**
+ * GET /api/authority/risk — Category risk matrix & violation typology
+ */
+export const fetchAuthorityRisk = async () => {
+  const response = await api.get('/api/authority/risk');
+  return response.data; // { success, categoryRisk, violationTypologies }
+};
+
+/**
+ * GET /api/authority/complaints/by-state — Grouped complaint counts by state
+ */
+export const fetchComplaintsByState = async (scopeState = null) => {
+  const params = scopeState ? { scopeState } : {};
+  const response = await api.get('/api/authority/complaints/by-state', { params });
+  return response.data; // { success, totalStates, totalComplaints, states }
+};
+
+/**
+ * GET /api/authority/complaints/by-district — Grouped complaint counts by district for a state
+ */
+export const fetchComplaintsByDistrict = async (state, scopeDistrict = null) => {
+  const params = { state };
+  if (scopeDistrict) params.scopeDistrict = scopeDistrict;
+  const response = await api.get('/api/authority/complaints/by-district', { params });
+  return response.data; // { success, state, totalDistricts, totalComplaints, districts }
+};
+
+/**
+ * GET /api/authority/geo/states — Complete official 36 Indian States and UTs
+ */
+export const fetchGeoStates = async (scopeState = null) => {
+  const params = scopeState ? { scopeState } : {};
+  const response = await api.get('/api/authority/geo/states', { params });
+  return response.data; // { success, totalStates, states }
+};
+
+/**
+ * GET /api/authority/geo/districts — Complete official districts for selected State/UT
+ */
+export const fetchGeoDistricts = async (state, scopeDistrict = null) => {
+  const params = { state };
+  if (scopeDistrict) params.scopeDistrict = scopeDistrict;
+  const response = await api.get('/api/authority/geo/districts', { params });
+  return response.data; // { success, state, totalDistricts, districts }
+};
+
+/**
+ * GET /api/authority/complaints/district-dockets — Complaints for selected state and district
+ */
+export const fetchDistrictComplaints = async (state, district) => {
+  const params = { state, district };
+  const response = await api.get('/api/authority/complaints/district-dockets', { params });
+  return response.data; // { success, state, district, totalComplaints, complaints }
+};
+
 export default api;
+
+
