@@ -2,7 +2,8 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { 
   RefreshCw, AlertCircle, Shield, ClipboardList, Flame, 
   User, BarChart3, Filter, Search, CheckCircle2, 
-  AlertTriangle, Layers, MapPin, Eye, ChevronRight 
+  AlertTriangle, Layers, MapPin, Eye, ChevronRight,
+  FileText, Clock, Users, ShieldCheck, Landmark
 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import StatusBadge from '../../components/StatusBadge';
@@ -61,6 +62,18 @@ const AuthorityDashboard = () => {
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const [lastUpdated, setLastUpdated] = useState(() => new Date());
+
+  const formatLastUpdated = (date) => {
+    if (!date) return '—';
+    try {
+      const d = new Intl.DateTimeFormat('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }).format(date);
+      const t = new Intl.DateTimeFormat('en-US', { hour: '2-digit', minute: '2-digit', hour12: true }).format(date);
+      return `${d}, ${t}`;
+    } catch {
+      return date.toLocaleDateString();
+    }
+  };
 
   const loadAllData = useCallback(async () => {
     setLoading(true);
@@ -107,6 +120,7 @@ const AuthorityDashboard = () => {
       setError('Error communicating with supervisory telemetry services. Please retry.');
     } finally {
       setLoading(false);
+      setLastUpdated(new Date());
     }
   }, [user?.stateScope]);
 
@@ -249,120 +263,191 @@ const AuthorityDashboard = () => {
 
 
   return (
-    <div className="max-w-6xl mx-auto space-y-6 pb-16 pt-2">
-      {/* ── Dashboard Header ── */}
-      <div className="bg-white rounded-lg border border-slate-300 p-5 shadow-xs flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-        <div>
-          <div className="text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-0.5 flex items-center gap-1.5">
-            <Shield className="w-3.5 h-3.5 text-[#0f2942]" />
-            Legal Metrology Directorate &bull; Supervisory Command Headquarters
+    <div className="max-w-7xl mx-auto space-y-5 pb-16 pt-1">
+      {/* ── Top Government-Style Header Card (Reference Matched) ── */}
+      <div className="bg-white rounded-xl border border-slate-200/90 p-5 sm:px-7 sm:py-5 shadow-xs flex flex-col lg:flex-row justify-between items-start lg:items-center gap-5">
+        {/* Left: Emblem/Identity + Vertical Divider + Title/Subtitle */}
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 flex-1">
+          {/* Institutional Department Identity */}
+          <div className="flex items-center gap-3.5 shrink-0">
+            <div className="w-12 h-12 rounded-xl bg-slate-50 border border-slate-200/80 flex items-center justify-center shrink-0 text-[#0f2942] shadow-2xs">
+              <Landmark className="w-6 h-6 stroke-[1.8] text-[#0f2942]" />
+            </div>
+            <div className="flex flex-col">
+              <span className="text-[14px] font-bold text-slate-900 leading-tight">
+                Legal Metrology Directorate
+              </span>
+              <span className="text-[11px] font-medium text-slate-500 leading-tight mt-0.5">
+                Supervisory Command Headquarters
+              </span>
+              <span className="text-[11px] font-medium text-slate-400 leading-tight mt-0.5">
+                Government of India
+              </span>
+            </div>
           </div>
-          <h1 className="text-2xl font-black text-[#0f2942] tracking-tight">
-            Authority Portal &amp; Enforcement Intelligence
-          </h1>
-          <p className="text-xs text-slate-600 mt-0.5">
-            Supervisory oversight of packaged commodity compliance dockets, regional risk patterns, and field inspector deployment.
-          </p>
+
+          {/* Thin Vertical Divider */}
+          <div className="hidden sm:block h-10 w-px bg-slate-200 shrink-0" />
+
+          {/* Title & Subtitle */}
+          <div>
+            <h1 className="text-2xl sm:text-[26px] font-extrabold text-[#0a2540] tracking-tight leading-tight">
+              Authority Dashboard
+            </h1>
+            <p className="text-xs text-slate-500 mt-1 leading-normal">
+              Overview of complaints, inspections and enforcement activities.
+            </p>
+          </div>
         </div>
 
-        <button
-          onClick={loadAllData}
-          disabled={loading}
-          className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 text-xs font-semibold transition-colors cursor-pointer"
-        >
-          <RefreshCw className={`w-3.5 h-3.5 ${loading ? 'animate-spin text-[#0f2942]' : ''}`} />
-          <span>Refresh All Telemetry</span>
-        </button>
+        {/* Right: Refresh Button + Last Updated Timestamp */}
+        <div className="flex items-center gap-4 shrink-0 self-end sm:self-auto">
+          <button
+            onClick={loadAllData}
+            disabled={loading}
+            className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg border border-blue-500 bg-white hover:bg-blue-50/70 text-blue-600 text-xs font-semibold transition-colors cursor-pointer shadow-2xs active:scale-[0.98]"
+            title="Refresh Data"
+          >
+            <RefreshCw className={`w-3.5 h-3.5 ${loading ? 'animate-spin text-blue-600' : ''}`} />
+            <span>Refresh Data</span>
+          </button>
+
+          <div className="text-right flex flex-col">
+            <span className="text-[10px] text-slate-400 font-medium leading-tight">
+              Last updated
+            </span>
+            <span className="text-[11px] text-slate-600 font-semibold leading-tight mt-0.5 whitespace-nowrap">
+              {formatLastUpdated(lastUpdated)}
+            </span>
+          </div>
+        </div>
       </div>
 
       {error && (
-        <div className="p-3.5 bg-red-50 border border-red-200 rounded text-xs text-red-700 flex items-center gap-2">
+        <div className="p-3.5 bg-red-50 border border-red-200 rounded-lg text-xs text-red-700 flex items-center gap-2">
           <AlertCircle className="w-4 h-4 flex-shrink-0" />
           <span>{error}</span>
         </div>
       )}
 
-      {/* ── 4 Supervisory Telemetry KPI Cards ── */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        {/* Card 1: Total Dockets */}
-        <div className="bg-white rounded-lg border border-slate-300 p-4 shadow-xs flex flex-col justify-between">
-          <div>
-            <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500 block mb-1">
-              Total Dockets Logged
-            </span>
-            <div className="text-2xl font-extrabold font-mono text-slate-900">
-              {loading ? '—' : telemetry.total}
+      {/* ── 4 Summary KPI Cards (Reference Image Matched) ── */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+        {/* Card 1: Total Cases */}
+        <div className="bg-white rounded-xl border border-blue-200/70 p-5 shadow-xs flex flex-col justify-between min-h-[145px] hover:shadow-sm transition-shadow">
+          <div className="flex items-center gap-3.5">
+            <div className="w-12 h-12 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center shrink-0 text-blue-600">
+              <FileText className="w-6 h-6 stroke-[2]" />
+            </div>
+            <div>
+              <span className="text-[13px] font-bold text-slate-800 block leading-tight">
+                Total Cases
+              </span>
+              <div className="text-3xl font-black font-sans text-[#003875] tracking-tight mt-0.5">
+                {loading ? '—' : (telemetry.total ?? 0)}
+              </div>
             </div>
           </div>
-          <div className="text-[10px] text-slate-500 border-t border-slate-100 pt-2 mt-2 flex justify-between">
-            <span>Statewide Master Registry</span>
-            <span className="font-semibold text-slate-700">{complaints.length} Records</span>
+          <div className="text-xs text-slate-500 border-t border-slate-100/90 pt-3 mt-4 flex items-center justify-between">
+            <span className="font-medium">Statewide Registry</span>
+            <span className="font-semibold text-slate-700">
+              {loading ? '—' : `${telemetry.total ?? 0} Records`}
+            </span>
           </div>
         </div>
 
-        {/* Card 2: Open Operational Queue */}
-        <div className="bg-white rounded-lg border border-slate-300 p-4 shadow-xs flex flex-col justify-between">
-          <div>
-            <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500 block mb-1">
-              Open Operational Queue
-            </span>
-            <div className="text-2xl font-extrabold font-mono text-amber-700">
-              {loading ? '—' : telemetry.operationalQueue}
+        {/* Card 2: Pending Cases */}
+        <div className="bg-[#fffdfa] rounded-xl border border-amber-200/80 p-5 shadow-xs flex flex-col justify-between min-h-[145px] hover:shadow-sm transition-shadow">
+          <div className="flex items-center gap-3.5">
+            <div className="w-12 h-12 rounded-xl bg-amber-100/70 border border-amber-200/60 flex items-center justify-center shrink-0 text-amber-700">
+              <Clock className="w-6 h-6 stroke-[2]" />
+            </div>
+            <div>
+              <span className="text-[13px] font-bold text-slate-800 block leading-tight">
+                Pending Cases
+              </span>
+              <div className="text-3xl font-black font-sans text-[#b85e00] tracking-tight mt-0.5">
+                {loading ? '—' : (telemetry.operationalQueue ?? 0)}
+              </div>
             </div>
           </div>
-          <div className="text-[10px] text-slate-500 border-t border-slate-100 pt-2 mt-2 flex justify-between">
-            <span>Pending: {telemetry.pending}</span>
-            <span className="text-indigo-700 font-semibold">Active: {telemetry.underInspection}</span>
+          <div className="text-xs text-slate-500 border-t border-amber-100/70 pt-3 mt-4 flex items-center">
+            <span className="font-medium">
+              Pending: {loading ? '—' : (telemetry.pending ?? 0)} &nbsp;|&nbsp; Active: {loading ? '—' : (telemetry.underInspection ?? 0)}
+            </span>
           </div>
         </div>
 
-        {/* Card 3: Source Distribution */}
-        <div className="bg-white rounded-lg border border-slate-300 p-4 shadow-xs flex flex-col justify-between">
-          <div>
-            <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500 block mb-1">
-              Proactive vs Citizen Sources
-            </span>
-            <div className="text-2xl font-extrabold font-mono text-[#0f2942]">
-              {loading ? '—' : `${telemetry.authorityAssigned} / ${telemetry.consumerComplaints}`}
+        {/* Card 3: Citizen Complaints */}
+        <div className="bg-[#f8fdfa] rounded-xl border border-emerald-200/80 p-5 shadow-xs flex flex-col justify-between min-h-[145px] hover:shadow-sm transition-shadow">
+          <div className="flex items-center gap-3.5">
+            <div className="w-12 h-12 rounded-xl bg-emerald-100/70 border border-emerald-200/60 flex items-center justify-center shrink-0 text-emerald-700">
+              <Users className="w-6 h-6 stroke-[2]" />
+            </div>
+            <div>
+              <span className="text-[13px] font-bold text-slate-800 block leading-tight">
+                Citizen Complaints
+              </span>
+              <div className="text-3xl font-black font-sans text-[#0a6c38] tracking-tight mt-0.5">
+                {loading ? '—' : (telemetry.consumerComplaints ?? 0)}
+              </div>
             </div>
           </div>
-          <div className="text-[10px] text-slate-500 border-t border-slate-100 pt-2 mt-2 flex justify-between">
-            <span>Drives: {telemetry.authorityAssigned}</span>
-            <span>Citizen: {telemetry.consumerComplaints}</span>
+          <div className="text-xs text-slate-500 border-t border-emerald-100/70 pt-3 mt-4 flex items-center">
+            <span className="font-medium">
+              {loading ? (
+                'Loading...'
+              ) : (telemetry.consumerComplaints ?? 0) === 0 ? (
+                <span className="text-slate-400">No citizen complaints</span>
+              ) : (
+                'From public reports'
+              )}
+            </span>
           </div>
         </div>
 
-        {/* Card 4: Compliance Health */}
-        <div className="bg-white rounded-lg border border-slate-300 p-4 shadow-xs flex flex-col justify-between">
-          <div>
-            <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500 block mb-1">
-              Compliance Resolution Health
-            </span>
-            <div className="text-2xl font-extrabold font-mono text-emerald-700">
-              {loading ? '—' : `${telemetry.complianceRate}%`}
+        {/* Card 4: Department Inspections */}
+        <div className="bg-[#faf9fe] rounded-xl border border-purple-200/70 p-5 shadow-xs flex flex-col justify-between min-h-[145px] hover:shadow-sm transition-shadow">
+          <div className="flex items-center gap-3.5">
+            <div className="w-12 h-12 rounded-xl bg-purple-100/70 border border-purple-200/60 flex items-center justify-center shrink-0 text-purple-700">
+              <ShieldCheck className="w-6 h-6 stroke-[2]" />
+            </div>
+            <div>
+              <span className="text-[13px] font-bold text-slate-800 block leading-tight">
+                Department Inspections
+              </span>
+              <div className="text-3xl font-black font-sans text-[#4f46e5] tracking-tight mt-0.5">
+                {loading ? '—' : (telemetry.authorityAssigned ?? 0)}
+              </div>
             </div>
           </div>
-          <div className="text-[10px] text-slate-500 border-t border-slate-100 pt-2 mt-2 flex justify-between">
-            <span className="text-emerald-700 font-semibold">Passed: {telemetry.compliant}</span>
-            <span className="text-rose-700 font-semibold">Violations: {telemetry.nonCompliant}</span>
+          <div className="text-xs text-slate-500 border-t border-purple-100/70 pt-3 mt-4 flex items-center">
+            <span className="font-medium">
+              {loading ? (
+                'Loading...'
+              ) : (telemetry.authorityAssigned ?? 0) === 0 ? (
+                <span className="text-slate-400">No proactive inspections</span>
+              ) : (
+                'Initiated by department'
+              )}
+            </span>
           </div>
         </div>
       </div>
 
-      {/* ── Navigation Tabs ── */}
-      <div className="bg-white rounded-lg border border-slate-300 p-1.5 shadow-xs flex flex-wrap gap-1.5">
+      {/* ── Navigation Tabs (Restyled Government Portal) ── */}
+      <div className="bg-white rounded-xl border border-slate-200 p-2 shadow-xs flex flex-wrap gap-2">
         <button
           onClick={() => setActiveTab('dockets')}
-          className={`flex items-center gap-2 px-4 py-2 rounded text-xs font-bold transition-colors cursor-pointer ${
+          className={`flex items-center gap-2 px-4 py-2.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
             activeTab === 'dockets'
               ? 'bg-[#0f2942] text-white shadow-xs'
-              : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'
+              : 'bg-white text-slate-600 hover:bg-slate-50 hover:text-slate-900 border border-slate-200/70'
           }`}
         >
           <ClipboardList className="w-3.5 h-3.5" />
           <span>Citizen Complaints</span>
-          <span className={`text-[10px] px-1.5 py-0.2 rounded font-mono ${
-            activeTab === 'dockets' ? 'bg-white/20 text-white' : 'bg-slate-200 text-slate-700'
+          <span className={`text-[10px] px-2 py-0.5 rounded-full font-mono font-medium ${
+            activeTab === 'dockets' ? 'bg-white/20 text-white' : 'bg-slate-100 text-slate-700 border border-slate-200'
           }`}>
             {complaints.length}
           </span>
@@ -370,10 +455,10 @@ const AuthorityDashboard = () => {
 
         <button
           onClick={() => setActiveTab('statewise')}
-          className={`flex items-center gap-2 px-4 py-2 rounded text-xs font-bold transition-colors cursor-pointer ${
+          className={`flex items-center gap-2 px-4 py-2.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
             activeTab === 'statewise'
               ? 'bg-[#0f2942] text-white shadow-xs'
-              : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'
+              : 'bg-white text-slate-600 hover:bg-slate-50 hover:text-slate-900 border border-slate-200/70'
           }`}
         >
           <MapPin className="w-3.5 h-3.5" />
@@ -382,33 +467,33 @@ const AuthorityDashboard = () => {
 
         <button
           onClick={() => setActiveTab('heatmap')}
-          className={`flex items-center gap-2 px-4 py-2 rounded text-xs font-bold transition-colors cursor-pointer ${
+          className={`flex items-center gap-2 px-4 py-2.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
             activeTab === 'heatmap'
               ? 'bg-[#0f2942] text-white shadow-xs'
-              : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'
+              : 'bg-white text-slate-600 hover:bg-slate-50 hover:text-slate-900 border border-slate-200/70'
           }`}
         >
-          <Flame className="w-3.5 h-3.5 text-orange-500" />
-          <span>Geographic Risk Heatmap</span>
-          <span className={`text-[10px] px-1.5 py-0.2 rounded font-mono ${
-            activeTab === 'heatmap' ? 'bg-white/20 text-white' : 'bg-slate-200 text-slate-700'
+          <MapPin className="w-3.5 h-3.5 text-blue-600" />
+          <span>Geographic Complaint Overview</span>
+          <span className={`text-[10px] px-2 py-0.5 rounded-full font-mono font-medium ${
+            activeTab === 'heatmap' ? 'bg-white/20 text-white' : 'bg-slate-100 text-slate-700 border border-slate-200'
           }`}>
-            {geoData.zones?.length || 0} Zones
+            {complaints.length}
           </span>
         </button>
 
         <button
           onClick={() => setActiveTab('inspectors')}
-          className={`flex items-center gap-2 px-4 py-2 rounded text-xs font-bold transition-colors cursor-pointer ${
+          className={`flex items-center gap-2 px-4 py-2.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
             activeTab === 'inspectors'
               ? 'bg-[#0f2942] text-white shadow-xs'
-              : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'
+              : 'bg-white text-slate-600 hover:bg-slate-50 hover:text-slate-900 border border-slate-200/70'
           }`}
         >
           <User className="w-3.5 h-3.5" />
           <span>Field Inspector Directory</span>
-          <span className={`text-[10px] px-1.5 py-0.2 rounded font-mono ${
-            activeTab === 'inspectors' ? 'bg-white/20 text-white' : 'bg-slate-200 text-slate-700'
+          <span className={`text-[10px] px-2 py-0.5 rounded-full font-mono font-medium ${
+            activeTab === 'inspectors' ? 'bg-white/20 text-white' : 'bg-slate-100 text-slate-700 border border-slate-200'
           }`}>
             {inspectorsData.inspectors?.length || 0}
           </span>
@@ -416,10 +501,10 @@ const AuthorityDashboard = () => {
 
         <button
           onClick={() => setActiveTab('risk')}
-          className={`flex items-center gap-2 px-4 py-2 rounded text-xs font-bold transition-colors cursor-pointer ${
+          className={`flex items-center gap-2 px-4 py-2.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
             activeTab === 'risk'
               ? 'bg-[#0f2942] text-white shadow-xs'
-              : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'
+              : 'bg-white text-slate-600 hover:bg-slate-50 hover:text-slate-900 border border-slate-200/70'
           }`}
         >
           <BarChart3 className="w-3.5 h-3.5" />
@@ -767,9 +852,11 @@ const AuthorityDashboard = () => {
         />
       )}
 
-      {/* ── Tab Content: Geographic Risk Heatmap ── */}
+      {/* ── Tab Content: Geographic Complaint Overview ── */}
       {activeTab === 'heatmap' && (
         <GeoHeatmap 
+          complaints={complaints}
+          user={user}
           zones={geoData.zones} 
           loading={loading} 
           onRefresh={loadAllData} 

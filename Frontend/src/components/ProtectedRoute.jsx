@@ -20,6 +20,7 @@ const LOGIN_ROUTES = {
   CITIZEN: '/citizen/login',
   INSPECTOR: '/official/login',
   AUTHORITY: '/official/login',
+  COMPANY: '/official/login',
 };
 
 const ProtectedRoute = ({ role, children }) => {

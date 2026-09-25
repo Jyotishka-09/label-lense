@@ -1,5 +1,367 @@
 [
   {
+    "id": "LL-2026-0013",
+    "complaint_id": "LL-2026-0013",
+    "source": "consumer_complaint",
+    "citizenId": "CIT-001",
+    "citizenName": "Priya Sharma",
+    "createdAt": "2026-09-11T21:09:53.422Z",
+    "status": "INSPECTION_COMPLETED",
+    "productName": "BRAN A SNA wet BEE Wap Finest Pan Masala mad COD",
+    "brand": "Not detected",
+    "category": "Packaged Commodity",
+    "sourceType": "Retail Store",
+    "location": "Shakambarinagara, Bengaluru Urban, Karnataka (560078)",
+    "location_address": "Shakambarinagara, Bengaluru Urban, Karnataka (560078)",
+    "latitude": 12.906148,
+    "longitude": 77.585827,
+    "state": "Karnataka",
+    "district": "Bengaluru Urban",
+    "locality": "Shakambarinagara",
+    "pincode": "560078",
+    "inspectorId": null,
+    "inspectorName": null,
+    "assignmentStatus": "Inspector Assignment Pending",
+    "assignmentReason": "Location is outside Assam State Legal Metrology jurisdiction (Karnataka). Awaiting supervisory allocation.",
+    "assignedAt": null,
+    "reportedIssues": [
+      "MRP / Price Discrepancy",
+      "Net Quantity Underweight / Missing"
+    ],
+    "otherIssueDescription": "",
+    "issueCategory": "MRP / Price Discrepancy",
+    "citizenDescription": "gjvj",
+    "citizenContact": "citizen@labellens.com",
+    "extractedData": {
+      "product_name": "BRAN A SNA wet BEE Wap Finest Pan Masala mad COD",
+      "manufacturer_or_packer": "Not detected",
+      "net_quantity": "4 g",
+      "mrp": "₹12",
+      "manufacturing_or_packing_date": "Not detected",
+      "best_before_or_use_by": "Not detected"
+    },
+    "aiFindings": {
+      "overall_status": "REQUIRES_REVIEW",
+      "findings": [
+        {
+          "field": "product_name",
+          "status": "PASS",
+          "message": "Product name detected: BRAN A SNA wet BEE Wap Finest Pan Masala mad COD"
+        },
+        {
+          "field": "manufacturer_or_packer",
+          "status": "REVIEW",
+          "message": "Manufacturer or packer could not be confidently detected."
+        },
+        {
+          "field": "net_quantity",
+          "status": "PASS",
+          "message": "Net quantity detected: 4 g"
+        },
+        {
+          "field": "mrp",
+          "status": "PASS",
+          "message": "Maximum Retail Price (MRP) detected: 12"
+        },
+        {
+          "field": "manufacturing_or_packing_date",
+          "status": "REVIEW",
+          "message": "Manufacturing or packing date could not be confidently detected."
+        },
+        {
+          "field": "best_before_or_use_by",
+          "status": "REVIEW",
+          "message": "Best before or use by date could not be confidently detected."
+        },
+        {
+          "field": "consumer_care",
+          "status": "PASS",
+          "message": "Consumer care details detected: somsilversuparipvtitd@gmail.com"
+        },
+        {
+          "field": "country_of_origin",
+          "status": "REVIEW",
+          "message": "Country of origin could not be confidently detected."
+        }
+      ]
+    },
+    "citizenImages": [
+      {
+        "name": "WhatsApp Image 2026-09-10 at 10.10.17 PM.jpeg",
+        "category": "Front Display Label",
+        "previewUrl": "blob:http://localhost:5173/249d1092-1ff2-4732-a711-c573bf0a0db6",
+        "size": 258871
+      }
+    ],
+    "inspectorImages": [
+      {
+        "name": "WhatsApp Image 2026-09-10 at 10.10.17 PM.jpeg",
+        "category": "Front Display Label",
+        "previewUrl": "blob:http://localhost:5173/b7256f80-32e9-43e9-b283-1c61f86bece3",
+        "size": 258871
+      }
+    ],
+    "freshAiAnalysis": {
+      "success": true,
+      "message": "2 image(s) processed successfully",
+      "file": {
+        "filename": "WhatsApp Image 2026-09-10 at 10.10.17 PM.jpeg",
+        "size": 258871,
+        "originalWidth": 1265,
+        "originalHeight": 1280,
+        "processedWidth": 1265,
+        "processedHeight": 1280,
+        "wasResized": false
+      },
+      "files": [
+        {
+          "filename": "WhatsApp Image 2026-09-10 at 10.10.17 PM.jpeg",
+          "size": 258871,
+          "originalWidth": 1265,
+          "originalHeight": 1280,
+          "processedWidth": 1265,
+          "processedHeight": 1280,
+          "wasResized": false,
+          "processing": {
+            "grayscale": true,
+            "denoising": true,
+            "contrastEnhancement": true,
+            "thresholding": true
+          }
+        },
+        {
+          "filename": "WhatsApp Image 2026-09-10 at 10.10.17 PM.jpeg",
+          "size": 258871,
+          "originalWidth": 1265,
+          "originalHeight": 1280,
+          "processedWidth": 1265,
+          "processedHeight": 1280,
+          "wasResized": false,
+          "processing": {
+            "grayscale": true,
+            "denoising": true,
+            "contrastEnhancement": true,
+            "thresholding": true
+          }
+        }
+      ],
+      "processing": {
+        "grayscale": true,
+        "denoising": true,
+        "contrastEnhancement": true,
+        "thresholding": true
+      },
+      "ocr": {
+        "success": true,
+        "text": "5 NE Sen a HRS a ed Oe NEE Set) aoe thee 4 Lea\ntrek ‘. Pe ‘2G PAN DMA CO A44OD OHO cP oh ot Fe\nTr 5964 OR 1S nb GZ\nEMittwe to UR OPREbeLe oe eee ee) ree\nRhee ; , ‘ ; 7 ee\n? ‘ ot oe ° > 4 ‘ea et 4 Neg > ae, at oP Peers * 7 C4 . as as\n84 ty ij we ‘ yf 2 a\n\\ y ‘ q N NN 5 AS di /\nFE BRAN A Wf SNA, ie\na ban : DUR \\ | ///Y Ree\nwet e Lf BEE \\ Wap i a\nee Finest Pan Masala 7!) 7)\nie mad RP COD e\na & A Premium Product from Dilbagh 9°\"). ee\n. nt xr sf f 4 Soe . ee me\n2 BP ‘Regd. Trademark & Copy Right re | a een oe\n_» 9 Mits.Som Silver Supari Pvt. Ltd. Plot No. A-50, Naraina In Area; Phase); New Dehi-28 = 'S me\n-@ Lustomer Care Cell: 9266877082, E-mail: somsilversuparipvtitd@gmail.com asd = — eae\n(1) “ANGREDIENTS: SUPARL, CATECHU, LINE & CARDAMOM SEEDS, NATURAL FLAVOURS AND “= tea\n5 >A] ONATURALFLAVOURING SUBSTANCES, NATURE-IDENTICAL FLAVOURING SUBSTANCES. ff, J FeesaT SS\nMRP.2 12.00 {Inclusive of All Taxes), Net Wt>4 9 (wor ron mmwons-)_ mere |S ry\nMO NICOTINE NO TOBACCO (esTeEFORE Su MONTHS FROM PAOXAGNG)[carwme or ran mAsAiasmcomOeS Toma) EM\not PN 4 yy - ata ae ee ee Ne? ee how S74 ges 4 Ry\nDy ee | o QV G4 ade A 1.4.80 : ‘ ; ; Ok A F\nSELTPRL Perrys Leen) ee s 9b a\nVO 49909 ON Ot Pe 4s ’ is « 4.604 phe Be\n“Sa o) Viak toa\nwes ns en GG Grr EEE , ‘7\ne Ona a, Boe\ni A Premium Product from Dilbagh St) Se\n( Regd. Trademark & Copy Right TP ak te\nINGREDIENTS: SUPARI, CATECHU, LINE & CARDAMOM SEEDS, NATURAL FLAVOURS AND “2 fps Oi\nTD CNATURALFLAVOURING SUBSTANCES, NATURE-IDENTICAL FLAVOURING SUBSTANCES. fs J Feet se\n9B ARP. 12,00 (Inclusive of All Taxes), Net Wt.:.4g MT. | aS\nA, SND.NICOTINE NO TOBACCO [BEST BEFORE Six MONTHS FROM PACKAGING] [‘CwewinG OF PAN MASALA is mORiOUS To HALT) NN\nww 6h ANG TR NOT Set oor ow\nSVARPRGOR eo AD Ota bs\nTT Pee ee ee eee 4\nUG DRLORLEeLoe ll.) ee ee ee\nNATURAL FLAVOURING SUBSTANCES, NATURE-IDENTICAL FLAVOURING SUBSTANCES. Wy ie\nANDINICOTINE NO TOBACCO [GEST BEFORE Six MONTHS FROM PACKAGING] [ CHEWING OF PAN MASALA 15 mJUmiOUS TO nZAL TA) QIN\nate 4\nVAR ATH 4 ao wAT DOORN\nSELterteperres ff fee) a\n133\nSigne\niLcom\nNO INICOTINE NO TOBACCO [GEST BEFORE SIX MONTHS FROM PACKAGING) [ cHeWine OF PAN WASALAIS nS ma it\n7Pryryy sy\nSs. >. > dorset\nSPU ewe eee ores\ngveengast\nCustomer Care Cell: 9266877082, E-mail: somsilversuparipvtit¢@gmail.com\nNATURAL LAVOURING SUBSTANCES, NATURE-IDENTICAL FLAVOURING SUBSTANCES. ff (Ui\nIND NICOTINE IND TOBACCO [BEST BEFORE SX MONTHS FROM PACKNGNG] [caewana\nTete dh cen hs th ee bd i ie i ne | ere\nWEA u pees teeelnenereeeny tee, No ane\nroses or sn ee ee ee re 1 oe\naie * Pome eeoee sheer ne onerarees peer)\na) ‘ ’ 7 nen | , me 7s ce pieenr laae Dens eeee amar eae eee 4 o oo bo\nA oo SAI As and & got! Ware. 1\noe x oo s. ye , f rn \\ \\ \\w ; . \\ y? . 4\nP } on 7 8 eo Ns XN “OS , -* ‘ al\n1 Aas GGG} yoy ‘jm oF\nHP Regd, Trademark & Copy Right SORE _. ee\n, lifts. Som Silver Supari Pvt. Ltd. Plot No. A-S0, Waraina industrial Area! Phase f Ve a — 3) Be\nJf Customer Care Celt: 9286877082, E-mait somsiiversupariprttg@gmaiicom wu,\n4 ‘Ma ‘WNGREDIENTS: SUPARI, CATECHU, LINE & CARDAMOM SEEDS, NATURAL FLAVOURS AND f = tee\nBD UMATURAL FLAVOURING SUBSTANCES, NATURE-IDENTICAL FLAVOURING SUBSTANCES. fs ‘ee = me\n78 ARP.£ 12.90 (inclusive of All Taxes). Net Wt: 4g er aes ee\nSMD MODTINE MD TOBACCO [GEST BEFORE SX MONTHS FROM PICKING) corumec er ranMAtS anmeas ois) Ow\nin a HR ek De VEE Set ae tee 4 t eat\nCOMMA Dob va oakd tn me eee ob, c earl\nrere VULETPprmerprrresee Leena, © Sse) 2.) nb OE\nOdi iceb uke. $9999 4982284444444 4 OY yarn\n| . ’ . ps t ms 7; Ae) LO et oe oo % a «- te\nGoM Co —® | tastes , pr\n\\ : oe” » A \\ \\ . ~ —- st 56 J . Ps\na 4 ; a . AN \\ } \\ fo . 7S J tf fi ; 7\n: hy 1 , j > 29 \"4\nP } _ Sa Wes My OS A Sef . : a. 4\ner oa 7g 7. ———_—_—_—_—_—Jas[_OlLlOl__ % ’ ‘ Dr\n° 44 Sie, ~\\, . ah\nast Finest Pan Masala , 7 ( in\nAas IG ee .s =) 2\nAD on: ran OG ABE\nB A Premium Product from Dilbagh \"3 an tS\nak hs x 7 . . fr\nHE Regd. Trademark & Copy Right OTE é — ae oe\n__Aiits.Som Silver Supari Pvt. Ltd. Plot No. A-50, Naraina industrial Area, Phase J) eh-26 ES Se\nJ} Lustomer Care Cell: 9266877082, E-mail: somsitversuparipvtitd@qmailcom \"a, EN\n4 (Wf INGREDIENTS: SUPARI, CATECHU, LINE & CARDAMOM SEEDS, NATURAL FLAVOURS AND fe = cee aa\n) of AAATURALELAVOURING SUBSTANCES, NATURE-IDENTICAL FLAVOURING SUBSTANCES. ts a = mys\n0 MRP.2 12.00 (inclusive of All Taxes), Net Wt>4g “uence” | EEA 56\nA ND MICOTINE ND TOBACCO [GEST BEFORE SX MONTHS FROM PACKAGNG] [ cuewone OF ran mASALa cs msumius To (i's) QUES\nPepe nyc 7 oy , OD ak tp de on : 7 LES\non beer TES dee Meade 7 Bupha Uo is a . . Ly Liga a\na a wa UA 2 UG ae oo ee\ni y bh nek 7S ae ’ ay SuqQdip ugpu yv Fae ea eerucemeceea ApS ee\na Latest. ~ sonbora ad ayes ar non ena a — : fe\nae . oN a ‘, “e : , vay yond A. — rly i ees oe “gfalta Je\nYi i tp es ce wn : Po AS SE OS wL / i oe re ; 7\nNes . 3h3 . If: AS Ae f food aa Yo fa f Lr \\ LN 4 Bee aves\nee een ar an rp pa ty OOF BATA Wy da apart\nrake * HON r f Poa tg poe ¢ fa Nota YON {ff fee Yiays saa\n3 ‘ _ | - e , 4 Pd . we se “heed ee . .\nRee eee Plot ROVAYSO casual Area hase DH eZ JSR SES 3:\nee NB cesar iver Supatl EVISLG Di, See\nte stomencare’ ee SEU eH D i) (ESSRES\nPE ne RAL IQURING SUBSTAN WNW NaG BM ['woT FOR MuNOnS«] a nek oe\nOP WUSive Of AlliTaxes)! NetWtsa\" (cwor FoxstwoRse] Log OHS 7 ie\nae EK SINENIIOH 0 EST BEFORE SX WONTHS FROM PACKAGG]f cewane Or PAN WATATA S aSURIOTS MASAIATS UBIOG a ee\nee <3 ‘ LUDH ame anon onit c-Si ania. — , : = = - ~ ; a\neee TT teed else st\nin a HR ek Be VRE Ser! aoe tee ag tee)\nCOMME Do bn dnckb btn mn te ae + obi, c card\nretre VULETPRPLrerprrresee Leena, Sse) 2.) nb\nOhi heb uke. $699 9944 4422424408444 444884 pre\n| , ’ . om wy ms 7; Ae) PA at eo) om * y «ts\nGoM e Co ® ! taal ja 4\na 4 ; a . au \\ } ‘fo . 7S J tf fh ; 7\n: hy , j ae \"4\nP } ve iN) My OS A Sef . : i. 4\ne , y et ° ? 7 ; / f . \\ \\, \\ \\ / I, | ; f or\ne 44 + ~, . oe\naa Finest Pan Masala , 7 ( it\nBas IG 5 =) 2\nAD ~ Can OG ABE\nHE Regd. Trademark & Copy Right ORT . — ee oe\nJ} {ustomer Care Cell: 9266877082, E-mail: somsitversupariprtitd@qmailcom \"an, EN\nBP Regi Trademark & Copy Right if —— ee\nJ} Airs. Som Silver Supari Pvt. Ltd, Plot No. A-SO, Naraina Industrial Area, Phase |New Delhi-28 =a 9's\n3 J} chara ALavOURING SUBSTANCES, NATURE-IDENTICAL FLAVOURING SUBSTANCES. Sie\nMRP. 12,00(Inclusive of All Taxes). Net Wt:4q _ (worrommmons7] Or => ae\nNNO.NICOTINE NO TOBACCO [EST BEFORE Six MONTHS FROM FACKAGNG] ( creWurc OF PAN MASALA is URS To nA)\nye4\nn Silver St\nINGREDIENTS: SUPARI, CAT\neuauearars com\nTURAL FLAVOURING SUBSTANCES, NATURE\nTICAL Fl TURING SUBSTANCES\nSeek 4\nNO NICOTINE NO TOBACC(\nRAGING\n1a Bee eT SV VON Oe ees Be wee ’ -— *\nRRR RASH Bie\n6... | ase. pee\n\n5 NE Sen a HRS a ed Oe NEE Set) aoe thee 4 Lea\ntrek ‘. Pe ‘2G PAN DMA CO A44OD OHO cP oh ot Fe\nTr 5964 OR 1S nb GZ\nEMittwe to UR OPREbeLe oe eee ee) ree\nRhee ; , ‘ ; 7 ee\n? ‘ ot oe ° > 4 ‘ea et 4 Neg > ae, at oP Peers * 7 C4 . as as\n84 ty ij we ‘ yf 2 a\n\\ y ‘ q N NN 5 AS di /\nFE BRAN A Wf SNA, ie\na ban : DUR \\ | ///Y Ree\nwet e Lf BEE \\ Wap i a\nee Finest Pan Masala 7!) 7)\nie mad RP COD e\na & A Premium Product from Dilbagh 9°\"). ee\n. nt xr sf f 4 Soe . ee me\n2 BP ‘Regd. Trademark & Copy Right re | a een oe\n_» 9 Mits.Som Silver Supari Pvt. Ltd. Plot No. A-50, Naraina In Area; Phase); New Dehi-28 = 'S me\n-@ Lustomer Care Cell: 9266877082, E-mail: somsilversuparipvtitd@gmail.com asd = — eae\n(1) “ANGREDIENTS: SUPARL, CATECHU, LINE & CARDAMOM SEEDS, NATURAL FLAVOURS AND “= tea\n5 >A] ONATURALFLAVOURING SUBSTANCES, NATURE-IDENTICAL FLAVOURING SUBSTANCES. ff, J FeesaT SS\nMRP.2 12.00 {Inclusive of All Taxes), Net Wt>4 9 (wor ron mmwons-)_ mere |S ry\nMO NICOTINE NO TOBACCO (esTeEFORE Su MONTHS FROM PAOXAGNG)[carwme or ran mAsAiasmcomOeS Toma) EM\not PN 4 yy - ata ae ee ee Ne? ee how S74 ges 4 Ry\nDy ee | o QV G4 ade A 1.4.80 : ‘ ; ; Ok A F\nSELTPRL Perrys Leen) ee s 9b a\nVO 49909 ON Ot Pe 4s ’ is « 4.604 phe Be\n“Sa o) Viak toa\nwes ns en GG Grr EEE , ‘7\ne Ona a, Boe\ni A Premium Product from Dilbagh St) Se\n( Regd. Trademark & Copy Right TP ak te\nINGREDIENTS: SUPARI, CATECHU, LINE & CARDAMOM SEEDS, NATURAL FLAVOURS AND “2 fps Oi\nTD CNATURALFLAVOURING SUBSTANCES, NATURE-IDENTICAL FLAVOURING SUBSTANCES. fs J Feet se\n9B ARP. 12,00 (Inclusive of All Taxes), Net Wt.:.4g MT. | aS\nA, SND.NICOTINE NO TOBACCO [BEST BEFORE Six MONTHS FROM PACKAGING] [‘CwewinG OF PAN MASALA is mORiOUS To HALT) NN\nww 6h ANG TR NOT Set oor ow\nSVARPRGOR eo AD Ota bs\nTT Pee ee ee eee 4\nUG DRLORLEeLoe ll.) ee ee ee\nNATURAL FLAVOURING SUBSTANCES, NATURE-IDENTICAL FLAVOURING SUBSTANCES. Wy ie\nANDINICOTINE NO TOBACCO [GEST BEFORE Six MONTHS FROM PACKAGING] [ CHEWING OF PAN MASALA 15 mJUmiOUS TO nZAL TA) QIN\nate 4\nVAR ATH 4 ao wAT DOORN\nSELterteperres ff fee) a\n133\nSigne\niLcom\nNO INICOTINE NO TOBACCO [GEST BEFORE SIX MONTHS FROM PACKAGING) [ cHeWine OF PAN WASALAIS nS ma it\n7Pryryy sy\nSs. >. > dorset\nSPU ewe eee ores\ngveengast\nCustomer Care Cell: 9266877082, E-mail: somsilversuparipvtit¢@gmail.com\nNATURAL LAVOURING SUBSTANCES, NATURE-IDENTICAL FLAVOURING SUBSTANCES. ff (Ui\nIND NICOTINE IND TOBACCO [BEST BEFORE SX MONTHS FROM PACKNGNG] [caewana\nTete dh cen hs th ee bd i ie i ne | ere\nWEA u pees teeelnenereeeny tee, No ane\nroses or sn ee ee ee re 1 oe\naie * Pome eeoee sheer ne onerarees peer)\na) ‘ ’ 7 nen | , me 7s ce pieenr laae Dens eeee amar eae eee 4 o oo bo\nA oo SAI As and & got! Ware. 1\noe x oo s. ye , f rn \\ \\ \\w ; . \\ y? . 4\nP } on 7 8 eo Ns XN “OS , -* ‘ al\n1 Aas GGG} yoy ‘jm oF\nHP Regd, Trademark & Copy Right SORE _. ee\n, lifts. Som Silver Supari Pvt. Ltd. Plot No. A-S0, Waraina industrial Area! Phase f Ve a — 3) Be\nJf Customer Care Celt: 9286877082, E-mait somsiiversupariprttg@gmaiicom wu,\n4 ‘Ma ‘WNGREDIENTS: SUPARI, CATECHU, LINE & CARDAMOM SEEDS, NATURAL FLAVOURS AND f = tee\nBD UMATURAL FLAVOURING SUBSTANCES, NATURE-IDENTICAL FLAVOURING SUBSTANCES. fs ‘ee = me\n78 ARP.£ 12.90 (inclusive of All Taxes). Net Wt: 4g er aes ee\nSMD MODTINE MD TOBACCO [GEST BEFORE SX MONTHS FROM PICKING) corumec er ranMAtS anmeas ois) Ow\nin a HR ek De VEE Set ae tee 4 t eat\nCOMMA Dob va oakd tn me eee ob, c earl\nrere VULETPprmerprrresee Leena, © Sse) 2.) nb OE\nOdi iceb uke. $9999 4982284444444 4 OY yarn\n| . ’ . ps t ms 7; Ae) LO et oe oo % a «- te\nGoM Co —® | tastes , pr\n\\ : oe” » A \\ \\ . ~ —- st 56 J . Ps\na 4 ; a . AN \\ } \\ fo . 7S J tf fi ; 7\n: hy 1 , j > 29 \"4\nP } _ Sa Wes My OS A Sef . : a. 4\ner oa 7g 7. ———_—_—_—_—_—Jas[_OlLlOl__ % ’ ‘ Dr\n° 44 Sie, ~\\, . ah\nast Finest Pan Masala , 7 ( in\nAas IG ee .s =) 2\nAD on: ran OG ABE\nB A Premium Product from Dilbagh \"3 an tS\nak hs x 7 . . fr\nHE Regd. Trademark & Copy Right OTE é — ae oe\n__Aiits.Som Silver Supari Pvt. Ltd. Plot No. A-50, Naraina industrial Area, Phase J) eh-26 ES Se\nJ} Lustomer Care Cell: 9266877082, E-mail: somsitversuparipvtitd@qmailcom \"a, EN\n4 (Wf INGREDIENTS: SUPARI, CATECHU, LINE & CARDAMOM SEEDS, NATURAL FLAVOURS AND fe = cee aa\n) of AAATURALELAVOURING SUBSTANCES, NATURE-IDENTICAL FLAVOURING SUBSTANCES. ts a = mys\n0 MRP.2 12.00 (inclusive of All Taxes), Net Wt>4g “uence” | EEA 56\nA ND MICOTINE ND TOBACCO [GEST BEFORE SX MONTHS FROM PACKAGNG] [ cuewone OF ran mASALa cs msumius To (i's) QUES\nPepe nyc 7 oy , OD ak tp de on : 7 LES\non beer TES dee Meade 7 Bupha Uo is a . . Ly Liga a\na a wa UA 2 UG ae oo ee\ni y bh nek 7S ae ’ ay SuqQdip ugpu yv Fae ea eerucemeceea ApS ee\na Latest. ~ sonbora ad ayes ar non ena a — : fe\nae . oN a ‘, “e : , vay yond A. — rly i ees oe “gfalta Je\nYi i tp es ce wn : Po AS SE OS wL / i oe re ; 7\nNes . 3h3 . If: AS Ae f food aa Yo fa f Lr \\ LN 4 Bee aves\nee een ar an rp pa ty OOF BATA Wy da apart\nrake * HON r f Poa tg poe ¢ fa Nota YON {ff fee Yiays saa\n3 ‘ _ | - e , 4 Pd . we se “heed ee . .\nRee eee Plot ROVAYSO casual Area hase DH eZ JSR SES 3:\nee NB cesar iver Supatl EVISLG Di, See\nte stomencare’ ee SEU eH D i) (ESSRES\nPE ne RAL IQURING SUBSTAN WNW NaG BM ['woT FOR MuNOnS«] a nek oe\nOP WUSive Of AlliTaxes)! NetWtsa\" (cwor FoxstwoRse] Log OHS 7 ie\nae EK SINENIIOH 0 EST BEFORE SX WONTHS FROM PACKAGG]f cewane Or PAN WATATA S aSURIOTS MASAIATS UBIOG a ee\nee <3 ‘ LUDH ame anon onit c-Si ania. — , : = = - ~ ; a\neee TT teed else st\nin a HR ek Be VRE Ser! aoe tee ag tee)\nCOMME Do bn dnckb btn mn te ae + obi, c card\nretre VULETPRPLrerprrresee Leena, Sse) 2.) nb\nOhi heb uke. $699 9944 4422424408444 444884 pre\n| , ’ . om wy ms 7; Ae) PA at eo) om * y «ts\nGoM e Co ® ! taal ja 4\na 4 ; a . au \\ } ‘fo . 7S J tf fh ; 7\n: hy , j ae \"4\nP } ve iN) My OS A Sef . : i. 4\ne , y et ° ? 7 ; / f . \\ \\, \\ \\ / I, | ; f or\ne 44 + ~, . oe\naa Finest Pan Masala , 7 ( it\nBas IG 5 =) 2\nAD ~ Can OG ABE\nHE Regd. Trademark & Copy Right ORT . — ee oe\nJ} {ustomer Care Cell: 9266877082, E-mail: somsitversupariprtitd@qmailcom \"an, EN\nBP Regi Trademark & Copy Right if —— ee\nJ} Airs. Som Silver Supari Pvt. Ltd, Plot No. A-SO, Naraina Industrial Area, Phase |New Delhi-28 =a 9's\n3 J} chara ALavOURING SUBSTANCES, NATURE-IDENTICAL FLAVOURING SUBSTANCES. Sie\nMRP. 12,00(Inclusive of All Taxes). Net Wt:4q _ (worrommmons7] Or => ae\nNNO.NICOTINE NO TOBACCO [EST BEFORE Six MONTHS FROM FACKAGNG] ( creWurc OF PAN MASALA is URS To nA)\nye4\nn Silver St\nINGREDIENTS: SUPARI, CAT\neuauearars com\nTURAL FLAVOURING SUBSTANCES, NATURE\nTICAL Fl TURING SUBSTANCES\nSeek 4\nNO NICOTINE NO TOBACC(\nRAGING\n1a Bee eT SV VON Oe ees Be wee ’ -— *\nRRR RASH Bie\n6... | ase. pee"
+      },
+      "ocr_results": [
+        {
+          "index": 0,
+          "role": "front",
+          "filename": "WhatsApp Image 2026-09-10 at 10.10.17 PM.jpeg",
+          "success": true,
+          "text": "5 NE Sen a HRS a ed Oe NEE Set) aoe thee 4 Lea\ntrek ‘. Pe ‘2G PAN DMA CO A44OD OHO cP oh ot Fe\nTr 5964 OR 1S nb GZ\nEMittwe to UR OPREbeLe oe eee ee) ree\nRhee ; , ‘ ; 7 ee\n? ‘ ot oe ° > 4 ‘ea et 4 Neg > ae, at oP Peers * 7 C4 . as as\n84 ty ij we ‘ yf 2 a\n\\ y ‘ q N NN 5 AS di /\nFE BRAN A Wf SNA, ie\na ban : DUR \\ | ///Y Ree\nwet e Lf BEE \\ Wap i a\nee Finest Pan Masala 7!) 7)\nie mad RP COD e\na & A Premium Product from Dilbagh 9°\"). ee\n. nt xr sf f 4 Soe . ee me\n2 BP ‘Regd. Trademark & Copy Right re | a een oe\n_» 9 Mits.Som Silver Supari Pvt. Ltd. Plot No. A-50, Naraina In Area; Phase); New Dehi-28 = 'S me\n-@ Lustomer Care Cell: 9266877082, E-mail: somsilversuparipvtitd@gmail.com asd = — eae\n(1) “ANGREDIENTS: SUPARL, CATECHU, LINE & CARDAMOM SEEDS, NATURAL FLAVOURS AND “= tea\n5 >A] ONATURALFLAVOURING SUBSTANCES, NATURE-IDENTICAL FLAVOURING SUBSTANCES. ff, J FeesaT SS\nMRP.2 12.00 {Inclusive of All Taxes), Net Wt>4 9 (wor ron mmwons-)_ mere |S ry\nMO NICOTINE NO TOBACCO (esTeEFORE Su MONTHS FROM PAOXAGNG)[carwme or ran mAsAiasmcomOeS Toma) EM\not PN 4 yy - ata ae ee ee Ne? ee how S74 ges 4 Ry\nDy ee | o QV G4 ade A 1.4.80 : ‘ ; ; Ok A F\nSELTPRL Perrys Leen) ee s 9b a\nVO 49909 ON Ot Pe 4s ’ is « 4.604 phe Be\n“Sa o) Viak toa\nwes ns en GG Grr EEE , ‘7\ne Ona a, Boe\ni A Premium Product from Dilbagh St) Se\n( Regd. Trademark & Copy Right TP ak te\nINGREDIENTS: SUPARI, CATECHU, LINE & CARDAMOM SEEDS, NATURAL FLAVOURS AND “2 fps Oi\nTD CNATURALFLAVOURING SUBSTANCES, NATURE-IDENTICAL FLAVOURING SUBSTANCES. fs J Feet se\n9B ARP. 12,00 (Inclusive of All Taxes), Net Wt.:.4g MT. | aS\nA, SND.NICOTINE NO TOBACCO [BEST BEFORE Six MONTHS FROM PACKAGING] [‘CwewinG OF PAN MASALA is mORiOUS To HALT) NN\nww 6h ANG TR NOT Set oor ow\nSVARPRGOR eo AD Ota bs\nTT Pee ee ee eee 4\nUG DRLORLEeLoe ll.) ee ee ee\nNATURAL FLAVOURING SUBSTANCES, NATURE-IDENTICAL FLAVOURING SUBSTANCES. Wy ie\nANDINICOTINE NO TOBACCO [GEST BEFORE Six MONTHS FROM PACKAGING] [ CHEWING OF PAN MASALA 15 mJUmiOUS TO nZAL TA) QIN\nate 4\nVAR ATH 4 ao wAT DOORN\nSELterteperres ff fee) a\n133\nSigne\niLcom\nNO INICOTINE NO TOBACCO [GEST BEFORE SIX MONTHS FROM PACKAGING) [ cHeWine OF PAN WASALAIS nS ma it\n7Pryryy sy\nSs. >. > dorset\nSPU ewe eee ores\ngveengast\nCustomer Care Cell: 9266877082, E-mail: somsilversuparipvtit¢@gmail.com\nNATURAL LAVOURING SUBSTANCES, NATURE-IDENTICAL FLAVOURING SUBSTANCES. ff (Ui\nIND NICOTINE IND TOBACCO [BEST BEFORE SX MONTHS FROM PACKNGNG] [caewana\nTete dh cen hs th ee bd i ie i ne | ere\nWEA u pees teeelnenereeeny tee, No ane\nroses or sn ee ee ee re 1 oe\naie * Pome eeoee sheer ne onerarees peer)\na) ‘ ’ 7 nen | , me 7s ce pieenr laae Dens eeee amar eae eee 4 o oo bo\nA oo SAI As and & got! Ware. 1\noe x oo s. ye , f rn \\ \\ \\w ; . \\ y? . 4\nP } on 7 8 eo Ns XN “OS , -* ‘ al\n1 Aas GGG} yoy ‘jm oF\nHP Regd, Trademark & Copy Right SORE _. ee\n, lifts. Som Silver Supari Pvt. Ltd. Plot No. A-S0, Waraina industrial Area! Phase f Ve a — 3) Be\nJf Customer Care Celt: 9286877082, E-mait somsiiversupariprttg@gmaiicom wu,\n4 ‘Ma ‘WNGREDIENTS: SUPARI, CATECHU, LINE & CARDAMOM SEEDS, NATURAL FLAVOURS AND f = tee\nBD UMATURAL FLAVOURING SUBSTANCES, NATURE-IDENTICAL FLAVOURING SUBSTANCES. fs ‘ee = me\n78 ARP.£ 12.90 (inclusive of All Taxes). Net Wt: 4g er aes ee\nSMD MODTINE MD TOBACCO [GEST BEFORE SX MONTHS FROM PICKING) corumec er ranMAtS anmeas ois) Ow\nin a HR ek De VEE Set ae tee 4 t eat\nCOMMA Dob va oakd tn me eee ob, c earl\nrere VULETPprmerprrresee Leena, © Sse) 2.) nb OE\nOdi iceb uke. $9999 4982284444444 4 OY yarn\n| . ’ . ps t ms 7; Ae) LO et oe oo % a «- te\nGoM Co —® | tastes , pr\n\\ : oe” » A \\ \\ . ~ —- st 56 J . Ps\na 4 ; a . AN \\ } \\ fo . 7S J tf fi ; 7\n: hy 1 , j > 29 \"4\nP } _ Sa Wes My OS A Sef . : a. 4\ner oa 7g 7. ———_—_—_—_—_—Jas[_OlLlOl__ % ’ ‘ Dr\n° 44 Sie, ~\\, . ah\nast Finest Pan Masala , 7 ( in\nAas IG ee .s =) 2\nAD on: ran OG ABE\nB A Premium Product from Dilbagh \"3 an tS\nak hs x 7 . . fr\nHE Regd. Trademark & Copy Right OTE é — ae oe\n__Aiits.Som Silver Supari Pvt. Ltd. Plot No. A-50, Naraina industrial Area, Phase J) eh-26 ES Se\nJ} Lustomer Care Cell: 9266877082, E-mail: somsitversuparipvtitd@qmailcom \"a, EN\n4 (Wf INGREDIENTS: SUPARI, CATECHU, LINE & CARDAMOM SEEDS, NATURAL FLAVOURS AND fe = cee aa\n) of AAATURALELAVOURING SUBSTANCES, NATURE-IDENTICAL FLAVOURING SUBSTANCES. ts a = mys\n0 MRP.2 12.00 (inclusive of All Taxes), Net Wt>4g “uence” | EEA 56\nA ND MICOTINE ND TOBACCO [GEST BEFORE SX MONTHS FROM PACKAGNG] [ cuewone OF ran mASALa cs msumius To (i's) QUES\nPepe nyc 7 oy , OD ak tp de on : 7 LES\non beer TES dee Meade 7 Bupha Uo is a . . Ly Liga a\na a wa UA 2 UG ae oo ee\ni y bh nek 7S ae ’ ay SuqQdip ugpu yv Fae ea eerucemeceea ApS ee\na Latest. ~ sonbora ad ayes ar non ena a — : fe\nae . oN a ‘, “e : , vay yond A. — rly i ees oe “gfalta Je\nYi i tp es ce wn : Po AS SE OS wL / i oe re ; 7\nNes . 3h3 . If: AS Ae f food aa Yo fa f Lr \\ LN 4 Bee aves\nee een ar an rp pa ty OOF BATA Wy da apart\nrake * HON r f Poa tg poe ¢ fa Nota YON {ff fee Yiays saa\n3 ‘ _ | - e , 4 Pd . we se “heed ee . .\nRee eee Plot ROVAYSO casual Area hase DH eZ JSR SES 3:\nee NB cesar iver Supatl EVISLG Di, See\nte stomencare’ ee SEU eH D i) (ESSRES\nPE ne RAL IQURING SUBSTAN WNW NaG BM ['woT FOR MuNOnS«] a nek oe\nOP WUSive Of AlliTaxes)! NetWtsa\" (cwor FoxstwoRse] Log OHS 7 ie\nae EK SINENIIOH 0 EST BEFORE SX WONTHS FROM PACKAGG]f cewane Or PAN WATATA S aSURIOTS MASAIATS UBIOG a ee\nee <3 ‘ LUDH ame anon onit c-Si ania. — , : = = - ~ ; a\neee TT teed else st\nin a HR ek Be VRE Ser! aoe tee ag tee)\nCOMME Do bn dnckb btn mn te ae + obi, c card\nretre VULETPRPLrerprrresee Leena, Sse) 2.) nb\nOhi heb uke. $699 9944 4422424408444 444884 pre\n| , ’ . om wy ms 7; Ae) PA at eo) om * y «ts\nGoM e Co ® ! taal ja 4\na 4 ; a . au \\ } ‘fo . 7S J tf fh ; 7\n: hy , j ae \"4\nP } ve iN) My OS A Sef . : i. 4\ne , y et ° ? 7 ; / f . \\ \\, \\ \\ / I, | ; f or\ne 44 + ~, . oe\naa Finest Pan Masala , 7 ( it\nBas IG 5 =) 2\nAD ~ Can OG ABE\nHE Regd. Trademark & Copy Right ORT . — ee oe\nJ} {ustomer Care Cell: 9266877082, E-mail: somsitversupariprtitd@qmailcom \"an, EN\nBP Regi Trademark & Copy Right if —— ee\nJ} Airs. Som Silver Supari Pvt. Ltd, Plot No. A-SO, Naraina Industrial Area, Phase |New Delhi-28 =a 9's\n3 J} chara ALavOURING SUBSTANCES, NATURE-IDENTICAL FLAVOURING SUBSTANCES. Sie\nMRP. 12,00(Inclusive of All Taxes). Net Wt:4q _ (worrommmons7] Or => ae\nNNO.NICOTINE NO TOBACCO [EST BEFORE Six MONTHS FROM FACKAGNG] ( creWurc OF PAN MASALA is URS To nA)\nye4\nn Silver St\nINGREDIENTS: SUPARI, CAT\neuauearars com\nTURAL FLAVOURING SUBSTANCES, NATURE\nTICAL Fl TURING SUBSTANCES\nSeek 4\nNO NICOTINE NO TOBACC(\nRAGING\n1a Bee eT SV VON Oe ees Be wee ’ -— *\nRRR RASH Bie\n6... | ase. pee"
+        },
+        {
+          "index": 1,
+          "role": "back_side",
+          "filename": "WhatsApp Image 2026-09-10 at 10.10.17 PM.jpeg",
+          "success": true,
+          "text": "5 NE Sen a HRS a ed Oe NEE Set) aoe thee 4 Lea\ntrek ‘. Pe ‘2G PAN DMA CO A44OD OHO cP oh ot Fe\nTr 5964 OR 1S nb GZ\nEMittwe to UR OPREbeLe oe eee ee) ree\nRhee ; , ‘ ; 7 ee\n? ‘ ot oe ° > 4 ‘ea et 4 Neg > ae, at oP Peers * 7 C4 . as as\n84 ty ij we ‘ yf 2 a\n\\ y ‘ q N NN 5 AS di /\nFE BRAN A Wf SNA, ie\na ban : DUR \\ | ///Y Ree\nwet e Lf BEE \\ Wap i a\nee Finest Pan Masala 7!) 7)\nie mad RP COD e\na & A Premium Product from Dilbagh 9°\"). ee\n. nt xr sf f 4 Soe . ee me\n2 BP ‘Regd. Trademark & Copy Right re | a een oe\n_» 9 Mits.Som Silver Supari Pvt. Ltd. Plot No. A-50, Naraina In Area; Phase); New Dehi-28 = 'S me\n-@ Lustomer Care Cell: 9266877082, E-mail: somsilversuparipvtitd@gmail.com asd = — eae\n(1) “ANGREDIENTS: SUPARL, CATECHU, LINE & CARDAMOM SEEDS, NATURAL FLAVOURS AND “= tea\n5 >A] ONATURALFLAVOURING SUBSTANCES, NATURE-IDENTICAL FLAVOURING SUBSTANCES. ff, J FeesaT SS\nMRP.2 12.00 {Inclusive of All Taxes), Net Wt>4 9 (wor ron mmwons-)_ mere |S ry\nMO NICOTINE NO TOBACCO (esTeEFORE Su MONTHS FROM PAOXAGNG)[carwme or ran mAsAiasmcomOeS Toma) EM\not PN 4 yy - ata ae ee ee Ne? ee how S74 ges 4 Ry\nDy ee | o QV G4 ade A 1.4.80 : ‘ ; ; Ok A F\nSELTPRL Perrys Leen) ee s 9b a\nVO 49909 ON Ot Pe 4s ’ is « 4.604 phe Be\n“Sa o) Viak toa\nwes ns en GG Grr EEE , ‘7\ne Ona a, Boe\ni A Premium Product from Dilbagh St) Se\n( Regd. Trademark & Copy Right TP ak te\nINGREDIENTS: SUPARI, CATECHU, LINE & CARDAMOM SEEDS, NATURAL FLAVOURS AND “2 fps Oi\nTD CNATURALFLAVOURING SUBSTANCES, NATURE-IDENTICAL FLAVOURING SUBSTANCES. fs J Feet se\n9B ARP. 12,00 (Inclusive of All Taxes), Net Wt.:.4g MT. | aS\nA, SND.NICOTINE NO TOBACCO [BEST BEFORE Six MONTHS FROM PACKAGING] [‘CwewinG OF PAN MASALA is mORiOUS To HALT) NN\nww 6h ANG TR NOT Set oor ow\nSVARPRGOR eo AD Ota bs\nTT Pee ee ee eee 4\nUG DRLORLEeLoe ll.) ee ee ee\nNATURAL FLAVOURING SUBSTANCES, NATURE-IDENTICAL FLAVOURING SUBSTANCES. Wy ie\nANDINICOTINE NO TOBACCO [GEST BEFORE Six MONTHS FROM PACKAGING] [ CHEWING OF PAN MASALA 15 mJUmiOUS TO nZAL TA) QIN\nate 4\nVAR ATH 4 ao wAT DOORN\nSELterteperres ff fee) a\n133\nSigne\niLcom\nNO INICOTINE NO TOBACCO [GEST BEFORE SIX MONTHS FROM PACKAGING) [ cHeWine OF PAN WASALAIS nS ma it\n7Pryryy sy\nSs. >. > dorset\nSPU ewe eee ores\ngveengast\nCustomer Care Cell: 9266877082, E-mail: somsilversuparipvtit¢@gmail.com\nNATURAL LAVOURING SUBSTANCES, NATURE-IDENTICAL FLAVOURING SUBSTANCES. ff (Ui\nIND NICOTINE IND TOBACCO [BEST BEFORE SX MONTHS FROM PACKNGNG] [caewana\nTete dh cen hs th ee bd i ie i ne | ere\nWEA u pees teeelnenereeeny tee, No ane\nroses or sn ee ee ee re 1 oe\naie * Pome eeoee sheer ne onerarees peer)\na) ‘ ’ 7 nen | , me 7s ce pieenr laae Dens eeee amar eae eee 4 o oo bo\nA oo SAI As and & got! Ware. 1\noe x oo s. ye , f rn \\ \\ \\w ; . \\ y? . 4\nP } on 7 8 eo Ns XN “OS , -* ‘ al\n1 Aas GGG} yoy ‘jm oF\nHP Regd, Trademark & Copy Right SORE _. ee\n, lifts. Som Silver Supari Pvt. Ltd. Plot No. A-S0, Waraina industrial Area! Phase f Ve a — 3) Be\nJf Customer Care Celt: 9286877082, E-mait somsiiversupariprttg@gmaiicom wu,\n4 ‘Ma ‘WNGREDIENTS: SUPARI, CATECHU, LINE & CARDAMOM SEEDS, NATURAL FLAVOURS AND f = tee\nBD UMATURAL FLAVOURING SUBSTANCES, NATURE-IDENTICAL FLAVOURING SUBSTANCES. fs ‘ee = me\n78 ARP.£ 12.90 (inclusive of All Taxes). Net Wt: 4g er aes ee\nSMD MODTINE MD TOBACCO [GEST BEFORE SX MONTHS FROM PICKING) corumec er ranMAtS anmeas ois) Ow\nin a HR ek De VEE Set ae tee 4 t eat\nCOMMA Dob va oakd tn me eee ob, c earl\nrere VULETPprmerprrresee Leena, © Sse) 2.) nb OE\nOdi iceb uke. $9999 4982284444444 4 OY yarn\n| . ’ . ps t ms 7; Ae) LO et oe oo % a «- te\nGoM Co —® | tastes , pr\n\\ : oe” » A \\ \\ . ~ —- st 56 J . Ps\na 4 ; a . AN \\ } \\ fo . 7S J tf fi ; 7\n: hy 1 , j > 29 \"4\nP } _ Sa Wes My OS A Sef . : a. 4\ner oa 7g 7. ———_—_—_—_—_—Jas[_OlLlOl__ % ’ ‘ Dr\n° 44 Sie, ~\\, . ah\nast Finest Pan Masala , 7 ( in\nAas IG ee .s =) 2\nAD on: ran OG ABE\nB A Premium Product from Dilbagh \"3 an tS\nak hs x 7 . . fr\nHE Regd. Trademark & Copy Right OTE é — ae oe\n__Aiits.Som Silver Supari Pvt. Ltd. Plot No. A-50, Naraina industrial Area, Phase J) eh-26 ES Se\nJ} Lustomer Care Cell: 9266877082, E-mail: somsitversuparipvtitd@qmailcom \"a, EN\n4 (Wf INGREDIENTS: SUPARI, CATECHU, LINE & CARDAMOM SEEDS, NATURAL FLAVOURS AND fe = cee aa\n) of AAATURALELAVOURING SUBSTANCES, NATURE-IDENTICAL FLAVOURING SUBSTANCES. ts a = mys\n0 MRP.2 12.00 (inclusive of All Taxes), Net Wt>4g “uence” | EEA 56\nA ND MICOTINE ND TOBACCO [GEST BEFORE SX MONTHS FROM PACKAGNG] [ cuewone OF ran mASALa cs msumius To (i's) QUES\nPepe nyc 7 oy , OD ak tp de on : 7 LES\non beer TES dee Meade 7 Bupha Uo is a . . Ly Liga a\na a wa UA 2 UG ae oo ee\ni y bh nek 7S ae ’ ay SuqQdip ugpu yv Fae ea eerucemeceea ApS ee\na Latest. ~ sonbora ad ayes ar non ena a — : fe\nae . oN a ‘, “e : , vay yond A. — rly i ees oe “gfalta Je\nYi i tp es ce wn : Po AS SE OS wL / i oe re ; 7\nNes . 3h3 . If: AS Ae f food aa Yo fa f Lr \\ LN 4 Bee aves\nee een ar an rp pa ty OOF BATA Wy da apart\nrake * HON r f Poa tg poe ¢ fa Nota YON {ff fee Yiays saa\n3 ‘ _ | - e , 4 Pd . we se “heed ee . .\nRee eee Plot ROVAYSO casual Area hase DH eZ JSR SES 3:\nee NB cesar iver Supatl EVISLG Di, See\nte stomencare’ ee SEU eH D i) (ESSRES\nPE ne RAL IQURING SUBSTAN WNW NaG BM ['woT FOR MuNOnS«] a nek oe\nOP WUSive Of AlliTaxes)! NetWtsa\" (cwor FoxstwoRse] Log OHS 7 ie\nae EK SINENIIOH 0 EST BEFORE SX WONTHS FROM PACKAGG]f cewane Or PAN WATATA S aSURIOTS MASAIATS UBIOG a ee\nee <3 ‘ LUDH ame anon onit c-Si ania. — , : = = - ~ ; a\neee TT teed else st\nin a HR ek Be VRE Ser! aoe tee ag tee)\nCOMME Do bn dnckb btn mn te ae + obi, c card\nretre VULETPRPLrerprrresee Leena, Sse) 2.) nb\nOhi heb uke. $699 9944 4422424408444 444884 pre\n| , ’ . om wy ms 7; Ae) PA at eo) om * y «ts\nGoM e Co ® ! taal ja 4\na 4 ; a . au \\ } ‘fo . 7S J tf fh ; 7\n: hy , j ae \"4\nP } ve iN) My OS A Sef . : i. 4\ne , y et ° ? 7 ; / f . \\ \\, \\ \\ / I, | ; f or\ne 44 + ~, . oe\naa Finest Pan Masala , 7 ( it\nBas IG 5 =) 2\nAD ~ Can OG ABE\nHE Regd. Trademark & Copy Right ORT . — ee oe\nJ} {ustomer Care Cell: 9266877082, E-mail: somsitversupariprtitd@qmailcom \"an, EN\nBP Regi Trademark & Copy Right if —— ee\nJ} Airs. Som Silver Supari Pvt. Ltd, Plot No. A-SO, Naraina Industrial Area, Phase |New Delhi-28 =a 9's\n3 J} chara ALavOURING SUBSTANCES, NATURE-IDENTICAL FLAVOURING SUBSTANCES. Sie\nMRP. 12,00(Inclusive of All Taxes). Net Wt:4q _ (worrommmons7] Or => ae\nNNO.NICOTINE NO TOBACCO [EST BEFORE Six MONTHS FROM FACKAGNG] ( creWurc OF PAN MASALA is URS To nA)\nye4\nn Silver St\nINGREDIENTS: SUPARI, CAT\neuauearars com\nTURAL FLAVOURING SUBSTANCES, NATURE\nTICAL Fl TURING SUBSTANCES\nSeek 4\nNO NICOTINE NO TOBACC(\nRAGING\n1a Bee eT SV VON Oe ees Be wee ’ -— *\nRRR RASH Bie\n6... | ase. pee"
+        }
+      ],
+      "extracted": {
+        "product_name": "BRAN A SNA wet BEE Wap Finest Pan Masala mad COD",
+        "manufacturer_or_packer": null,
+        "net_quantity": "4 g",
+        "mrp": 12,
+        "manufacturing_or_packing_date": null,
+        "best_before_or_use_by": null,
+        "consumer_care": "somsilversuparipvtitd@gmail.com",
+        "country_of_origin": null
+      },
+      "compliance": {
+        "overall_status": "REQUIRES_REVIEW",
+        "findings": [
+          {
+            "field": "product_name",
+            "status": "PASS",
+            "message": "Product name detected: BRAN A SNA wet BEE Wap Finest Pan Masala mad COD"
+          },
+          {
+            "field": "manufacturer_or_packer",
+            "status": "REVIEW",
+            "message": "Manufacturer or packer could not be confidently detected."
+          },
+          {
+            "field": "net_quantity",
+            "status": "PASS",
+            "message": "Net quantity detected: 4 g"
+          },
+          {
+            "field": "mrp",
+            "status": "PASS",
+            "message": "Maximum Retail Price (MRP) detected: 12"
+          },
+          {
+            "field": "manufacturing_or_packing_date",
+            "status": "REVIEW",
+            "message": "Manufacturing or packing date could not be confidently detected."
+          },
+          {
+            "field": "best_before_or_use_by",
+            "status": "REVIEW",
+            "message": "Best before or use by date could not be confidently detected."
+          },
+          {
+            "field": "consumer_care",
+            "status": "PASS",
+            "message": "Consumer care details detected: somsilversuparipvtitd@gmail.com"
+          },
+          {
+            "field": "country_of_origin",
+            "status": "REVIEW",
+            "message": "Country of origin could not be confidently detected."
+          }
+        ]
+      }
+    },
+    "inspectionResult": {
+      "success": true,
+      "message": "2 image(s) processed successfully",
+      "file": {
+        "filename": "WhatsApp Image 2026-09-10 at 10.10.17 PM.jpeg",
+        "size": 258871,
+        "originalWidth": 1265,
+        "originalHeight": 1280,
+        "processedWidth": 1265,
+        "processedHeight": 1280,
+        "wasResized": false
+      },
+      "files": [
+        {
+          "filename": "WhatsApp Image 2026-09-10 at 10.10.17 PM.jpeg",
+          "size": 258871,
+          "originalWidth": 1265,
+          "originalHeight": 1280,
+          "processedWidth": 1265,
+          "processedHeight": 1280,
+          "wasResized": false,
+          "processing": {
+            "grayscale": true,
+            "denoising": true,
+            "contrastEnhancement": true,
+            "thresholding": true
+          }
+        },
+        {
+          "filename": "WhatsApp Image 2026-09-10 at 10.10.17 PM.jpeg",
+          "size": 258871,
+          "originalWidth": 1265,
+          "originalHeight": 1280,
+          "processedWidth": 1265,
+          "processedHeight": 1280,
+          "wasResized": false,
+          "processing": {
+            "grayscale": true,
+            "denoising": true,
+            "contrastEnhancement": true,
+            "thresholding": true
+          }
+        }
+      ],
+      "processing": {
+        "grayscale": true,
+        "denoising": true,
+        "contrastEnhancement": true,
+        "thresholding": true
+      },
+      "ocr": {
+        "success": true,
+        "text": "5 NE Sen a HRS a ed Oe NEE Set) aoe thee 4 Lea\ntrek ‘. Pe ‘2G PAN DMA CO A44OD OHO cP oh ot Fe\nTr 5964 OR 1S nb GZ\nEMittwe to UR OPREbeLe oe eee ee) ree\nRhee ; , ‘ ; 7 ee\n? ‘ ot oe ° > 4 ‘ea et 4 Neg > ae, at oP Peers * 7 C4 . as as\n84 ty ij we ‘ yf 2 a\n\\ y ‘ q N NN 5 AS di /\nFE BRAN A Wf SNA, ie\na ban : DUR \\ | ///Y Ree\nwet e Lf BEE \\ Wap i a\nee Finest Pan Masala 7!) 7)\nie mad RP COD e\na & A Premium Product from Dilbagh 9°\"). ee\n. nt xr sf f 4 Soe . ee me\n2 BP ‘Regd. Trademark & Copy Right re | a een oe\n_» 9 Mits.Som Silver Supari Pvt. Ltd. Plot No. A-50, Naraina In Area; Phase); New Dehi-28 = 'S me\n-@ Lustomer Care Cell: 9266877082, E-mail: somsilversuparipvtitd@gmail.com asd = — eae\n(1) “ANGREDIENTS: SUPARL, CATECHU, LINE & CARDAMOM SEEDS, NATURAL FLAVOURS AND “= tea\n5 >A] ONATURALFLAVOURING SUBSTANCES, NATURE-IDENTICAL FLAVOURING SUBSTANCES. ff, J FeesaT SS\nMRP.2 12.00 {Inclusive of All Taxes), Net Wt>4 9 (wor ron mmwons-)_ mere |S ry\nMO NICOTINE NO TOBACCO (esTeEFORE Su MONTHS FROM PAOXAGNG)[carwme or ran mAsAiasmcomOeS Toma) EM\not PN 4 yy - ata ae ee ee Ne? ee how S74 ges 4 Ry\nDy ee | o QV G4 ade A 1.4.80 : ‘ ; ; Ok A F\nSELTPRL Perrys Leen) ee s 9b a\nVO 49909 ON Ot Pe 4s ’ is « 4.604 phe Be\n“Sa o) Viak toa\nwes ns en GG Grr EEE , ‘7\ne Ona a, Boe\ni A Premium Product from Dilbagh St) Se\n( Regd. Trademark & Copy Right TP ak te\nINGREDIENTS: SUPARI, CATECHU, LINE & CARDAMOM SEEDS, NATURAL FLAVOURS AND “2 fps Oi\nTD CNATURALFLAVOURING SUBSTANCES, NATURE-IDENTICAL FLAVOURING SUBSTANCES. fs J Feet se\n9B ARP. 12,00 (Inclusive of All Taxes), Net Wt.:.4g MT. | aS\nA, SND.NICOTINE NO TOBACCO [BEST BEFORE Six MONTHS FROM PACKAGING] [‘CwewinG OF PAN MASALA is mORiOUS To HALT) NN\nww 6h ANG TR NOT Set oor ow\nSVARPRGOR eo AD Ota bs\nTT Pee ee ee eee 4\nUG DRLORLEeLoe ll.) ee ee ee\nNATURAL FLAVOURING SUBSTANCES, NATURE-IDENTICAL FLAVOURING SUBSTANCES. Wy ie\nANDINICOTINE NO TOBACCO [GEST BEFORE Six MONTHS FROM PACKAGING] [ CHEWING OF PAN MASALA 15 mJUmiOUS TO nZAL TA) QIN\nate 4\nVAR ATH 4 ao wAT DOORN\nSELterteperres ff fee) a\n133\nSigne\niLcom\nNO INICOTINE NO TOBACCO [GEST BEFORE SIX MONTHS FROM PACKAGING) [ cHeWine OF PAN WASALAIS nS ma it\n7Pryryy sy\nSs. >. > dorset\nSPU ewe eee ores\ngveengast\nCustomer Care Cell: 9266877082, E-mail: somsilversuparipvtit¢@gmail.com\nNATURAL LAVOURING SUBSTANCES, NATURE-IDENTICAL FLAVOURING SUBSTANCES. ff (Ui\nIND NICOTINE IND TOBACCO [BEST BEFORE SX MONTHS FROM PACKNGNG] [caewana\nTete dh cen hs th ee bd i ie i ne | ere\nWEA u pees teeelnenereeeny tee, No ane\nroses or sn ee ee ee re 1 oe\naie * Pome eeoee sheer ne onerarees peer)\na) ‘ ’ 7 nen | , me 7s ce pieenr laae Dens eeee amar eae eee 4 o oo bo\nA oo SAI As and & got! Ware. 1\noe x oo s. ye , f rn \\ \\ \\w ; . \\ y? . 4\nP } on 7 8 eo Ns XN “OS , -* ‘ al\n1 Aas GGG} yoy ‘jm oF\nHP Regd, Trademark & Copy Right SORE _. ee\n, lifts. Som Silver Supari Pvt. Ltd. Plot No. A-S0, Waraina industrial Area! Phase f Ve a — 3) Be\nJf Customer Care Celt: 9286877082, E-mait somsiiversupariprttg@gmaiicom wu,\n4 ‘Ma ‘WNGREDIENTS: SUPARI, CATECHU, LINE & CARDAMOM SEEDS, NATURAL FLAVOURS AND f = tee\nBD UMATURAL FLAVOURING SUBSTANCES, NATURE-IDENTICAL FLAVOURING SUBSTANCES. fs ‘ee = me\n78 ARP.£ 12.90 (inclusive of All Taxes). Net Wt: 4g er aes ee\nSMD MODTINE MD TOBACCO [GEST BEFORE SX MONTHS FROM PICKING) corumec er ranMAtS anmeas ois) Ow\nin a HR ek De VEE Set ae tee 4 t eat\nCOMMA Dob va oakd tn me eee ob, c earl\nrere VULETPprmerprrresee Leena, © Sse) 2.) nb OE\nOdi iceb uke. $9999 4982284444444 4 OY yarn\n| . ’ . ps t ms 7; Ae) LO et oe oo % a «- te\nGoM Co —® | tastes , pr\n\\ : oe” » A \\ \\ . ~ —- st 56 J . Ps\na 4 ; a . AN \\ } \\ fo . 7S J tf fi ; 7\n: hy 1 , j > 29 \"4\nP } _ Sa Wes My OS A Sef . : a. 4\ner oa 7g 7. ———_—_—_—_—_—Jas[_OlLlOl__ % ’ ‘ Dr\n° 44 Sie, ~\\, . ah\nast Finest Pan Masala , 7 ( in\nAas IG ee .s =) 2\nAD on: ran OG ABE\nB A Premium Product from Dilbagh \"3 an tS\nak hs x 7 . . fr\nHE Regd. Trademark & Copy Right OTE é — ae oe\n__Aiits.Som Silver Supari Pvt. Ltd. Plot No. A-50, Naraina industrial Area, Phase J) eh-26 ES Se\nJ} Lustomer Care Cell: 9266877082, E-mail: somsitversuparipvtitd@qmailcom \"a, EN\n4 (Wf INGREDIENTS: SUPARI, CATECHU, LINE & CARDAMOM SEEDS, NATURAL FLAVOURS AND fe = cee aa\n) of AAATURALELAVOURING SUBSTANCES, NATURE-IDENTICAL FLAVOURING SUBSTANCES. ts a = mys\n0 MRP.2 12.00 (inclusive of All Taxes), Net Wt>4g “uence” | EEA 56\nA ND MICOTINE ND TOBACCO [GEST BEFORE SX MONTHS FROM PACKAGNG] [ cuewone OF ran mASALa cs msumius To (i's) QUES\nPepe nyc 7 oy , OD ak tp de on : 7 LES\non beer TES dee Meade 7 Bupha Uo is a . . Ly Liga a\na a wa UA 2 UG ae oo ee\ni y bh nek 7S ae ’ ay SuqQdip ugpu yv Fae ea eerucemeceea ApS ee\na Latest. ~ sonbora ad ayes ar non ena a — : fe\nae . oN a ‘, “e : , vay yond A. — rly i ees oe “gfalta Je\nYi i tp es ce wn : Po AS SE OS wL / i oe re ; 7\nNes . 3h3 . If: AS Ae f food aa Yo fa f Lr \\ LN 4 Bee aves\nee een ar an rp pa ty OOF BATA Wy da apart\nrake * HON r f Poa tg poe ¢ fa Nota YON {ff fee Yiays saa\n3 ‘ _ | - e , 4 Pd . we se “heed ee . .\nRee eee Plot ROVAYSO casual Area hase DH eZ JSR SES 3:\nee NB cesar iver Supatl EVISLG Di, See\nte stomencare’ ee SEU eH D i) (ESSRES\nPE ne RAL IQURING SUBSTAN WNW NaG BM ['woT FOR MuNOnS«] a nek oe\nOP WUSive Of AlliTaxes)! NetWtsa\" (cwor FoxstwoRse] Log OHS 7 ie\nae EK SINENIIOH 0 EST BEFORE SX WONTHS FROM PACKAGG]f cewane Or PAN WATATA S aSURIOTS MASAIATS UBIOG a ee\nee <3 ‘ LUDH ame anon onit c-Si ania. — , : = = - ~ ; a\neee TT teed else st\nin a HR ek Be VRE Ser! aoe tee ag tee)\nCOMME Do bn dnckb btn mn te ae + obi, c card\nretre VULETPRPLrerprrresee Leena, Sse) 2.) nb\nOhi heb uke. $699 9944 4422424408444 444884 pre\n| , ’ . om wy ms 7; Ae) PA at eo) om * y «ts\nGoM e Co ® ! taal ja 4\na 4 ; a . au \\ } ‘fo . 7S J tf fh ; 7\n: hy , j ae \"4\nP } ve iN) My OS A Sef . : i. 4\ne , y et ° ? 7 ; / f . \\ \\, \\ \\ / I, | ; f or\ne 44 + ~, . oe\naa Finest Pan Masala , 7 ( it\nBas IG 5 =) 2\nAD ~ Can OG ABE\nHE Regd. Trademark & Copy Right ORT . — ee oe\nJ} {ustomer Care Cell: 9266877082, E-mail: somsitversupariprtitd@qmailcom \"an, EN\nBP Regi Trademark & Copy Right if —— ee\nJ} Airs. Som Silver Supari Pvt. Ltd, Plot No. A-SO, Naraina Industrial Area, Phase |New Delhi-28 =a 9's\n3 J} chara ALavOURING SUBSTANCES, NATURE-IDENTICAL FLAVOURING SUBSTANCES. Sie\nMRP. 12,00(Inclusive of All Taxes). Net Wt:4q _ (worrommmons7] Or => ae\nNNO.NICOTINE NO TOBACCO [EST BEFORE Six MONTHS FROM FACKAGNG] ( creWurc OF PAN MASALA is URS To nA)\nye4\nn Silver St\nINGREDIENTS: SUPARI, CAT\neuauearars com\nTURAL FLAVOURING SUBSTANCES, NATURE\nTICAL Fl TURING SUBSTANCES\nSeek 4\nNO NICOTINE NO TOBACC(\nRAGING\n1a Bee eT SV VON Oe ees Be wee ’ -— *\nRRR RASH Bie\n6... | ase. pee\n\n5 NE Sen a HRS a ed Oe NEE Set) aoe thee 4 Lea\ntrek ‘. Pe ‘2G PAN DMA CO A44OD OHO cP oh ot Fe\nTr 5964 OR 1S nb GZ\nEMittwe to UR OPREbeLe oe eee ee) ree\nRhee ; , ‘ ; 7 ee\n? ‘ ot oe ° > 4 ‘ea et 4 Neg > ae, at oP Peers * 7 C4 . as as\n84 ty ij we ‘ yf 2 a\n\\ y ‘ q N NN 5 AS di /\nFE BRAN A Wf SNA, ie\na ban : DUR \\ | ///Y Ree\nwet e Lf BEE \\ Wap i a\nee Finest Pan Masala 7!) 7)\nie mad RP COD e\na & A Premium Product from Dilbagh 9°\"). ee\n. nt xr sf f 4 Soe . ee me\n2 BP ‘Regd. Trademark & Copy Right re | a een oe\n_» 9 Mits.Som Silver Supari Pvt. Ltd. Plot No. A-50, Naraina In Area; Phase); New Dehi-28 = 'S me\n-@ Lustomer Care Cell: 9266877082, E-mail: somsilversuparipvtitd@gmail.com asd = — eae\n(1) “ANGREDIENTS: SUPARL, CATECHU, LINE & CARDAMOM SEEDS, NATURAL FLAVOURS AND “= tea\n5 >A] ONATURALFLAVOURING SUBSTANCES, NATURE-IDENTICAL FLAVOURING SUBSTANCES. ff, J FeesaT SS\nMRP.2 12.00 {Inclusive of All Taxes), Net Wt>4 9 (wor ron mmwons-)_ mere |S ry\nMO NICOTINE NO TOBACCO (esTeEFORE Su MONTHS FROM PAOXAGNG)[carwme or ran mAsAiasmcomOeS Toma) EM\not PN 4 yy - ata ae ee ee Ne? ee how S74 ges 4 Ry\nDy ee | o QV G4 ade A 1.4.80 : ‘ ; ; Ok A F\nSELTPRL Perrys Leen) ee s 9b a\nVO 49909 ON Ot Pe 4s ’ is « 4.604 phe Be\n“Sa o) Viak toa\nwes ns en GG Grr EEE , ‘7\ne Ona a, Boe\ni A Premium Product from Dilbagh St) Se\n( Regd. Trademark & Copy Right TP ak te\nINGREDIENTS: SUPARI, CATECHU, LINE & CARDAMOM SEEDS, NATURAL FLAVOURS AND “2 fps Oi\nTD CNATURALFLAVOURING SUBSTANCES, NATURE-IDENTICAL FLAVOURING SUBSTANCES. fs J Feet se\n9B ARP. 12,00 (Inclusive of All Taxes), Net Wt.:.4g MT. | aS\nA, SND.NICOTINE NO TOBACCO [BEST BEFORE Six MONTHS FROM PACKAGING] [‘CwewinG OF PAN MASALA is mORiOUS To HALT) NN\nww 6h ANG TR NOT Set oor ow\nSVARPRGOR eo AD Ota bs\nTT Pee ee ee eee 4\nUG DRLORLEeLoe ll.) ee ee ee\nNATURAL FLAVOURING SUBSTANCES, NATURE-IDENTICAL FLAVOURING SUBSTANCES. Wy ie\nANDINICOTINE NO TOBACCO [GEST BEFORE Six MONTHS FROM PACKAGING] [ CHEWING OF PAN MASALA 15 mJUmiOUS TO nZAL TA) QIN\nate 4\nVAR ATH 4 ao wAT DOORN\nSELterteperres ff fee) a\n133\nSigne\niLcom\nNO INICOTINE NO TOBACCO [GEST BEFORE SIX MONTHS FROM PACKAGING) [ cHeWine OF PAN WASALAIS nS ma it\n7Pryryy sy\nSs. >. > dorset\nSPU ewe eee ores\ngveengast\nCustomer Care Cell: 9266877082, E-mail: somsilversuparipvtit¢@gmail.com\nNATURAL LAVOURING SUBSTANCES, NATURE-IDENTICAL FLAVOURING SUBSTANCES. ff (Ui\nIND NICOTINE IND TOBACCO [BEST BEFORE SX MONTHS FROM PACKNGNG] [caewana\nTete dh cen hs th ee bd i ie i ne | ere\nWEA u pees teeelnenereeeny tee, No ane\nroses or sn ee ee ee re 1 oe\naie * Pome eeoee sheer ne onerarees peer)\na) ‘ ’ 7 nen | , me 7s ce pieenr laae Dens eeee amar eae eee 4 o oo bo\nA oo SAI As and & got! Ware. 1\noe x oo s. ye , f rn \\ \\ \\w ; . \\ y? . 4\nP } on 7 8 eo Ns XN “OS , -* ‘ al\n1 Aas GGG} yoy ‘jm oF\nHP Regd, Trademark & Copy Right SORE _. ee\n, lifts. Som Silver Supari Pvt. Ltd. Plot No. A-S0, Waraina industrial Area! Phase f Ve a — 3) Be\nJf Customer Care Celt: 9286877082, E-mait somsiiversupariprttg@gmaiicom wu,\n4 ‘Ma ‘WNGREDIENTS: SUPARI, CATECHU, LINE & CARDAMOM SEEDS, NATURAL FLAVOURS AND f = tee\nBD UMATURAL FLAVOURING SUBSTANCES, NATURE-IDENTICAL FLAVOURING SUBSTANCES. fs ‘ee = me\n78 ARP.£ 12.90 (inclusive of All Taxes). Net Wt: 4g er aes ee\nSMD MODTINE MD TOBACCO [GEST BEFORE SX MONTHS FROM PICKING) corumec er ranMAtS anmeas ois) Ow\nin a HR ek De VEE Set ae tee 4 t eat\nCOMMA Dob va oakd tn me eee ob, c earl\nrere VULETPprmerprrresee Leena, © Sse) 2.) nb OE\nOdi iceb uke. $9999 4982284444444 4 OY yarn\n| . ’ . ps t ms 7; Ae) LO et oe oo % a «- te\nGoM Co —® | tastes , pr\n\\ : oe” » A \\ \\ . ~ —- st 56 J . Ps\na 4 ; a . AN \\ } \\ fo . 7S J tf fi ; 7\n: hy 1 , j > 29 \"4\nP } _ Sa Wes My OS A Sef . : a. 4\ner oa 7g 7. ———_—_—_—_—_—Jas[_OlLlOl__ % ’ ‘ Dr\n° 44 Sie, ~\\, . ah\nast Finest Pan Masala , 7 ( in\nAas IG ee .s =) 2\nAD on: ran OG ABE\nB A Premium Product from Dilbagh \"3 an tS\nak hs x 7 . . fr\nHE Regd. Trademark & Copy Right OTE é — ae oe\n__Aiits.Som Silver Supari Pvt. Ltd. Plot No. A-50, Naraina industrial Area, Phase J) eh-26 ES Se\nJ} Lustomer Care Cell: 9266877082, E-mail: somsitversuparipvtitd@qmailcom \"a, EN\n4 (Wf INGREDIENTS: SUPARI, CATECHU, LINE & CARDAMOM SEEDS, NATURAL FLAVOURS AND fe = cee aa\n) of AAATURALELAVOURING SUBSTANCES, NATURE-IDENTICAL FLAVOURING SUBSTANCES. ts a = mys\n0 MRP.2 12.00 (inclusive of All Taxes), Net Wt>4g “uence” | EEA 56\nA ND MICOTINE ND TOBACCO [GEST BEFORE SX MONTHS FROM PACKAGNG] [ cuewone OF ran mASALa cs msumius To (i's) QUES\nPepe nyc 7 oy , OD ak tp de on : 7 LES\non beer TES dee Meade 7 Bupha Uo is a . . Ly Liga a\na a wa UA 2 UG ae oo ee\ni y bh nek 7S ae ’ ay SuqQdip ugpu yv Fae ea eerucemeceea ApS ee\na Latest. ~ sonbora ad ayes ar non ena a — : fe\nae . oN a ‘, “e : , vay yond A. — rly i ees oe “gfalta Je\nYi i tp es ce wn : Po AS SE OS wL / i oe re ; 7\nNes . 3h3 . If: AS Ae f food aa Yo fa f Lr \\ LN 4 Bee aves\nee een ar an rp pa ty OOF BATA Wy da apart\nrake * HON r f Poa tg poe ¢ fa Nota YON {ff fee Yiays saa\n3 ‘ _ | - e , 4 Pd . we se “heed ee . .\nRee eee Plot ROVAYSO casual Area hase DH eZ JSR SES 3:\nee NB cesar iver Supatl EVISLG Di, See\nte stomencare’ ee SEU eH D i) (ESSRES\nPE ne RAL IQURING SUBSTAN WNW NaG BM ['woT FOR MuNOnS«] a nek oe\nOP WUSive Of AlliTaxes)! NetWtsa\" (cwor FoxstwoRse] Log OHS 7 ie\nae EK SINENIIOH 0 EST BEFORE SX WONTHS FROM PACKAGG]f cewane Or PAN WATATA S aSURIOTS MASAIATS UBIOG a ee\nee <3 ‘ LUDH ame anon onit c-Si ania. — , : = = - ~ ; a\neee TT teed else st\nin a HR ek Be VRE Ser! aoe tee ag tee)\nCOMME Do bn dnckb btn mn te ae + obi, c card\nretre VULETPRPLrerprrresee Leena, Sse) 2.) nb\nOhi heb uke. $699 9944 4422424408444 444884 pre\n| , ’ . om wy ms 7; Ae) PA at eo) om * y «ts\nGoM e Co ® ! taal ja 4\na 4 ; a . au \\ } ‘fo . 7S J tf fh ; 7\n: hy , j ae \"4\nP } ve iN) My OS A Sef . : i. 4\ne , y et ° ? 7 ; / f . \\ \\, \\ \\ / I, | ; f or\ne 44 + ~, . oe\naa Finest Pan Masala , 7 ( it\nBas IG 5 =) 2\nAD ~ Can OG ABE\nHE Regd. Trademark & Copy Right ORT . — ee oe\nJ} {ustomer Care Cell: 9266877082, E-mail: somsitversupariprtitd@qmailcom \"an, EN\nBP Regi Trademark & Copy Right if —— ee\nJ} Airs. Som Silver Supari Pvt. Ltd, Plot No. A-SO, Naraina Industrial Area, Phase |New Delhi-28 =a 9's\n3 J} chara ALavOURING SUBSTANCES, NATURE-IDENTICAL FLAVOURING SUBSTANCES. Sie\nMRP. 12,00(Inclusive of All Taxes). Net Wt:4q _ (worrommmons7] Or => ae\nNNO.NICOTINE NO TOBACCO [EST BEFORE Six MONTHS FROM FACKAGNG] ( creWurc OF PAN MASALA is URS To nA)\nye4\nn Silver St\nINGREDIENTS: SUPARI, CAT\neuauearars com\nTURAL FLAVOURING SUBSTANCES, NATURE\nTICAL Fl TURING SUBSTANCES\nSeek 4\nNO NICOTINE NO TOBACC(\nRAGING\n1a Bee eT SV VON Oe ees Be wee ’ -— *\nRRR RASH Bie\n6... | ase. pee"
+      },
+      "ocr_results": [
+        {
+          "index": 0,
+          "role": "front",
+          "filename": "WhatsApp Image 2026-09-10 at 10.10.17 PM.jpeg",
+          "success": true,
+          "text": "5 NE Sen a HRS a ed Oe NEE Set) aoe thee 4 Lea\ntrek ‘. Pe ‘2G PAN DMA CO A44OD OHO cP oh ot Fe\nTr 5964 OR 1S nb GZ\nEMittwe to UR OPREbeLe oe eee ee) ree\nRhee ; , ‘ ; 7 ee\n? ‘ ot oe ° > 4 ‘ea et 4 Neg > ae, at oP Peers * 7 C4 . as as\n84 ty ij we ‘ yf 2 a\n\\ y ‘ q N NN 5 AS di /\nFE BRAN A Wf SNA, ie\na ban : DUR \\ | ///Y Ree\nwet e Lf BEE \\ Wap i a\nee Finest Pan Masala 7!) 7)\nie mad RP COD e\na & A Premium Product from Dilbagh 9°\"). ee\n. nt xr sf f 4 Soe . ee me\n2 BP ‘Regd. Trademark & Copy Right re | a een oe\n_» 9 Mits.Som Silver Supari Pvt. Ltd. Plot No. A-50, Naraina In Area; Phase); New Dehi-28 = 'S me\n-@ Lustomer Care Cell: 9266877082, E-mail: somsilversuparipvtitd@gmail.com asd = — eae\n(1) “ANGREDIENTS: SUPARL, CATECHU, LINE & CARDAMOM SEEDS, NATURAL FLAVOURS AND “= tea\n5 >A] ONATURALFLAVOURING SUBSTANCES, NATURE-IDENTICAL FLAVOURING SUBSTANCES. ff, J FeesaT SS\nMRP.2 12.00 {Inclusive of All Taxes), Net Wt>4 9 (wor ron mmwons-)_ mere |S ry\nMO NICOTINE NO TOBACCO (esTeEFORE Su MONTHS FROM PAOXAGNG)[carwme or ran mAsAiasmcomOeS Toma) EM\not PN 4 yy - ata ae ee ee Ne? ee how S74 ges 4 Ry\nDy ee | o QV G4 ade A 1.4.80 : ‘ ; ; Ok A F\nSELTPRL Perrys Leen) ee s 9b a\nVO 49909 ON Ot Pe 4s ’ is « 4.604 phe Be\n“Sa o) Viak toa\nwes ns en GG Grr EEE , ‘7\ne Ona a, Boe\ni A Premium Product from Dilbagh St) Se\n( Regd. Trademark & Copy Right TP ak te\nINGREDIENTS: SUPARI, CATECHU, LINE & CARDAMOM SEEDS, NATURAL FLAVOURS AND “2 fps Oi\nTD CNATURALFLAVOURING SUBSTANCES, NATURE-IDENTICAL FLAVOURING SUBSTANCES. fs J Feet se\n9B ARP. 12,00 (Inclusive of All Taxes), Net Wt.:.4g MT. | aS\nA, SND.NICOTINE NO TOBACCO [BEST BEFORE Six MONTHS FROM PACKAGING] [‘CwewinG OF PAN MASALA is mORiOUS To HALT) NN\nww 6h ANG TR NOT Set oor ow\nSVARPRGOR eo AD Ota bs\nTT Pee ee ee eee 4\nUG DRLORLEeLoe ll.) ee ee ee\nNATURAL FLAVOURING SUBSTANCES, NATURE-IDENTICAL FLAVOURING SUBSTANCES. Wy ie\nANDINICOTINE NO TOBACCO [GEST BEFORE Six MONTHS FROM PACKAGING] [ CHEWING OF PAN MASALA 15 mJUmiOUS TO nZAL TA) QIN\nate 4\nVAR ATH 4 ao wAT DOORN\nSELterteperres ff fee) a\n133\nSigne\niLcom\nNO INICOTINE NO TOBACCO [GEST BEFORE SIX MONTHS FROM PACKAGING) [ cHeWine OF PAN WASALAIS nS ma it\n7Pryryy sy\nSs. >. > dorset\nSPU ewe eee ores\ngveengast\nCustomer Care Cell: 9266877082, E-mail: somsilversuparipvtit¢@gmail.com\nNATURAL LAVOURING SUBSTANCES, NATURE-IDENTICAL FLAVOURING SUBSTANCES. ff (Ui\nIND NICOTINE IND TOBACCO [BEST BEFORE SX MONTHS FROM PACKNGNG] [caewana\nTete dh cen hs th ee bd i ie i ne | ere\nWEA u pees teeelnenereeeny tee, No ane\nroses or sn ee ee ee re 1 oe\naie * Pome eeoee sheer ne onerarees peer)\na) ‘ ’ 7 nen | , me 7s ce pieenr laae Dens eeee amar eae eee 4 o oo bo\nA oo SAI As and & got! Ware. 1\noe x oo s. ye , f rn \\ \\ \\w ; . \\ y? . 4\nP } on 7 8 eo Ns XN “OS , -* ‘ al\n1 Aas GGG} yoy ‘jm oF\nHP Regd, Trademark & Copy Right SORE _. ee\n, lifts. Som Silver Supari Pvt. Ltd. Plot No. A-S0, Waraina industrial Area! Phase f Ve a — 3) Be\nJf Customer Care Celt: 9286877082, E-mait somsiiversupariprttg@gmaiicom wu,\n4 ‘Ma ‘WNGREDIENTS: SUPARI, CATECHU, LINE & CARDAMOM SEEDS, NATURAL FLAVOURS AND f = tee\nBD UMATURAL FLAVOURING SUBSTANCES, NATURE-IDENTICAL FLAVOURING SUBSTANCES. fs ‘ee = me\n78 ARP.£ 12.90 (inclusive of All Taxes). Net Wt: 4g er aes ee\nSMD MODTINE MD TOBACCO [GEST BEFORE SX MONTHS FROM PICKING) corumec er ranMAtS anmeas ois) Ow\nin a HR ek De VEE Set ae tee 4 t eat\nCOMMA Dob va oakd tn me eee ob, c earl\nrere VULETPprmerprrresee Leena, © Sse) 2.) nb OE\nOdi iceb uke. $9999 4982284444444 4 OY yarn\n| . ’ . ps t ms 7; Ae) LO et oe oo % a «- te\nGoM Co —® | tastes , pr\n\\ : oe” » A \\ \\ . ~ —- st 56 J . Ps\na 4 ; a . AN \\ } \\ fo . 7S J tf fi ; 7\n: hy 1 , j > 29 \"4\nP } _ Sa Wes My OS A Sef . : a. 4\ner oa 7g 7. ———_—_—_—_—_—Jas[_OlLlOl__ % ’ ‘ Dr\n° 44 Sie, ~\\, . ah\nast Finest Pan Masala , 7 ( in\nAas IG ee .s =) 2\nAD on: ran OG ABE\nB A Premium Product from Dilbagh \"3 an tS\nak hs x 7 . . fr\nHE Regd. Trademark & Copy Right OTE é — ae oe\n__Aiits.Som Silver Supari Pvt. Ltd. Plot No. A-50, Naraina industrial Area, Phase J) eh-26 ES Se\nJ} Lustomer Care Cell: 9266877082, E-mail: somsitversuparipvtitd@qmailcom \"a, EN\n4 (Wf INGREDIENTS: SUPARI, CATECHU, LINE & CARDAMOM SEEDS, NATURAL FLAVOURS AND fe = cee aa\n) of AAATURALELAVOURING SUBSTANCES, NATURE-IDENTICAL FLAVOURING SUBSTANCES. ts a = mys\n0 MRP.2 12.00 (inclusive of All Taxes), Net Wt>4g “uence” | EEA 56\nA ND MICOTINE ND TOBACCO [GEST BEFORE SX MONTHS FROM PACKAGNG] [ cuewone OF ran mASALa cs msumius To (i's) QUES\nPepe nyc 7 oy , OD ak tp de on : 7 LES\non beer TES dee Meade 7 Bupha Uo is a . . Ly Liga a\na a wa UA 2 UG ae oo ee\ni y bh nek 7S ae ’ ay SuqQdip ugpu yv Fae ea eerucemeceea ApS ee\na Latest. ~ sonbora ad ayes ar non ena a — : fe\nae . oN a ‘, “e : , vay yond A. — rly i ees oe “gfalta Je\nYi i tp es ce wn : Po AS SE OS wL / i oe re ; 7\nNes . 3h3 . If: AS Ae f food aa Yo fa f Lr \\ LN 4 Bee aves\nee een ar an rp pa ty OOF BATA Wy da apart\nrake * HON r f Poa tg poe ¢ fa Nota YON {ff fee Yiays saa\n3 ‘ _ | - e , 4 Pd . we se “heed ee . .\nRee eee Plot ROVAYSO casual Area hase DH eZ JSR SES 3:\nee NB cesar iver Supatl EVISLG Di, See\nte stomencare’ ee SEU eH D i) (ESSRES\nPE ne RAL IQURING SUBSTAN WNW NaG BM ['woT FOR MuNOnS«] a nek oe\nOP WUSive Of AlliTaxes)! NetWtsa\" (cwor FoxstwoRse] Log OHS 7 ie\nae EK SINENIIOH 0 EST BEFORE SX WONTHS FROM PACKAGG]f cewane Or PAN WATATA S aSURIOTS MASAIATS UBIOG a ee\nee <3 ‘ LUDH ame anon onit c-Si ania. — , : = = - ~ ; a\neee TT teed else st\nin a HR ek Be VRE Ser! aoe tee ag tee)\nCOMME Do bn dnckb btn mn te ae + obi, c card\nretre VULETPRPLrerprrresee Leena, Sse) 2.) nb\nOhi heb uke. $699 9944 4422424408444 444884 pre\n| , ’ . om wy ms 7; Ae) PA at eo) om * y «ts\nGoM e Co ® ! taal ja 4\na 4 ; a . au \\ } ‘fo . 7S J tf fh ; 7\n: hy , j ae \"4\nP } ve iN) My OS A Sef . : i. 4\ne , y et ° ? 7 ; / f . \\ \\, \\ \\ / I, | ; f or\ne 44 + ~, . oe\naa Finest Pan Masala , 7 ( it\nBas IG 5 =) 2\nAD ~ Can OG ABE\nHE Regd. Trademark & Copy Right ORT . — ee oe\nJ} {ustomer Care Cell: 9266877082, E-mail: somsitversupariprtitd@qmailcom \"an, EN\nBP Regi Trademark & Copy Right if —— ee\nJ} Airs. Som Silver Supari Pvt. Ltd, Plot No. A-SO, Naraina Industrial Area, Phase |New Delhi-28 =a 9's\n3 J} chara ALavOURING SUBSTANCES, NATURE-IDENTICAL FLAVOURING SUBSTANCES. Sie\nMRP. 12,00(Inclusive of All Taxes). Net Wt:4q _ (worrommmons7] Or => ae\nNNO.NICOTINE NO TOBACCO [EST BEFORE Six MONTHS FROM FACKAGNG] ( creWurc OF PAN MASALA is URS To nA)\nye4\nn Silver St\nINGREDIENTS: SUPARI, CAT\neuauearars com\nTURAL FLAVOURING SUBSTANCES, NATURE\nTICAL Fl TURING SUBSTANCES\nSeek 4\nNO NICOTINE NO TOBACC(\nRAGING\n1a Bee eT SV VON Oe ees Be wee ’ -— *\nRRR RASH Bie\n6... | ase. pee"
+        },
+        {
+          "index": 1,
+          "role": "back_side",
+          "filename": "WhatsApp Image 2026-09-10 at 10.10.17 PM.jpeg",
+          "success": true,
+          "text": "5 NE Sen a HRS a ed Oe NEE Set) aoe thee 4 Lea\ntrek ‘. Pe ‘2G PAN DMA CO A44OD OHO cP oh ot Fe\nTr 5964 OR 1S nb GZ\nEMittwe to UR OPREbeLe oe eee ee) ree\nRhee ; , ‘ ; 7 ee\n? ‘ ot oe ° > 4 ‘ea et 4 Neg > ae, at oP Peers * 7 C4 . as as\n84 ty ij we ‘ yf 2 a\n\\ y ‘ q N NN 5 AS di /\nFE BRAN A Wf SNA, ie\na ban : DUR \\ | ///Y Ree\nwet e Lf BEE \\ Wap i a\nee Finest Pan Masala 7!) 7)\nie mad RP COD e\na & A Premium Product from Dilbagh 9°\"). ee\n. nt xr sf f 4 Soe . ee me\n2 BP ‘Regd. Trademark & Copy Right re | a een oe\n_» 9 Mits.Som Silver Supari Pvt. Ltd. Plot No. A-50, Naraina In Area; Phase); New Dehi-28 = 'S me\n-@ Lustomer Care Cell: 9266877082, E-mail: somsilversuparipvtitd@gmail.com asd = — eae\n(1) “ANGREDIENTS: SUPARL, CATECHU, LINE & CARDAMOM SEEDS, NATURAL FLAVOURS AND “= tea\n5 >A] ONATURALFLAVOURING SUBSTANCES, NATURE-IDENTICAL FLAVOURING SUBSTANCES. ff, J FeesaT SS\nMRP.2 12.00 {Inclusive of All Taxes), Net Wt>4 9 (wor ron mmwons-)_ mere |S ry\nMO NICOTINE NO TOBACCO (esTeEFORE Su MONTHS FROM PAOXAGNG)[carwme or ran mAsAiasmcomOeS Toma) EM\not PN 4 yy - ata ae ee ee Ne? ee how S74 ges 4 Ry\nDy ee | o QV G4 ade A 1.4.80 : ‘ ; ; Ok A F\nSELTPRL Perrys Leen) ee s 9b a\nVO 49909 ON Ot Pe 4s ’ is « 4.604 phe Be\n“Sa o) Viak toa\nwes ns en GG Grr EEE , ‘7\ne Ona a, Boe\ni A Premium Product from Dilbagh St) Se\n( Regd. Trademark & Copy Right TP ak te\nINGREDIENTS: SUPARI, CATECHU, LINE & CARDAMOM SEEDS, NATURAL FLAVOURS AND “2 fps Oi\nTD CNATURALFLAVOURING SUBSTANCES, NATURE-IDENTICAL FLAVOURING SUBSTANCES. fs J Feet se\n9B ARP. 12,00 (Inclusive of All Taxes), Net Wt.:.4g MT. | aS\nA, SND.NICOTINE NO TOBACCO [BEST BEFORE Six MONTHS FROM PACKAGING] [‘CwewinG OF PAN MASALA is mORiOUS To HALT) NN\nww 6h ANG TR NOT Set oor ow\nSVARPRGOR eo AD Ota bs\nTT Pee ee ee eee 4\nUG DRLORLEeLoe ll.) ee ee ee\nNATURAL FLAVOURING SUBSTANCES, NATURE-IDENTICAL FLAVOURING SUBSTANCES. Wy ie\nANDINICOTINE NO TOBACCO [GEST BEFORE Six MONTHS FROM PACKAGING] [ CHEWING OF PAN MASALA 15 mJUmiOUS TO nZAL TA) QIN\nate 4\nVAR ATH 4 ao wAT DOORN\nSELterteperres ff fee) a\n133\nSigne\niLcom\nNO INICOTINE NO TOBACCO [GEST BEFORE SIX MONTHS FROM PACKAGING) [ cHeWine OF PAN WASALAIS nS ma it\n7Pryryy sy\nSs. >. > dorset\nSPU ewe eee ores\ngveengast\nCustomer Care Cell: 9266877082, E-mail: somsilversuparipvtit¢@gmail.com\nNATURAL LAVOURING SUBSTANCES, NATURE-IDENTICAL FLAVOURING SUBSTANCES. ff (Ui\nIND NICOTINE IND TOBACCO [BEST BEFORE SX MONTHS FROM PACKNGNG] [caewana\nTete dh cen hs th ee bd i ie i ne | ere\nWEA u pees teeelnenereeeny tee, No ane\nroses or sn ee ee ee re 1 oe\naie * Pome eeoee sheer ne onerarees peer)\na) ‘ ’ 7 nen | , me 7s ce pieenr laae Dens eeee amar eae eee 4 o oo bo\nA oo SAI As and & got! Ware. 1\noe x oo s. ye , f rn \\ \\ \\w ; . \\ y? . 4\nP } on 7 8 eo Ns XN “OS , -* ‘ al\n1 Aas GGG} yoy ‘jm oF\nHP Regd, Trademark & Copy Right SORE _. ee\n, lifts. Som Silver Supari Pvt. Ltd. Plot No. A-S0, Waraina industrial Area! Phase f Ve a — 3) Be\nJf Customer Care Celt: 9286877082, E-mait somsiiversupariprttg@gmaiicom wu,\n4 ‘Ma ‘WNGREDIENTS: SUPARI, CATECHU, LINE & CARDAMOM SEEDS, NATURAL FLAVOURS AND f = tee\nBD UMATURAL FLAVOURING SUBSTANCES, NATURE-IDENTICAL FLAVOURING SUBSTANCES. fs ‘ee = me\n78 ARP.£ 12.90 (inclusive of All Taxes). Net Wt: 4g er aes ee\nSMD MODTINE MD TOBACCO [GEST BEFORE SX MONTHS FROM PICKING) corumec er ranMAtS anmeas ois) Ow\nin a HR ek De VEE Set ae tee 4 t eat\nCOMMA Dob va oakd tn me eee ob, c earl\nrere VULETPprmerprrresee Leena, © Sse) 2.) nb OE\nOdi iceb uke. $9999 4982284444444 4 OY yarn\n| . ’ . ps t ms 7; Ae) LO et oe oo % a «- te\nGoM Co —® | tastes , pr\n\\ : oe” » A \\ \\ . ~ —- st 56 J . Ps\na 4 ; a . AN \\ } \\ fo . 7S J tf fi ; 7\n: hy 1 , j > 29 \"4\nP } _ Sa Wes My OS A Sef . : a. 4\ner oa 7g 7. ———_—_—_—_—_—Jas[_OlLlOl__ % ’ ‘ Dr\n° 44 Sie, ~\\, . ah\nast Finest Pan Masala , 7 ( in\nAas IG ee .s =) 2\nAD on: ran OG ABE\nB A Premium Product from Dilbagh \"3 an tS\nak hs x 7 . . fr\nHE Regd. Trademark & Copy Right OTE é — ae oe\n__Aiits.Som Silver Supari Pvt. Ltd. Plot No. A-50, Naraina industrial Area, Phase J) eh-26 ES Se\nJ} Lustomer Care Cell: 9266877082, E-mail: somsitversuparipvtitd@qmailcom \"a, EN\n4 (Wf INGREDIENTS: SUPARI, CATECHU, LINE & CARDAMOM SEEDS, NATURAL FLAVOURS AND fe = cee aa\n) of AAATURALELAVOURING SUBSTANCES, NATURE-IDENTICAL FLAVOURING SUBSTANCES. ts a = mys\n0 MRP.2 12.00 (inclusive of All Taxes), Net Wt>4g “uence” | EEA 56\nA ND MICOTINE ND TOBACCO [GEST BEFORE SX MONTHS FROM PACKAGNG] [ cuewone OF ran mASALa cs msumius To (i's) QUES\nPepe nyc 7 oy , OD ak tp de on : 7 LES\non beer TES dee Meade 7 Bupha Uo is a . . Ly Liga a\na a wa UA 2 UG ae oo ee\ni y bh nek 7S ae ’ ay SuqQdip ugpu yv Fae ea eerucemeceea ApS ee\na Latest. ~ sonbora ad ayes ar non ena a — : fe\nae . oN a ‘, “e : , vay yond A. — rly i ees oe “gfalta Je\nYi i tp es ce wn : Po AS SE OS wL / i oe re ; 7\nNes . 3h3 . If: AS Ae f food aa Yo fa f Lr \\ LN 4 Bee aves\nee een ar an rp pa ty OOF BATA Wy da apart\nrake * HON r f Poa tg poe ¢ fa Nota YON {ff fee Yiays saa\n3 ‘ _ | - e , 4 Pd . we se “heed ee . .\nRee eee Plot ROVAYSO casual Area hase DH eZ JSR SES 3:\nee NB cesar iver Supatl EVISLG Di, See\nte stomencare’ ee SEU eH D i) (ESSRES\nPE ne RAL IQURING SUBSTAN WNW NaG BM ['woT FOR MuNOnS«] a nek oe\nOP WUSive Of AlliTaxes)! NetWtsa\" (cwor FoxstwoRse] Log OHS 7 ie\nae EK SINENIIOH 0 EST BEFORE SX WONTHS FROM PACKAGG]f cewane Or PAN WATATA S aSURIOTS MASAIATS UBIOG a ee\nee <3 ‘ LUDH ame anon onit c-Si ania. — , : = = - ~ ; a\neee TT teed else st\nin a HR ek Be VRE Ser! aoe tee ag tee)\nCOMME Do bn dnckb btn mn te ae + obi, c card\nretre VULETPRPLrerprrresee Leena, Sse) 2.) nb\nOhi heb uke. $699 9944 4422424408444 444884 pre\n| , ’ . om wy ms 7; Ae) PA at eo) om * y «ts\nGoM e Co ® ! taal ja 4\na 4 ; a . au \\ } ‘fo . 7S J tf fh ; 7\n: hy , j ae \"4\nP } ve iN) My OS A Sef . : i. 4\ne , y et ° ? 7 ; / f . \\ \\, \\ \\ / I, | ; f or\ne 44 + ~, . oe\naa Finest Pan Masala , 7 ( it\nBas IG 5 =) 2\nAD ~ Can OG ABE\nHE Regd. Trademark & Copy Right ORT . — ee oe\nJ} {ustomer Care Cell: 9266877082, E-mail: somsitversupariprtitd@qmailcom \"an, EN\nBP Regi Trademark & Copy Right if —— ee\nJ} Airs. Som Silver Supari Pvt. Ltd, Plot No. A-SO, Naraina Industrial Area, Phase |New Delhi-28 =a 9's\n3 J} chara ALavOURING SUBSTANCES, NATURE-IDENTICAL FLAVOURING SUBSTANCES. Sie\nMRP. 12,00(Inclusive of All Taxes). Net Wt:4q _ (worrommmons7] Or => ae\nNNO.NICOTINE NO TOBACCO [EST BEFORE Six MONTHS FROM FACKAGNG] ( creWurc OF PAN MASALA is URS To nA)\nye4\nn Silver St\nINGREDIENTS: SUPARI, CAT\neuauearars com\nTURAL FLAVOURING SUBSTANCES, NATURE\nTICAL Fl TURING SUBSTANCES\nSeek 4\nNO NICOTINE NO TOBACC(\nRAGING\n1a Bee eT SV VON Oe ees Be wee ’ -— *\nRRR RASH Bie\n6... | ase. pee"
+        }
+      ],
+      "extracted": {
+        "product_name": "BRAN A SNA wet BEE Wap Finest Pan Masala mad COD",
+        "manufacturer_or_packer": null,
+        "net_quantity": "4 g",
+        "mrp": 12,
+        "manufacturing_or_packing_date": null,
+        "best_before_or_use_by": null,
+        "consumer_care": "somsilversuparipvtitd@gmail.com",
+        "country_of_origin": null
+      },
+      "compliance": {
+        "overall_status": "REQUIRES_REVIEW",
+        "findings": [
+          {
+            "field": "product_name",
+            "status": "PASS",
+            "message": "Product name detected: BRAN A SNA wet BEE Wap Finest Pan Masala mad COD"
+          },
+          {
+            "field": "manufacturer_or_packer",
+            "status": "REVIEW",
+            "message": "Manufacturer or packer could not be confidently detected."
+          },
+          {
+            "field": "net_quantity",
+            "status": "PASS",
+            "message": "Net quantity detected: 4 g"
+          },
+          {
+            "field": "mrp",
+            "status": "PASS",
+            "message": "Maximum Retail Price (MRP) detected: 12"
+          },
+          {
+            "field": "manufacturing_or_packing_date",
+            "status": "REVIEW",
+            "message": "Manufacturing or packing date could not be confidently detected."
+          },
+          {
+            "field": "best_before_or_use_by",
+            "status": "REVIEW",
+            "message": "Best before or use by date could not be confidently detected."
+          },
+          {
+            "field": "consumer_care",
+            "status": "PASS",
+            "message": "Consumer care details detected: somsilversuparipvtitd@gmail.com"
+          },
+          {
+            "field": "country_of_origin",
+            "status": "REVIEW",
+            "message": "Country of origin could not be confidently detected."
+          }
+        ]
+      }
+    },
+    "officerDecision": "NON_COMPLIANT",
+    "officerRemarks": "jvhjv",
+    "inspectionDate": "2026-09-11T21:14:45.037Z",
+    "inspectedAt": "2026-09-11T21:14:45.037Z",
+    "inspectionReport": null,
+    "officerId": "LM-042",
+    "officerName": "Pranab Boruah"
+  },
+  {
     "id": "LL-2026-0012",
     "complaint_id": "LL-2026-0012",
     "source": "consumer_complaint",

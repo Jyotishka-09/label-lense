@@ -134,6 +134,13 @@ function findAll(filter = {}) {
       return (c.location || '').toLowerCase().includes(targetDistrict);
     });
   }
+  if (filter.locality && filter.locality !== 'ALL') {
+    const targetLoc = filter.locality.trim().toLowerCase();
+    result = result.filter((c) => {
+      const loc = (c.locality || c.location || '').trim().toLowerCase();
+      return loc.includes(targetLoc);
+    });
+  }
   // Newest first
   return result.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
 }
@@ -295,7 +302,7 @@ function isCompletedStatus(status) {
 
 // GET /api/complaints
 router.get("/", (req, res) => {
-  const { citizenId, source, status, inspectorId, state, district } = req.query;
+  const { citizenId, source, status, inspectorId, state, district, area, locality } = req.query;
 
   // Server-side Authority geographic scope enforcement
   const scopeState = req.headers["x-authority-state"] || req.query.scopeState || null;
@@ -316,6 +323,7 @@ router.get("/", (req, res) => {
 
   const effectiveState = scopeState || state;
   const effectiveDistrict = scopeDistrict || district;
+  const effectiveArea = locality || area;
 
   const filter = {};
   if (citizenId) filter.citizenId = citizenId;
@@ -324,6 +332,7 @@ router.get("/", (req, res) => {
   if (inspectorId) filter.inspectorId = inspectorId;
   if (effectiveState && effectiveState !== "ALL") filter.state = effectiveState;
   if (effectiveDistrict && effectiveDistrict !== "ALL") filter.district = effectiveDistrict;
+  if (effectiveArea && effectiveArea !== "ALL") filter.locality = effectiveArea;
 
   const result = findAll(filter);
 

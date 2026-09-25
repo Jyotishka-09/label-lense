@@ -161,12 +161,13 @@ export const createComplaint = async (payload) => {
 /**
  * GET /api/complaints — Fetch all complaints (optionally filter by citizenId and/or source)
  */
-export const fetchComplaints = async (citizenId = null, source = null, state = null, district = null) => {
+export const fetchComplaints = async (citizenId = null, source = null, state = null, district = null, area = null) => {
   const params = {};
   if (citizenId) params.citizenId = citizenId;
   if (source && source !== 'ALL') params.source = source;
   if (state && state !== 'ALL') params.state = state;
   if (district && district !== 'ALL') params.district = district;
+  if (area && area !== 'ALL') params.area = area;
   const response = await api.get('/api/complaints', { params });
   return response.data; // { success, complaints, total, counts }
 };

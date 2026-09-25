@@ -30,6 +30,12 @@ import InspectorInspection from './pages/official/InspectorInspection';
 // ── Authority Protected Pages ──
 import AuthorityDashboard from './pages/official/AuthorityDashboard';
 
+// ── Company Protected Pages ──
+import CompanyLayout from './components/CompanyLayout';
+import CompanyDashboard from './pages/official/CompanyDashboard';
+import CompanyScan from './pages/official/CompanyScan';
+import CompanyCompliancePreview from './pages/official/CompanyCompliancePreview';
+
 function App() {
   return (
     <Routes>
@@ -132,15 +138,32 @@ function App() {
         <Route index element={<AuthorityDashboard />} />
       </Route>
 
+      {/* ── Company Protected Routes ── */}
+      <Route
+        path="/official/company"
+        element={
+          <ProtectedRoute role="COMPANY">
+            <CompanyLayout />
+          </ProtectedRoute>
+        }
+      >
+        <Route index element={<CompanyDashboard />} />
+        <Route path="scan" element={<CompanyScan />} />
+        <Route path="preview" element={<CompanyCompliancePreview />} />
+      </Route>
+
       {/* ── Route Aliases & Short Links ── */}
       <Route path="/login" element={<Navigate to="/citizen/login" replace />} />
       <Route path="/official" element={<Navigate to="/official/login" replace />} />
       <Route path="/inspector" element={<Navigate to="/official/inspector" replace />} />
       <Route path="/authority" element={<Navigate to="/official/authority" replace />} />
+      <Route path="/company" element={<Navigate to="/official/company" replace />} />
       <Route path="/inspector/login" element={<Navigate to="/official/login" replace />} />
       <Route path="/authority/login" element={<Navigate to="/official/login" replace />} />
+      <Route path="/company/login" element={<Navigate to="/official/login" replace />} />
       <Route path="/official/inspector/login" element={<Navigate to="/official/login" replace />} />
       <Route path="/official/authority/login" element={<Navigate to="/official/login" replace />} />
+      <Route path="/official/company/login" element={<Navigate to="/official/login" replace />} />
 
       {/* Catch-all fallback */}
       <Route path="*" element={<Navigate to="/" replace />} />

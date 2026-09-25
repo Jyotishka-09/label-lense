@@ -12,41 +12,44 @@ const OfficialLogin = () => {
   const fromPath = location.state?.from?.pathname || '';
   const requestedRole =
     location.state?.role ||
-    (fromPath.includes('authority') ? ROLES.AUTHORITY : ROLES.INSPECTOR);
+    (fromPath.includes('company')
+      ? ROLES.COMPANY
+      : fromPath.includes('authority')
+      ? ROLES.AUTHORITY
+      : ROLES.INSPECTOR);
 
-  // Role selector: 'INSPECTOR' | 'AUTHORITY'
+  // Role selector: 'INSPECTOR' | 'AUTHORITY' | 'COMPANY'
   const [selectedRole, setSelectedRole] = useState(requestedRole);
 
-  const [email, setEmail] = useState(
-    requestedRole === ROLES.AUTHORITY ? 'authority@labellens.gov.in' : 'inspector@labellens.gov.in'
-  );
-  const [password, setPassword] = useState(
-    requestedRole === ROLES.AUTHORITY ? 'Authority@123' : 'Inspector@123'
-  );
+  const getRoleCredentials = (role) => {
+    if (role === ROLES.COMPANY) {
+      return { email: 'company@labellens.com', password: 'Company@123' };
+    }
+    if (role === ROLES.AUTHORITY) {
+      return { email: 'authority@labellens.gov.in', password: 'Authority@123' };
+    }
+    return { email: 'inspector@labellens.gov.in', password: 'Inspector@123' };
+  };
+
+  const initialCreds = getRoleCredentials(requestedRole);
+  const [email, setEmail] = useState(initialCreds.email);
+  const [password, setPassword] = useState(initialCreds.password);
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
   const handleRoleChange = (role) => {
     setSelectedRole(role);
     setError('');
-    if (role === ROLES.INSPECTOR) {
-      setEmail('inspector@labellens.gov.in');
-      setPassword('Inspector@123');
-    } else {
-      setEmail('authority@labellens.gov.in');
-      setPassword('Authority@123');
-    }
+    const creds = getRoleCredentials(role);
+    setEmail(creds.email);
+    setPassword(creds.password);
   };
 
   const handleFillDemo = () => {
     setError('');
-    if (selectedRole === ROLES.INSPECTOR) {
-      setEmail('inspector@labellens.gov.in');
-      setPassword('Inspector@123');
-    } else {
-      setEmail('authority@labellens.gov.in');
-      setPassword('Authority@123');
-    }
+    const creds = getRoleCredentials(selectedRole);
+    setEmail(creds.email);
+    setPassword(creds.password);
   };
 
   const handleLogin = (e) => {
@@ -63,20 +66,36 @@ const OfficialLogin = () => {
       // First attempt with active selected role
       let user = validateCredentials(email, password, selectedRole);
 
-      // If not matched, gracefully check the other official role
+      // If not matched, gracefully check the other official roles
       if (!user) {
-        const otherRole = selectedRole === ROLES.INSPECTOR ? ROLES.AUTHORITY : ROLES.INSPECTOR;
-        const otherUser = validateCredentials(email, password, otherRole);
-        if (otherUser) {
-          user = otherUser;
-          setSelectedRole(otherRole);
+        const remainingRoles = [ROLES.INSPECTOR, ROLES.AUTHORITY, ROLES.COMPANY].filter(r => r !== selectedRole);
+        for (const altRole of remainingRoles) {
+          const altUser = validateCredentials(email, password, altRole);
+          if (altUser) {
+            user = altUser;
+            setSelectedRole(altRole);
+            break;
+          }
         }
       }
 
       if (user) {
         login(user);
-        const defaultDest = user.role === ROLES.INSPECTOR ? '/official/inspector' : '/official/authority';
-        const targetDest = (fromPath && fromPath.startsWith(user.role === ROLES.INSPECTOR ? '/official/inspector' : '/official/authority'))
+        const defaultDest =
+          user.role === ROLES.COMPANY
+            ? '/official/company'
+            : user.role === ROLES.INSPECTOR
+            ? '/official/inspector'
+            : '/official/authority';
+
+        const rolePrefix =
+          user.role === ROLES.COMPANY
+            ? '/official/company'
+            : user.role === ROLES.INSPECTOR
+            ? '/official/inspector'
+            : '/official/authority';
+
+        const targetDest = (fromPath && fromPath.startsWith(rolePrefix))
           ? fromPath
           : defaultDest;
         navigate(targetDest, { replace: true });
@@ -120,11 +139,11 @@ const OfficialLogin = () => {
           <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block mb-2 text-center">
             Select Your Role
           </span>
-          <div className="grid grid-cols-2 gap-2">
+          <div className="grid grid-cols-3 gap-1.5">
             <button
               type="button"
               onClick={() => handleRoleChange(ROLES.INSPECTOR)}
-              className={`py-2 px-3 rounded text-xs font-bold transition-all ${
+              className={`py-2 px-2 rounded text-xs font-bold transition-all text-center ${
                 selectedRole === ROLES.INSPECTOR
                   ? 'bg-[#0f2942] text-white shadow-xs'
                   : 'bg-white text-slate-700 border border-slate-300 hover:bg-slate-100'
@@ -135,13 +154,24 @@ const OfficialLogin = () => {
             <button
               type="button"
               onClick={() => handleRoleChange(ROLES.AUTHORITY)}
-              className={`py-2 px-3 rounded text-xs font-bold transition-all ${
+              className={`py-2 px-2 rounded text-xs font-bold transition-all text-center ${
                 selectedRole === ROLES.AUTHORITY
                   ? 'bg-[#0f2942] text-white shadow-xs'
                   : 'bg-white text-slate-700 border border-slate-300 hover:bg-slate-100'
               }`}
             >
               Authority
+            </button>
+            <button
+              type="button"
+              onClick={() => handleRoleChange(ROLES.COMPANY)}
+              className={`py-2 px-2 rounded text-xs font-bold transition-all text-center ${
+                selectedRole === ROLES.COMPANY
+                  ? 'bg-[#0f2942] text-white shadow-xs'
+                  : 'bg-white text-slate-700 border border-slate-300 hover:bg-slate-100'
+              }`}
+            >
+              Company
             </button>
           </div>
         </div>
@@ -221,9 +251,9 @@ const OfficialLogin = () => {
           <button
             type="submit"
             disabled={isLoading}
-            className="w-full py-2.5 bg-[#0f2942] hover:bg-[#183e63] text-white text-xs font-bold rounded shadow-xs transition-colors disabled:opacity-50"
+            className="w-full py-2.5 bg-[#0f2942] hover:bg-[#183e63] text-white text-xs font-bold rounded shadow-xs transition-colors disabled:opacity-50 cursor-pointer"
           >
-            {isLoading ? 'Signing In...' : `Sign In as ${selectedRole === ROLES.INSPECTOR ? 'Inspector' : 'Authority'}`}
+            {isLoading ? 'Signing In...' : `Sign In as ${selectedRole === ROLES.COMPANY ? 'Company' : selectedRole === ROLES.INSPECTOR ? 'Inspector' : 'Authority'}`}
           </button>
 
           {/* Footer citizen link */}
@@ -237,10 +267,11 @@ const OfficialLogin = () => {
       </div>
 
       {/* Prototype credential hint box */}
-      <div className="mt-5 w-full max-w-sm p-3 bg-amber-50 border border-amber-200 rounded text-[11px] text-amber-900">
+      <div className="mt-5 w-full max-w-sm p-3 bg-amber-50 border border-amber-200 rounded text-[11px] text-amber-900 space-y-1">
         <div className="font-bold mb-1">Prototype Credentials (for demonstration only):</div>
         <div>Inspector: <span className="font-mono">inspector@labellens.gov.in</span> / <span className="font-mono">Inspector@123</span></div>
         <div>Authority: <span className="font-mono">authority@labellens.gov.in</span> / <span className="font-mono">Authority@123</span></div>
+        <div>Company: <span className="font-mono">company@labellens.com</span> / <span className="font-mono">Company@123</span></div>
       </div>
     </div>
   );

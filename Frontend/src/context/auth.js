@@ -11,6 +11,7 @@ export const ROLES = {
   CITIZEN: 'CITIZEN',
   INSPECTOR: 'INSPECTOR',
   AUTHORITY: 'AUTHORITY',
+  COMPANY: 'COMPANY',
 };
 
 // ---------------------------------------------------------------------------
@@ -111,6 +112,22 @@ const AUTHORITY_CREDENTIALS = [
   },
 ];
 
+export const COMPANY_CREDENTIALS = [
+  {
+    email: 'company@labellens.com',
+    aliasEmail: 'company',
+    password: 'Company@123',
+    altPassword: 'company123',
+    role: ROLES.COMPANY,
+    name: 'Patanjali Ayurved Ltd.',
+    displayName: 'Patanjali Ayurved Ltd. (Quality & Regulatory Compliance)',
+    id: 'CMP-001',
+    code: 'BRAND-001',
+    division: 'FMCG Packaged Goods & Regulatory Affairs',
+    category: 'Packaged Food & Commodities',
+  },
+];
+
 // ---------------------------------------------------------------------------
 // Helper: case-flexible password matching
 // ---------------------------------------------------------------------------
@@ -190,6 +207,20 @@ export function validateCredentials(identifier, password, expectedRole) {
     return null;
   };
 
+  // Helper for matching company
+  const matchCompany = () => {
+    return COMPANY_CREDENTIALS.find(
+      (c) =>
+        (c.email.toLowerCase() === trimmedId ||
+          c.aliasEmail?.toLowerCase() === trimmedId ||
+          c.id.toLowerCase() === trimmedId ||
+          c.code?.toLowerCase() === trimmedId ||
+          trimmedId === 'company' ||
+          trimmedId === 'brand') &&
+        matchesPassword(c.password, c.altPassword, trimmedPass)
+    ) || null;
+  };
+
   if (expectedRole === ROLES.INSPECTOR) {
     return matchInspector();
   }
@@ -198,12 +229,16 @@ export function validateCredentials(identifier, password, expectedRole) {
     return matchAuthority();
   }
 
+  if (expectedRole === ROLES.COMPANY) {
+    return matchCompany();
+  }
+
   if (expectedRole === ROLES.CITIZEN) {
     return matchCitizen();
   }
 
   // If role is unspecified, check all roles
-  return matchInspector() || matchAuthority() || matchCitizen();
+  return matchInspector() || matchAuthority() || matchCompany() || matchCitizen();
 }
 
 // ---------------------------------------------------------------------------
